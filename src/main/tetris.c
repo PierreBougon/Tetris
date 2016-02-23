@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Tue Feb 23 19:22:20 2016 bougon_p
+** Last update Tue Feb 23 23:08:42 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -30,7 +30,7 @@ int	main_loop(t_data *data, t_options *opt)
     {
       clear();
       initscr();
-      mvprintw(10, 10, "coucoucmqskjhfuegfyuegdij");
+      aff_layout(data->score);
       key = getch();
       if (key == KEY_ESC)
       	break;
@@ -38,22 +38,32 @@ int	main_loop(t_data *data, t_options *opt)
   return (0);
 }
 
-int		main(int ac, char **av, char **env)
+int	main(int ac, char **av, char **env)
 {
   t_data	data;
   t_options	opt;
 
 
-  data = data;
-  opt = opt;
+
+  data.score.high_score = 0;
   ac = ac;
   av = av;
+  data = data;
+  opt = opt;
+
+  initscr();
+
+  if (has_colors() == FALSE)
+    {
+      endwin();
+      return (my_putstr_err("Your terminal does not support color\n"));
+      return (1);
+    }
   if (*env == NULL)
     return (my_putstr_err("No environment detected\n"));
-  keypad(stdscr, TRUE);
-  initscr();
-  curs_set(0);
   opt = parse_params(ac, av);
+  start_color();
+  curs_set(0);
   main_loop(&data, &opt);
   endwin();
   return (0);
