@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Tue Feb 23 22:55:49 2016 bougon_p
+** Last update Wed Feb 24 00:42:24 2016 Clémenceau Cedric
 */
 
 #ifndef	TETRIS_H_
@@ -39,11 +39,13 @@ typedef struct		s_options
 
 typedef struct		s_score
 {
+  char			**tab_score;
   unsigned int		high_score;
 }			t_score;
 
 typedef struct		s_data
 {
+  char			**tab_game;
   t_score		score;
 }			t_data;
 
@@ -56,12 +58,13 @@ typedef struct		s_data
 ** Game functions
 */
 
-void	aff_layout(t_score);
+void	aff_layout(t_score *);
 
 /*
 ** Others fucntions
 */
 
 int	my_putstr_err(char *);
+char	**init_tab(int, int);
 
 #endif /* !TETRIS_H_ */
