@@ -5,7 +5,7 @@
 ## Login   <bougon_p@epitech.net>
 ## 
 ## Started on  Tue Feb 23 17:06:22 2016 bougon_p
-## Last update Tue Feb 23 17:10:33 2016 bougon_p
+## Last update Tue Feb 23 18:53:28 2016 Clémenceau Cedric
 ##
 
 # USEFUL VARIABLES
@@ -32,9 +32,9 @@ OBJS    	=	$(SRC:.c=.o)
 
 LIBPATH =	lib/
 
-LIB	=	-lmy
+LIB	=	-lncurses
 
-LDFLAGS =	-lmy -L$(LIBPATH)
+LDFLAGS =	-lmy -L$(LIBPATH) -lncurses
 
 
 # PROJECT VARIABLES
