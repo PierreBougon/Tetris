@@ -5,7 +5,7 @@
 ## Login   <bougon_p@epitech.net>
 ## 
 ## Started on  Tue Feb 23 17:06:22 2016 bougon_p
-## Last update Tue Feb 23 17:10:33 2016 bougon_p
+## Last update Tue Feb 23 18:59:27 2016 bougon_p
 ##
 
 # USEFUL VARIABLES
@@ -23,7 +23,8 @@ ECHO	=	echo -e
 
 MAIN		=	src/main/
 
-SRC		=	$(MAIN)tetris.c
+SRC		=	$(MAIN)tetris.c \
+			$(MAIN)error.c
 
 OBJS    	=	$(SRC:.c=.o)
 
@@ -34,7 +35,7 @@ LIBPATH =	lib/
 
 LIB	=	-lmy
 
-LDFLAGS =	-lmy -L$(LIBPATH)
+LDFLAGS =	-lmy -L$(LIBPATH) -lncurses
 
 
 # PROJECT VARIABLES
