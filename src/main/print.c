@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 22:45:02 2016 bougon_p
-** Last update Wed Feb 24 00:06:00 2016 bougon_p
+** Last update Wed Feb 24 00:47:40 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -24,11 +24,17 @@ void	write_tetris()
   attroff(COLOR_PAIR(1));
 }
 
-void	print_score(t_score score)
+void	print_ligne(t_score *score, char *to_print, int pos_x, int pos_y)
 {
-  printw(" /------------------\\\n");
+  score = score;
+  mvprintw(pos_x, pos_y, to_print);
+}
+
+void	print_score(t_score *score)
+{
+  print_ligne(score, " /------------------\\\n", 10, 0);
   printw(" |                  |\n");
-  printw(" | High Score   %d  |\n", score.high_score);
+  printw(" | High Score   %d  |\n", score->high_score);
   printw(" | Score            |\n");
   printw(" |                  |\n");
   printw(" | Lines            |\n");
@@ -38,7 +44,7 @@ void	print_score(t_score score)
   printw(" \\------------------/\n");
 }
 
-void	aff_layout(t_score score)
+void	aff_layout(t_score *score)
 {
   write_tetris();
   print_score(score);

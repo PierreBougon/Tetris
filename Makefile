@@ -5,7 +5,7 @@
 ## Login   <bougon_p@epitech.net>
 ## 
 ## Started on  Tue Feb 23 17:06:22 2016 bougon_p
-## Last update Tue Feb 23 22:49:38 2016 bougon_p
+## Last update Wed Feb 24 00:08:06 2016 Clémenceau Cedric
 ##
 
 # USEFUL VARIABLES
@@ -45,7 +45,7 @@ NAME	=	tetris
 
 IFLAG	=	-Iinclude/
 
-CFLAGS  =	-W -Wall -Werror -Wextra -ansi -pedantic $(IFLAG)
+CFLAGS  =	-W -Wall -Wextra $(IFLAG)
 
 CC      =	gcc $(CFLAGS)
 
