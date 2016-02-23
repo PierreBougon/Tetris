@@ -5,14 +5,14 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 22:45:02 2016 bougon_p
-** Last update Tue Feb 23 23:13:39 2016 bougon_p
+** Last update Wed Feb 24 00:06:00 2016 bougon_p
 */
 
 #include "tetris.h"
 
 void	write_tetris()
 {
-  init_pair(1, COLOR_GREEN, COLOR_BLACK);
+  init_pair(1, 2, 0);
   attron(COLOR_PAIR(1));
   printw("                                              PLEURE PAS <3\n");
   printw("*** *** *** *** * ***\n");

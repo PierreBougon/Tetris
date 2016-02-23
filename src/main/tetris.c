@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Tue Feb 23 23:42:44 2016 bougon_p
+** Last update Wed Feb 24 00:36:04 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -57,11 +57,11 @@ int	main(int ac, char **av, char **env)
     {
       endwin();
       return (my_putstr_err("Your terminal does not support color\n"));
-      return (1);
     }
   if (*env == NULL)
     return (my_putstr_err("No environment detected\n"));
   opt = parse_params(ac, av);
+  data.tetriminos = init_tetriminos();
   start_color();
   curs_set(0);
   main_loop(&data, &opt);
