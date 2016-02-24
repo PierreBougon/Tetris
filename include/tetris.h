@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Wed Feb 24 01:05:53 2016 bougon_p
+** Last update Wed Feb 24 03:41:17 2016 Clémenceau Cedric
 */
 
 #ifndef	TETRIS_H_
@@ -25,6 +25,7 @@
 # include <curses.h>
 
 # define KEY_ESC 27
+# define POS_GAME 30
 
 /*
 ** VAR PARSED BY PARSER
@@ -48,6 +49,7 @@ typedef struct		s_score
 typedef struct		s_data
 {
   char			***tetriminos;
+  char			**next;
   char			**tab_game;
   t_score		score;
 }			t_data;
@@ -61,7 +63,7 @@ typedef struct		s_data
 ** Game functions
 */
 
-void	aff_layout(t_score *);
+void	aff_layout(t_data *);
 
 /*
 ** Others fucntions
