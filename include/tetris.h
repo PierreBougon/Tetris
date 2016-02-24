@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Wed Feb 24 00:42:24 2016 Clémenceau Cedric
+** Last update Wed Feb 24 01:05:53 2016 bougon_p
 */
 
 #ifndef	TETRIS_H_
@@ -18,6 +18,8 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <curses.h>
+# include <dirent.h>
+# include <sys/types.h>
 
 # include <ncurses.h>
 # include <curses.h>
@@ -45,6 +47,7 @@ typedef struct		s_score
 
 typedef struct		s_data
 {
+  char			***tetriminos;
   char			**tab_game;
   t_score		score;
 }			t_data;
@@ -66,5 +69,6 @@ void	aff_layout(t_score *);
 
 int	my_putstr_err(char *);
 char	**init_tab(int, int);
+char	***init_tetriminos(void);
 
 #endif /* !TETRIS_H_ */

@@ -5,7 +5,7 @@
 ## Login   <bougon_p@epitech.net>
 ## 
 ## Started on  Tue Feb 23 17:06:22 2016 bougon_p
-## Last update Wed Feb 24 00:08:06 2016 Clémenceau Cedric
+## Last update Wed Feb 24 01:09:35 2016 bougon_p
 ##
 
 # USEFUL VARIABLES
@@ -25,7 +25,8 @@ MAIN		=	src/main/
 
 SRC		=	$(MAIN)tetris.c \
 			$(MAIN)error.c \
-			$(MAIN)print.c
+			$(MAIN)print.c \
+			$(MAIN)init.c
 
 OBJS    	=	$(SRC:.c=.o)
 
