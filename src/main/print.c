@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 22:45:02 2016 bougon_p
-** Last update Wed Feb 24 03:40:48 2016 Clémenceau Cedric
+** Last update Wed Feb 24 17:40:41 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -13,19 +13,25 @@
 void	write_tetris()
 {
   init_pair(1, 2, 0);
-  attron(COLOR_PAIR(1));
+  init_pair(2, 2, 0);
+  init_pair(3, 2, 0);
+  attrset(COLOR_PAIR(1));
   printw("                                              PLEURE PAS <3\n");
   printw("*** *** *** *** * ***\n");
+  attrset(COLOR_PAIR(2));
   printw(" *  *    *  * *   *  \n");
   printw(" *  ***  *   ** * ***\n");
+  attrset(COLOR_PAIR(3));
   printw(" *  *    *  * * *   *\n");
-  printw(" *  ***  *  * * * ***\n");
   attroff(COLOR_PAIR(1));
+  printw(" *  ***  *  * * * ***\n");
 }
 
 void	print_ligne(t_score *score, char *to_print, int pos_x, int pos_y)
 {
-  score->tab_score[pos_x - 10] = to_print;
+  strcpy(score->tab_score[pos_x - 10], to_print);
+  score->tab_score[2][14] = '1';
+  score->tab_score[2][15] = '0';
   mvprintw(pos_x, pos_y, score->tab_score[pos_x - 10]);
 }
 
