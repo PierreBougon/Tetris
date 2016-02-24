@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 22:45:02 2016 bougon_p
-** Last update Wed Feb 24 17:40:41 2016 Clémenceau Cedric
+** Last update Wed Feb 24 19:44:43 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -13,25 +13,21 @@
 void	write_tetris()
 {
   init_pair(1, 2, 0);
-  init_pair(2, 2, 0);
-  init_pair(3, 2, 0);
   attrset(COLOR_PAIR(1));
   printw("                                              PLEURE PAS <3\n");
   printw("*** *** *** *** * ***\n");
-  attrset(COLOR_PAIR(2));
   printw(" *  *    *  * *   *  \n");
   printw(" *  ***  *   ** * ***\n");
-  attrset(COLOR_PAIR(3));
   printw(" *  *    *  * * *   *\n");
-  attroff(COLOR_PAIR(1));
   printw(" *  ***  *  * * * ***\n");
+  attroff(COLOR_PAIR(1));
 }
 
 void	print_ligne(t_score *score, char *to_print, int pos_x, int pos_y)
 {
+  char	*int;
   strcpy(score->tab_score[pos_x - 10], to_print);
-  score->tab_score[2][14] = '1';
-  score->tab_score[2][15] = '0';
+
   mvprintw(pos_x, pos_y, score->tab_score[pos_x - 10]);
 }
 
@@ -57,25 +53,12 @@ void	print_ligne_map(t_data *data, char *to_print, int pos_x, int pos_y)
 
 void	print_game(t_data *data)
 {
+  int	i;
+
+  i = 2;
   print_ligne_map(data, "--------------------", 1, POS_GAME);
-  print_ligne_map(data, "|                  |", 2, POS_GAME);
-  print_ligne_map(data, "|                  |", 3, POS_GAME);
-  print_ligne_map(data, "|                  |", 4, POS_GAME);
-  print_ligne_map(data, "|                  |", 5, POS_GAME);
-  print_ligne_map(data, "|                  |", 6, POS_GAME);
-  print_ligne_map(data, "|                  |", 7, POS_GAME);
-  print_ligne_map(data, "|                  |", 8, POS_GAME);
-  print_ligne_map(data, "|                  |", 9, POS_GAME);
-  print_ligne_map(data, "|                  |", 10, POS_GAME);
-  print_ligne_map(data, "|                  |", 11, POS_GAME);
-  print_ligne_map(data, "|                  |", 12, POS_GAME);
-  print_ligne_map(data, "|                  |", 13, POS_GAME);
-  print_ligne_map(data, "|                  |", 14, POS_GAME);
-  print_ligne_map(data, "|                  |", 15, POS_GAME);
-  print_ligne_map(data, "|                  |", 16, POS_GAME);
-  print_ligne_map(data, "|                  |", 17, POS_GAME);
-  print_ligne_map(data, "|                  |", 18, POS_GAME);
-  print_ligne_map(data, "|                  |", 19, POS_GAME);
+  while (i < 20)
+    print_ligne_map(data, "|                  |", i++, POS_GAME);
   print_ligne_map(data, "--------------------", 20, POS_GAME);
 
 }
