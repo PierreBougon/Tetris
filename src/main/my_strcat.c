@@ -1,11 +1,11 @@
 /*
-** my_strcat.c for my_ls in /home/clemen_j/tek1/System_Unix/MyLs/PSU_2015_my_ls/src
+** my_strcat.c for TETRIS in /home/bougon_p/rendu/PSU_2015_tetris
 **
-** Made by Cédric Clemenceau
-** Login   <clemen_j@epitech.net>
+** Made by bougon_p
+** Login   <bougon_p@epitech.net>
 **
-** Started on  Sun Nov 29 20:40:28 2015 Cédric Clemenceau
-** Last update Wed Feb 24 17:37:39 2016 Clémenceau Cedric
+** Started on  Thu Feb 25 17:10:44 2016 bougon_p
+** Last update Thu Feb 25 17:12:29 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -15,10 +15,10 @@ char	*my_strcat(char *dest, char *src)
   int	i;
   int	j;
 
-  j = my_strlen(dest);
-  i = 0;
-  while (src[i])
-      dest[j++] = src[i++];
+  i = my_strlen(dest);
+  j = 0;
+  while (src[j])
+      dest[i++] = src[j++];
   dest[i] = '\0';
   return (dest);
 }

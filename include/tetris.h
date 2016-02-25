@@ -5,13 +5,15 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Thu Feb 25 02:25:11 2016 Clémenceau Cedric
+** Last update Thu Feb 25 18:52:32 2016 bougon_p
 */
 
 #ifndef	TETRIS_H_
 # define TETRIS_H_
 
+# include "list.h"
 # include "my.h"
+# include "get_next_line.h"
 
 # include <time.h>
 # include <stdlib.h>
@@ -20,6 +22,8 @@
 # include <curses.h>
 # include <dirent.h>
 # include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 
 # include <ncurses.h>
 # include <curses.h>
@@ -40,6 +44,14 @@ typedef struct		s_options
 ** USEFUL GAME VARS
 */
 
+typedef struct		s_tetri
+{
+  int			width;
+  int			height;
+  int			color;
+  char			**item;
+}			t_tetri;
+
 typedef struct		s_score
 {
   char			**tab_score;
@@ -48,7 +60,7 @@ typedef struct		s_score
 
 typedef struct		s_data
 {
-  char			***tetriminos;
+  t_arglist		arg;
   char			**tab_next;
   char			**tab_game;
   t_score		score;
@@ -82,6 +94,8 @@ char	*setnbr(int);
 char	*my_strcat(char *, char *);
 int	my_putstr_err(char *);
 char	**init_tab(int, int);
-char	***init_tetriminos(void);
+int	init_tetriminos(t_arglist *);
+char	*get_next_line(const int);
+char	*set_line_null(char *, int);
 
 #endif /* !TETRIS_H_ */

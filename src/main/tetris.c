@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Thu Feb 25 01:24:46 2016 Clémenceau Cedric
+** Last update Thu Feb 25 17:05:25 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -64,8 +64,8 @@ int	main(int ac, char **av, char **env)
   data.tab_game = init_tab(20, 10);
   data.tab_next = init_tab(4, 8);
 
-  /* if ((data.tetriminos = init_tetriminos()) == NULL) */
-  /*   return (my_putstr_err("Corrupted file\n")); */
+  if ((init_tetriminos(&data.arg)) == 1)
+    return (my_putstr_err("Corrupted file\n"));
   /* if ((data.score.tab_score = init_tab(10, 20)) == NULL) */
   /*   return (my_putstr_err("Malloc error\n")); */
 

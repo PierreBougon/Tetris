@@ -1,29 +1,29 @@
 /*
-** initlist.c for init in /home/bougon_p/rendu/CPE_2015_Pushswap
-** 
-** Made by Pierre Bougon
+** initlist.c for LIST in /home/bougon_p/rendu/PSU_2015_tetris
+**
+** Made by bougon_p
 ** Login   <bougon_p@epitech.net>
-** 
-** Started on  Sun Nov 15 20:41:12 2015 Pierre Bougon
-** Last update Fri Dec 11 18:53:42 2015 Pierre Bougon
+**
+** Started on  Thu Feb 25 16:45:28 2016 bougon_p
+** Last update Thu Feb 25 19:12:50 2016 bougon_p
 */
 
-#include "select.h"
+#include "tetris.h"
+#include "list.h"
 
-int		create_cdlist(t_arglist *arg, char *_name)
+int		create_cdlist(t_arglist *arg, void *_data)
 {
   if ((arg->root = malloc(sizeof(t_cdlist))) == NULL)
       return (1);
+  printf("BUG\n");
   arg->root->prev = arg->root;
   arg->root->next = arg->root;
-  arg->root->name = _name;
-  arg->root->b_under = 1;
-  arg->root->b_high = 0;
+  arg->root->data = _data;
   arg->length = 1;
   return (0);
 }
 
-int		add_first_cdl(t_arglist *arg, char *_name)
+int		add_first_cdl(t_arglist *arg, void *_data)
 {
   t_cdlist	*elem;
 
@@ -36,14 +36,12 @@ int		add_first_cdl(t_arglist *arg, char *_name)
       arg->root->next->prev = elem;
       arg->root->next = elem;
     }
-  elem->name = _name;
-  elem->b_under = 0;
-  elem->b_high = 0;
+  elem->data = _data;
   arg->length++;
   return (0);
 }
 
-int	add_last_cdl(t_arglist *arg, char *_name)
+int	add_last_cdl(t_arglist *arg, void *_data)
 {
   t_cdlist	*elem;
 
@@ -56,23 +54,8 @@ int	add_last_cdl(t_arglist *arg, char *_name)
       arg->root->prev->next = elem;
       arg->root->prev = elem;
     }
-  elem->name = _name;
-  elem->b_under = 0;
-  elem->b_high = 0;
+  elem->data = _data;
   arg->length++;
-  return (0);
-}
-
-int	init_cdlist(char **av, int ac, t_arglist *arg)
-{
-  int	i;
-
-  i = 1;
-  create_cdlist(arg, av[i++]);
-  while (i < ac)
-    {
-      add_last_cdl(arg, av[i++]);
-    }
   return (0);
 }
 
