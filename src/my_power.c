@@ -5,8 +5,10 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Fri Oct  2 14:25:40 2015 Pierre Bougon
-** Last update Thu Feb  4 05:26:10 2016 bougon_p
+** Last update Wed Feb 24 19:55:28 2016 Clémenceau Cedric
 */
+
+#include "tetris.h"
 
 int	my_pow(int nb, int power)
 {
@@ -20,6 +22,3 @@ int	my_pow(int nb, int power)
   else
     return (nb * tmp * tmp);
 }
-/*
-** Optimized algorith to calculate power
-*/

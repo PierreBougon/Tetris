@@ -5,29 +5,29 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 22:45:02 2016 bougon_p
-** Last update Wed Feb 24 19:44:43 2016 Clémenceau Cedric
+** Last update Thu Feb 25 02:21:04 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
 
-void	write_tetris()
-{
-  init_pair(1, 2, 0);
-  attrset(COLOR_PAIR(1));
-  printw("                                              PLEURE PAS <3\n");
-  printw("*** *** *** *** * ***\n");
-  printw(" *  *    *  * *   *  \n");
-  printw(" *  ***  *   ** * ***\n");
-  printw(" *  *    *  * * *   *\n");
-  printw(" *  ***  *  * * * ***\n");
-  attroff(COLOR_PAIR(1));
-}
-
 void	print_ligne(t_score *score, char *to_print, int pos_x, int pos_y)
 {
-  char	*int;
-  strcpy(score->tab_score[pos_x - 10], to_print);
+  char	*nb;
+  char	time_now[6];
+  int	i;
 
+  i = 5;
+  my_strcpy(score->tab_score[pos_x - 10], to_print);
+  /* setnbr(data->highscore) */
+  nb = setnbr(10000);
+  while (nb[i])
+    nb[i++] = 0;
+  my_strcpy(time_now, "0:0");
+  my_strncpy(&score->tab_score[2][13], nb, my_strlen(nb));
+  my_strncpy(&score->tab_score[3][17], "0", my_strlen("0"));
+  my_strncpy(&score->tab_score[5][17], "0", my_strlen("0"));
+  my_strncpy(&score->tab_score[6][17], "1", my_strlen("1"));
+  my_strncpy(&score->tab_score[8][15], time_now, my_strlen(time_now));
   mvprintw(pos_x, pos_y, score->tab_score[pos_x - 10]);
 }
 
@@ -45,10 +45,11 @@ void	print_score(t_score *score)
   print_ligne(score, "\\------------------/", 19, 0);
 }
 
+/* ici je sais pas c'est random xD */
 void	print_ligne_map(t_data *data, char *to_print, int pos_x, int pos_y)
 {
-  data->tab_game[pos_x] = to_print;
-  mvprintw(pos_x, pos_y, data->tab_game[pos_x]);
+  my_strcpy(data->tab_game[0], to_print);
+  mvprintw(pos_x, pos_y, data->tab_game[0]);
 }
 
 void	print_game(t_data *data)
@@ -63,12 +64,20 @@ void	print_game(t_data *data)
 
 }
 
+void	print_ligne_next(t_data *data, char *to_print, int pos_x, int pos_y)
+{
+  my_strcpy(data->tab_next[pos_x - 1], to_print);
+  my_strncpy(&data->tab_next[1][2], "**", 2);
+  my_strncpy(&data->tab_next[2][3], "**", 2);
+  mvprintw(pos_x, pos_y, data->tab_next[pos_x - 1]);
+}
+
 void	print_next(t_data *data)
 {
-  print_ligne_map(data, "/Next--\\", 1, POS_GAME + 25);
-  print_ligne_map(data, "|      |", 2, POS_GAME + 25);
-  print_ligne_map(data, "|      |", 3, POS_GAME + 25);
-  print_ligne_map(data, "\\------/", 4, POS_GAME + 25);
+  print_ligne_next(data, "/Next--\\", 1, POS_GAME + 25);
+  print_ligne_next(data, "|      |", 2, POS_GAME + 25);
+  print_ligne_next(data, "|      |", 3, POS_GAME + 25);
+  print_ligne_next(data, "\\------/", 4, POS_GAME + 25);
 }
 
 void	aff_layout(t_data *data)

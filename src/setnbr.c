@@ -5,10 +5,10 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Fri Jan 22 05:11:57 2016 bougon_p
-** Last update Thu Feb  4 05:09:17 2016 bougon_p
+** Last update Wed Feb 24 19:55:01 2016 Clémenceau Cedric
 */
 
-#include "minitalk.h"
+#include "tetris.h"
 
 char	*cleanstr(char *nbr)
 {

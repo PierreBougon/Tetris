@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Wed Feb 24 15:11:03 2016 Clémenceau Cedric
+** Last update Thu Feb 25 02:25:11 2016 Clémenceau Cedric
 */
 
 #ifndef	TETRIS_H_
@@ -49,15 +49,21 @@ typedef struct		s_score
 typedef struct		s_data
 {
   char			***tetriminos;
-  char			**next;
+  char			**tab_next;
   char			**tab_game;
   t_score		score;
 }			t_data;
 
 /*
-** AI functions
+** TETRIS letter functions
 */
-
+void	write_tetris();
+void	write_letter();
+void	write_letter_e();
+void	write_letter_t();
+void	write_letter_r();
+void	write_letter_i();
+void	write_letter_s();
 
 /*
 ** Game functions
@@ -69,6 +75,10 @@ void	aff_layout(t_data *);
 ** Others fucntions
 */
 
+char	*my_strcpy(char *, char *);
+char	*my_strncpy(char *, char *, int);
+int	my_pow(int, int);
+char	*setnbr(int);
 char	*my_strcat(char *, char *);
 int	my_putstr_err(char *);
 char	**init_tab(int, int);
