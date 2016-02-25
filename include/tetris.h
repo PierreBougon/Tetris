@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Thu Feb 25 18:52:32 2016 bougon_p
+** Last update Thu Feb 25 21:58:37 2016 bougon_p
 */
 
 #ifndef	TETRIS_H_
@@ -60,7 +60,7 @@ typedef struct		s_score
 
 typedef struct		s_data
 {
-  t_arglist		arg;
+  t_arglist		tetriminos;
   char			**tab_next;
   char			**tab_game;
   t_score		score;
@@ -97,5 +97,11 @@ char	**init_tab(int, int);
 int	init_tetriminos(t_arglist *);
 char	*get_next_line(const int);
 char	*set_line_null(char *, int);
+
+/*
+** DEBUG MODE
+*/
+
+void	print_tetri(t_arglist *);
 
 #endif /* !TETRIS_H_ */

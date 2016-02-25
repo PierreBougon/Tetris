@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Thu Feb 25 17:05:25 2016 bougon_p
+** Last update Thu Feb 25 22:11:39 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -49,6 +49,16 @@ int	main(int ac, char **av, char **env)
   data = data;
   opt = opt;
 
+  if ((init_tetriminos(&data.tetriminos)) == 1)
+    return (my_putstr_err("Corrupted file\n"));
+
+  /*
+  ** DEBUG MODE
+  */
+  printf("ICI DANS LE MAIN L1 DE ITEM = %s\n", data.tetriminos.root->data->item[1]);
+  print_tetri(&data.tetriminos);
+  exit(1);
+
   initscr();
 
   if (has_colors() == FALSE)
@@ -64,8 +74,6 @@ int	main(int ac, char **av, char **env)
   data.tab_game = init_tab(20, 10);
   data.tab_next = init_tab(4, 8);
 
-  if ((init_tetriminos(&data.arg)) == 1)
-    return (my_putstr_err("Corrupted file\n"));
   /* if ((data.score.tab_score = init_tab(10, 20)) == NULL) */
   /*   return (my_putstr_err("Malloc error\n")); */
 

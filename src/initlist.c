@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Feb 25 16:45:28 2016 bougon_p
-** Last update Thu Feb 25 19:12:50 2016 bougon_p
+** Last update Thu Feb 25 22:19:21 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -15,7 +15,6 @@ int		create_cdlist(t_arglist *arg, void *_data)
 {
   if ((arg->root = malloc(sizeof(t_cdlist))) == NULL)
       return (1);
-  printf("BUG\n");
   arg->root->prev = arg->root;
   arg->root->next = arg->root;
   arg->root->data = _data;
@@ -55,6 +54,9 @@ int	add_last_cdl(t_arglist *arg, void *_data)
       arg->root->prev = elem;
     }
   elem->data = _data;
+  printf("ICI DANS LE ADD LAST L1 DE ITEM ROOT = %s\n", arg->root->data->item[1]);
+  printf("ICI DANS LE ADD LAST L1 DE ITEM = %s\n", elem->data->item[1]);
+  printf("ICI DANS LE ADD LAST L1 DE ITEM NEXT = %s\n", elem->next->data->item[1]);
   arg->length++;
   return (0);
 }

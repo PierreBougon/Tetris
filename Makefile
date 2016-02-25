@@ -5,7 +5,7 @@
 ## Login   <bougon_p@epitech.net>
 ## 
 ## Started on  Tue Feb 23 17:06:22 2016 bougon_p
-## Last update Thu Feb 25 19:01:02 2016 bougon_p
+## Last update Thu Feb 25 21:22:23 2016 bougon_p
 ##
 
 # USEFUL VARIABLES
@@ -36,7 +36,8 @@ SRC		=	$(MAIN)tetris.c \
 			src/my_power.c \
 			src/initlist.c \
 			src/get_nl.c \
-			src/set_line.c
+			src/set_line.c \
+			src/print_debug.c
 
 
 OBJS    	=	$(SRC:.c=.o)
