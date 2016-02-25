@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Thu Feb 25 02:25:11 2016 Clémenceau Cedric
+** Last update Thu Feb 25 14:26:53 2016 Clémenceau Cedric
 */
 
 #ifndef	TETRIS_H_
@@ -57,13 +57,21 @@ typedef struct		s_data
 /*
 ** TETRIS letter functions
 */
-void	write_tetris();
+
+void	write_tetris();	/* write letter and put color */
 void	write_letter();
 void	write_letter_e();
 void	write_letter_t();
 void	write_letter_r();
 void	write_letter_i();
 void	write_letter_s();
+
+
+/*
+** TETRIS functions color
+*/
+
+void	my_init_color();
 
 /*
 ** Game functions

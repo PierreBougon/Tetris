@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Thu Feb 25 01:24:46 2016 Clémenceau Cedric
+** Last update Thu Feb 25 14:25:00 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -50,7 +50,6 @@ int	main(int ac, char **av, char **env)
   opt = opt;
 
   initscr();
-
   if (has_colors() == FALSE)
     {
       endwin();
@@ -71,6 +70,7 @@ int	main(int ac, char **av, char **env)
 
 
   start_color();
+  my_init_color();
   curs_set(0);
   main_loop(&data, &opt);
   endwin();
