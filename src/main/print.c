@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 22:45:02 2016 bougon_p
-** Last update Thu Feb 25 02:21:04 2016 Clémenceau Cedric
+** Last update Fri Feb 26 11:54:59 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -14,14 +14,10 @@ void	print_ligne(t_score *score, char *to_print, int pos_x, int pos_y)
 {
   char	*nb;
   char	time_now[6];
-  int	i;
 
-  i = 5;
   my_strcpy(score->tab_score[pos_x - 10], to_print);
   /* setnbr(data->highscore) */
   nb = setnbr(10000);
-  while (nb[i])
-    nb[i++] = 0;
   my_strcpy(time_now, "0:0");
   my_strncpy(&score->tab_score[2][13], nb, my_strlen(nb));
   my_strncpy(&score->tab_score[3][17], "0", my_strlen("0"));
