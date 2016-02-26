@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Fri Feb 26 02:27:15 2016 Clémenceau Cedric
+** Last update Fri Feb 26 16:30:33 2016 Clémenceau Cedric
 */
 
 #ifndef	TETRIS_H_
@@ -29,7 +29,7 @@
 # include <curses.h>
 
 # define KEY_ESC 27
-# define POS_GAME 30
+# define POS_GAME 25
 
 /*
 ** VAR PARSED BY PARSER
@@ -55,7 +55,7 @@ typedef struct		s_tetri
 typedef struct		s_score
 {
   char			**tab_score;
-  unsigned int		high_score;
+  int			high_score;
 }			t_score;
 
 typedef struct		s_data
