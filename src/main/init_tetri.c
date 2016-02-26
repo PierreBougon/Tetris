@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Feb 25 16:38:30 2016 bougon_p
-** Last update Thu Feb 25 22:18:15 2016 bougon_p
+** Last update Fri Feb 26 02:32:12 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -104,11 +104,15 @@ int	create_elem(int i, t_arglist *arg, t_tetri *tetri)
     {
       if ((create_cdlist(arg, tetri)) == 1)
 	return (1);
+      printf("\nPASSAGE DANS LA 1ERE FCT\n");
+      printf("ITEM ==> %s\n\n", tetri->item[1]);
     }
   else
     {
       if ((add_last_cdl(arg, tetri)) == 1)
 	return (1);
+      printf("\nPASSAGE DANS LA 2EME FCT\n");
+      printf("ITEM ==> %s\n\n", tetri->item[1]);
     }
   return (0);
 }
@@ -117,7 +121,7 @@ int		init_tetriminos(t_arglist *arg)
 {
   DIR           *dirp;
   struct dirent *dir;
-  t_tetri       tetri;
+  t_tetri       *tetri;
   int           i;
 
   i = 0;
@@ -127,9 +131,11 @@ int		init_tetriminos(t_arglist *arg)
     {
       if (dir->d_name[0] != '.' && my_strcmp(dir->d_name, "..") != 0)
 	{
-          if ((fill_tetri(dir->d_name, &tetri)) == 1)
+	  if ((tetri = malloc(sizeof(t_tetri))) == NULL)
 	    return (1);
-          if ((create_elem(i, arg, &tetri)) == 1)
+          if ((fill_tetri(dir->d_name, tetri)) == 1)
+	    return (1);
+          if ((create_elem(i, arg, tetri)) == 1)
 	    return (1);
           i = 1;
         }
