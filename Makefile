@@ -5,7 +5,7 @@
 ## Login   <bougon_p@epitech.net>
 ## 
 ## Started on  Tue Feb 23 17:06:22 2016 bougon_p
-## Last update Fri Feb 26 12:39:43 2016 bougon_p
+## Last update Fri Feb 26 14:29:57 2016 bougon_p
 ##
 
 # USEFUL VARIABLES
@@ -29,6 +29,8 @@ INIT		=	src/init/
 
 PRINT		=	src/print/
 
+PIECE		=	src/piece/
+
 SRC		=	$(MAIN)tetris.c \
 			$(MAIN)error.c \
 			$(INIT)init.c \
@@ -43,7 +45,9 @@ SRC		=	$(MAIN)tetris.c \
 			$(TOOLS)my_strcpy.c \
 			$(TOOLS)my_power.c \
 			$(TOOLS)get_nl.c \
-			$(TOOLS)set_line.c
+			$(TOOLS)set_line.c \
+			$(PIECE)new_tetri.c \
+			$(PIECE)print_piece.c
 
 
 OBJS    	=	$(SRC:.c=.o)

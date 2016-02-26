@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Fri Feb 26 12:43:04 2016 bougon_p
+** Last update Fri Feb 26 19:04:36 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -23,14 +23,18 @@ t_options	parse_params(int ac, char **av)
 int	main_loop(t_data *data, t_options *opt)
 {
   int	key;
+  int	refind;
 
-  data = data;
   opt = opt;
+  refind = -1;
   while (1)
     {
       clear();
       initscr();
+      if ((refind = find_new_tetri(data, refind)) == -2)
+	return (1);
       aff_layout(data);
+      aff_piece(&data->tetri_ig);
       key = getch();
       if (key == KEY_ESC)
       	break ;
@@ -46,14 +50,13 @@ int	main(int ac, char **av, char **env)
   data.score.high_score = 0;
   ac = ac;
   av = av;
-  data = data;
   opt = opt;
 
   if ((init_tetriminos(&data.tetriminos)) == 1)
     return (my_putstr_err("Corrupted file\n"));
 
   /*
-  ** DEBUG MODE
+  **  DEBUG MODE
   */
   /* print_tetri(&data.tetriminos); */
   /* exit(1); */
@@ -68,6 +71,7 @@ int	main(int ac, char **av, char **env)
     return (my_putstr_err("No environment detected\n"));
   opt = parse_params(ac, av);
 
+  srand(time(0));
   data.score.tab_score = init_tab(10, 20);
   data.tab_game = init_tab(20, 10);
   data.tab_next = init_tab(4, 8);

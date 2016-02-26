@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Feb 25 16:38:30 2016 bougon_p
-** Last update Fri Feb 26 12:34:41 2016 bougon_p
+** Last update Fri Feb 26 16:00:26 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -134,6 +134,7 @@ int		init_tetriminos(t_arglist *arg)
           if ((create_elem(i, arg, tetri)) == 1)
 	    return (1);
           i = 1;
+	  printf("%s\n",  dir->d_name);
         }
     }
   closedir(dirp);

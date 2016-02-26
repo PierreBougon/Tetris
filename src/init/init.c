@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Wed Feb 24 00:50:18 2016 bougon_p
-** Last update Thu Feb 25 16:52:06 2016 bougon_p
+** Last update Fri Feb 26 16:11:07 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -23,7 +23,7 @@ char	**init_tab(int line, int col)
     {
       if ((tab[i] = malloc(sizeof(char) * (col + 1))) == NULL)
         return (NULL);
-      tab[col] = 0;
+      tab[i][col] = 0;
       i++;
     }
   return (tab);
