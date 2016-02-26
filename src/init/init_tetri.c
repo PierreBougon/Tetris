@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Feb 25 16:38:30 2016 bougon_p
-** Last update Fri Feb 26 02:32:12 2016 bougon_p
+** Last update Fri Feb 26 12:34:41 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -104,15 +104,11 @@ int	create_elem(int i, t_arglist *arg, t_tetri *tetri)
     {
       if ((create_cdlist(arg, tetri)) == 1)
 	return (1);
-      printf("\nPASSAGE DANS LA 1ERE FCT\n");
-      printf("ITEM ==> %s\n\n", tetri->item[1]);
     }
   else
     {
       if ((add_last_cdl(arg, tetri)) == 1)
 	return (1);
-      printf("\nPASSAGE DANS LA 2EME FCT\n");
-      printf("ITEM ==> %s\n\n", tetri->item[1]);
     }
   return (0);
 }

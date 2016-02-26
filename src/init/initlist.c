@@ -5,11 +5,10 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Feb 25 16:45:28 2016 bougon_p
-** Last update Fri Feb 26 02:25:26 2016 bougon_p
+** Last update Fri Feb 26 16:38:43 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
-#include "list.h"
 
 int		create_cdlist(t_arglist *arg, void *_data)
 {
@@ -57,9 +56,6 @@ int	add_last_cdl(t_arglist *arg, void *_data)
       arg->root->prev = elem;
     }
   elem->data = _data;
-  printf("ICI DANS LE ADD LAST L1 DE ITEM ROOT = %s\n", arg->root->data->item[1]);
-  printf("ICI DANS LE ADD LAST L1 DE ITEM = %s\n", elem->data->item[1]);
-  printf("ICI DANS LE ADD LAST L1 DE ITEM NEXT = %s\n", elem->next->data->item[1]);
   arg->length++;
   return (0);
 }
@@ -76,6 +72,7 @@ int		free_list(t_arglist *arg)
     {
       tmp = tmp2;
       tmp2 = tmp->next;
+      free(tmp->data);
       free(tmp);
       i++;
     }

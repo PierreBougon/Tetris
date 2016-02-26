@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Fri Feb 26 16:33:10 2016 Clémenceau Cedric
+** Last update Fri Feb 26 16:38:02 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -94,5 +94,6 @@ int	main(int ac, char **av, char **env)
   my_free_tab(data.tab_game);
   my_free_tab(data.tab_next);
   endwin();
+  free_list(&data.tetriminos);
   return (0);
 }
