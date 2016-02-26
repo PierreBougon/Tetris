@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Feb 25 16:22:56 2016 bougon_p
-** Last update Thu Feb 25 16:23:15 2016 bougon_p
+** Last update Thu Feb 25 21:31:57 2016 bougon_p
 */
 
 char	*set_line_null(char *str, int length)

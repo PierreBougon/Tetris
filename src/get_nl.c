@@ -5,11 +5,10 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Feb 25 15:43:54 2016 bougon_p
-** Last update Thu Feb 25 16:46:44 2016 bougon_p
+** Last update Thu Feb 25 20:29:06 2016 bougon_p
 */
 
-#include "get_next_line.h"
-#include <stdio.h>
+#include "tetris.h"
 
 char	*my_realloc(char *line)
 {

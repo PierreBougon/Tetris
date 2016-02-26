@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Feb 25 15:41:33 2016 bougon_p
-** Last update Thu Feb 25 15:42:26 2016 bougon_p
+** Last update Thu Feb 25 20:23:41 2016 bougon_p
 */
 
 #ifndef GET_NEXT_LINE_H_
@@ -16,11 +16,11 @@
 # define READ_SIZE (1)
 #endif /* !READ_SIZE */
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
+/* # include <stdlib.h> */
+/* # include <unistd.h> */
+/* # include <sys/types.h> */
+/* # include <sys/stat.h> */
+/* # include <fcntl.h> */
 
 typedef struct	s_file
 {
