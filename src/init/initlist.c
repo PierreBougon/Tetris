@@ -5,11 +5,10 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Feb 25 16:45:28 2016 bougon_p
-** Last update Fri Feb 26 12:41:11 2016 bougon_p
+** Last update Fri Feb 26 16:38:43 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
-#include "list.h"
 
 int		create_cdlist(t_arglist *arg, void *_data)
 {

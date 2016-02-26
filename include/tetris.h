@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Fri Feb 26 14:29:28 2016 bougon_p
+** Last update Fri Feb 26 20:16:22 2016 bougon_p
 */
 
 #ifndef	TETRIS_H_
@@ -29,7 +29,7 @@
 # include <curses.h>
 
 # define KEY_ESC 27
-# define POS_GAME 30
+# define POS_GAME 25
 
 /*
 ** VAR PARSED BY PARSER
@@ -55,7 +55,7 @@ typedef struct		s_tetri
 typedef struct		s_score
 {
   char			**tab_score;
-  unsigned int		high_score;
+  int			high_score;
 }			t_score;
 
 typedef struct		s_data
@@ -70,13 +70,21 @@ typedef struct		s_data
 /*
 ** TETRIS letter functions
 */
-void	write_tetris();
+
+void	write_tetris();	/* write letter and put color */
 void	write_letter();
 void	write_letter_e();
 void	write_letter_t();
 void	write_letter_r();
 void	write_letter_i();
 void	write_letter_s();
+
+
+/*
+** TETRIS functions color
+*/
+
+void	my_init_color();
 
 /*
 ** Game functions

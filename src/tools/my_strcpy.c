@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Mon Dec  7 21:41:47 2015 Cédric Clemenceau
-** Last update Thu Feb 25 01:07:27 2016 Clémenceau Cedric
+** Last update Fri Feb 26 15:29:46 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -15,6 +15,8 @@ char	*my_strcpy(char *dest, char *src)
   int	i;
 
   i = 0;
+  if (!src)
+    return (NULL);
   while (src[i])
     {
       dest[i] = src[i];
@@ -29,6 +31,8 @@ char	*my_strncpy(char *dest, char *src, int octet)
   int	i;
 
   i = 0;
+  if (!src)
+    return (NULL);
   while (i < octet)
     {
       dest[i] = src[i];

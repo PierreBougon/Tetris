@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Thu Feb 25 02:20:43 2016 Clémenceau Cedric
-** Last update Thu Feb 25 02:25:26 2016 Clémenceau Cedric
+** Last update Thu Feb 25 14:25:13 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -19,7 +19,7 @@ void	write_letter_s()
   mvprintw(5, 19, "***");
 }
 
-void	write_tetris()
+void	my_init_color()
 {
   init_color(COLOR_BLUE, 1000, 500, 700);
   init_pair(1, 1, COLOR_BLACK);
@@ -28,6 +28,10 @@ void	write_tetris()
   init_pair(4, 2, COLOR_BLACK);
   init_pair(5, 6, COLOR_BLACK);
   init_pair(6, COLOR_BLUE, COLOR_BLACK);
+}
+
+void	write_tetris()
+{
   attrset(COLOR_PAIR(1));
   write_letter();
   attroff(COLOR_PAIR(1));
