@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Thu Feb 25 22:11:39 2016 bougon_p
+** Last update Fri Feb 26 12:26:55 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -55,12 +55,10 @@ int	main(int ac, char **av, char **env)
   /*
   ** DEBUG MODE
   */
-  printf("ICI DANS LE MAIN L1 DE ITEM = %s\n", data.tetriminos.root->data->item[1]);
-  print_tetri(&data.tetriminos);
-  exit(1);
+  /* print_tetri(&data.tetriminos); */
+  /* exit(1); */
 
   initscr();
-
   if (has_colors() == FALSE)
     {
       endwin();
