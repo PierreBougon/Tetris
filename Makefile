@@ -5,7 +5,7 @@
 ## Login   <bougon_p@epitech.net>
 ## 
 ## Started on  Tue Feb 23 17:06:22 2016 bougon_p
-## Last update Thu Feb 25 21:22:23 2016 bougon_p
+## Last update Fri Feb 26 12:39:43 2016 bougon_p
 ##
 
 # USEFUL VARIABLES
@@ -23,21 +23,27 @@ ECHO	=	echo -e
 
 MAIN		=	src/main/
 
+TOOLS		=	src/tools/
+
+INIT		=	src/init/
+
+PRINT		=	src/print/
+
 SRC		=	$(MAIN)tetris.c \
 			$(MAIN)error.c \
-			$(MAIN)print.c \
-			$(MAIN)init.c \
-			$(MAIN)my_strcat.c \
-			$(MAIN)init_tetri.c \
-			src/write_tetris.c \
-			src/write_tetris2.c \
-			src/setnbr.c \
-			src/my_strcpy.c \
-			src/my_power.c \
-			src/initlist.c \
-			src/get_nl.c \
-			src/set_line.c \
-			src/print_debug.c
+			$(INIT)init.c \
+			$(INIT)init_tetri.c \
+			$(INIT)initlist.c \
+			$(PRINT)write_tetris.c \
+			$(PRINT)print.c \
+			$(PRINT)write_tetris2.c \
+			$(PRINT)print_debug.c \
+			$(TOOLS)my_strcat.c \
+			$(TOOLS)setnbr.c \
+			$(TOOLS)my_strcpy.c \
+			$(TOOLS)my_power.c \
+			$(TOOLS)get_nl.c \
+			$(TOOLS)set_line.c
 
 
 OBJS    	=	$(SRC:.c=.o)

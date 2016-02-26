@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Fri Feb 26 12:26:55 2016 bougon_p
+** Last update Fri Feb 26 12:43:04 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -80,5 +80,6 @@ int	main(int ac, char **av, char **env)
   curs_set(0);
   main_loop(&data, &opt);
   endwin();
+  free_list(&data.tetriminos);
   return (0);
 }
