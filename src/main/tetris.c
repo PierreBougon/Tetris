@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Sat Feb 27 23:40:51 2016 bougon_p
+** Last update Sat Feb 27 23:55:36 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -38,11 +38,14 @@ int	main_loop(t_data *data, t_options *opt)
 {
   int	key;
   int	refind;
+  float	to_move;
 
   opt = opt;
   refind = -1;
+  to_move = 0;
   while (1)
     {
+      to_move = need_to_move(data, to_move);
       refresh();
       if ((refind = find_new_tetri(data, refind)) == -2)
 	return (1);
@@ -87,6 +90,7 @@ int	main(int ac, char **av, char **env)
   /* exit(1); */
 
 
+  data.gamevar.speed = 1;
   data.gamevar.win_width = 10;
   data.gamevar.win_height = 20;
   data.win = initscr();

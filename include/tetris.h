@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Sat Feb 27 23:20:09 2016 bougon_p
+** Last update Sat Feb 27 23:57:18 2016 bougon_p
 */
 
 #ifndef	TETRIS_H_
@@ -74,6 +74,7 @@ typedef	struct		s_gamevar
 {
   int			win_width;
   int			win_height;
+  int			speed;
 }			t_gamevar;
 
 typedef struct		s_data
@@ -119,6 +120,7 @@ int	move_left(t_data *, t_arglist *);
 int	move_right(t_data *, t_arglist *);
 int	quit(t_data *, t_arglist *);
 int	m_pause(t_data *, t_arglist *);
+float	need_to_move(t_data *, float);
 
 void	aff_layout(t_data *);
 int	find_new_tetri(t_data *, int);
