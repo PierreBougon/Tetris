@@ -5,11 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-<<<<<<< HEAD
-** Last update Fri Feb 26 19:04:36 2016 bougon_p
-=======
-** Last update Fri Feb 26 16:38:02 2016 Clémenceau Cedric
->>>>>>> e65bdd018e5eff722a98be273dfd0d72f6ad7dcf
+** Last update Sat Feb 27 19:14:51 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -24,6 +20,21 @@
 /*   return (option); */
 /* } */
 
+int             get_key(t_arglist *arg, int key, int *keys, t_tabkey *tab)
+{
+  int           i;
+
+  i = 0;
+  while (key != keys[i])
+    {
+      i++;
+      if (i > 5)
+        return (0);
+    }
+  tab->tabkey[i](arg);
+  return (0);
+}
+
 int	main_loop(t_data *data, t_options *opt)
 {
   int	key;
@@ -33,13 +44,13 @@ int	main_loop(t_data *data, t_options *opt)
   refind = -1;
   while (1)
     {
-      clear();
-      initscr();
+      refresh();
       if ((refind = find_new_tetri(data, refind)) == -2)
 	return (1);
       aff_layout(data);
       aff_piece(&data->tetri_ig);
       key = getch();
+      get_key(&data->tetri_ig, key, data->keys, data->tabkey);
       if (key == KEY_ESC)
       	break ;
     }
@@ -69,13 +80,19 @@ int	main(int ac, char **av, char **env)
   if ((init_tetriminos(&data.tetriminos)) == 1)
     return (my_putstr_err("Corrupted file\n"));
 
+
   /*
   **  DEBUG MODE
   */
   /* print_tetri(&data.tetriminos); */
   /* exit(1); */
 
-  initscr();
+
+  data.win = initscr();
+  noecho();
+  data.keys = init_keys();
+  init_keytab(data.tabkey);
+  nodelay(data.win, TRUE);
   if (has_colors() == FALSE)
     {
       endwin();

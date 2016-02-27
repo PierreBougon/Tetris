@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Fri Feb 26 13:44:01 2016 bougon_p
-** Last update Fri Feb 26 17:45:22 2016 bougon_p
+** Last update Sat Feb 27 18:16:03 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -42,9 +42,9 @@ void		chose_tetri(t_tetri *tetri, t_arglist *tetriminos)
   tetri->width = tmp->data->width;
   tetri->height = tmp->data->height;
   tetri->color = tmp->data->color;
-
   tetri->item = strcopy2d(tetri->item, tmp->data->item, tmp->data);
-
+  tetri->pos_x = rand() % (10 - tetri->width);
+  tetri->pos_y = 0;
 }
 
 int	find_new_tetri(t_data *data, int refind)

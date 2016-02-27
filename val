@@ -1,0 +1,88 @@
+==8816== Memcheck, a memory error detector
+==8816== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==8816== Using Valgrind-3.10.1 and LibVEX; rerun with -h for copyright info
+==8816== Command: ./tetris
+==8816== 
+==8816== Conditional jump or move depends on uninitialised value(s)
+==8816==    at 0x4036EA: my_realloc (get_nl.c:21)
+==8816==    by 0x4039A5: fill_line (get_nl.c:78)
+==8816==    by 0x403AD4: get_next_line (get_nl.c:107)
+==8816==    by 0x40220A: fill_tetri_carac (init_tetri.c:48)
+==8816==    by 0x40238E: fill_tetri (init_tetri.c:87)
+==8816==    by 0x402521: init_tetriminos (init_tetri.c:132)
+==8816==    by 0x401DDB: main (tetris.c:80)
+==8816== 
+==8816== Use of uninitialised value of size 8
+==8816==    at 0x4028A2: init_keytab (init_keys.c:40)
+==8816==    by 0x401E12: main (tetris.c:94)
+==8816== 
+==8816== Invalid read of size 8
+==8816==    at 0x403C4C: chose_tetri (new_tetri.c:45)
+==8816==    by 0x403CD6: find_new_tetri (new_tetri.c:58)
+==8816==    by 0x401CD6: main_loop (tetris.c:48)
+==8816==    by 0x401ED7: main (tetris.c:117)
+==8816==  Address 0x522a248 is 0 bytes after a block of size 24 alloc'd
+==8816==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8816==    by 0x403CAE: find_new_tetri (new_tetri.c:56)
+==8816==    by 0x401CD6: main_loop (tetris.c:48)
+==8816==    by 0x401ED7: main (tetris.c:117)
+==8816== 
+==8816== Invalid write of size 8
+==8816==    at 0x403C5F: chose_tetri (new_tetri.c:45)
+==8816==    by 0x403CD6: find_new_tetri (new_tetri.c:58)
+==8816==    by 0x401CD6: main_loop (tetris.c:48)
+==8816==    by 0x401ED7: main (tetris.c:117)
+==8816==  Address 0x522a248 is 0 bytes after a block of size 24 alloc'd
+==8816==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8816==    by 0x403CAE: find_new_tetri (new_tetri.c:56)
+==8816==    by 0x401CD6: main_loop (tetris.c:48)
+==8816==    by 0x401ED7: main (tetris.c:117)
+==8816== 
+==8816== Invalid read of size 8
+==8816==    at 0x403C4C: chose_tetri (new_tetri.c:45)
+==8816==    by 0x403D1F: find_new_tetri (new_tetri.c:62)
+==8816==    by 0x401CD6: main_loop (tetris.c:48)
+==8816==    by 0x401ED7: main (tetris.c:117)
+==8816==  Address 0x522a4b8 is 0 bytes after a block of size 24 alloc'd
+==8816==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8816==    by 0x403CF7: find_new_tetri (new_tetri.c:60)
+==8816==    by 0x401CD6: main_loop (tetris.c:48)
+==8816==    by 0x401ED7: main (tetris.c:117)
+==8816== 
+==8816== Invalid write of size 8
+==8816==    at 0x403C5F: chose_tetri (new_tetri.c:45)
+==8816==    by 0x403D1F: find_new_tetri (new_tetri.c:62)
+==8816==    by 0x401CD6: main_loop (tetris.c:48)
+==8816==    by 0x401ED7: main (tetris.c:117)
+==8816==  Address 0x522a4b8 is 0 bytes after a block of size 24 alloc'd
+==8816==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8816==    by 0x403CF7: find_new_tetri (new_tetri.c:60)
+==8816==    by 0x401CD6: main_loop (tetris.c:48)
+==8816==    by 0x401ED7: main (tetris.c:117)
+==8816== 
+==8816== Invalid read of size 8
+==8816==    at 0x403DD9: aff_piece (print_piece.c:23)
+==8816==    by 0x401D02: main_loop (tetris.c:51)
+==8816==    by 0x401ED7: main (tetris.c:117)
+==8816==  Address 0x522a248 is 0 bytes after a block of size 24 alloc'd
+==8816==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8816==    by 0x403CAE: find_new_tetri (new_tetri.c:56)
+==8816==    by 0x401CD6: main_loop (tetris.c:48)
+==8816==    by 0x401ED7: main (tetris.c:117)
+==8816== 
+==8816== 
+==8816== HEAP SUMMARY:
+==8816==     in use at exit: 289,430 bytes in 15,906 blocks
+==8816==   total heap usage: 31,684 allocs, 15,778 frees, 484,585 bytes allocated
+==8816== 
+==8816== LEAK SUMMARY:
+==8816==    definitely lost: 189,624 bytes in 15,677 blocks
+==8816==    indirectly lost: 157 bytes in 24 blocks
+==8816==      possibly lost: 0 bytes in 0 blocks
+==8816==    still reachable: 99,649 bytes in 205 blocks
+==8816==         suppressed: 0 bytes in 0 blocks
+==8816== Rerun with --leak-check=full to see details of leaked memory
+==8816== 
+==8816== For counts of detected and suppressed errors, rerun with: -v
+==8816== Use --track-origins=yes to see where uninitialised values come from
+==8816== ERROR SUMMARY: 6262 errors from 7 contexts (suppressed: 0 from 0)

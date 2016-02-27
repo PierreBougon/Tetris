@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Fri Feb 26 20:16:22 2016 bougon_p
+** Last update Sat Feb 27 19:11:48 2016 bougon_p
 */
 
 #ifndef	TETRIS_H_
@@ -29,6 +29,8 @@
 # include <curses.h>
 
 # define KEY_ESC 27
+# define KEY_SPACE ' '
+
 # define POS_GAME 25
 
 /*
@@ -44,11 +46,18 @@ typedef struct		s_options
 ** USEFUL GAME VARS
 */
 
+typedef struct  s_tabkey
+{
+  int           (**tabkey)(t_arglist *);
+}               t_tabkey;
+
 typedef struct		s_tetri
 {
   int			width;
   int			height;
   int			color;
+  int			pos_x;
+  int			pos_y;
   char			**item;
 }			t_tetri;
 
@@ -65,6 +74,9 @@ typedef struct		s_data
   char			**tab_next;
   char			**tab_game;
   t_score		score;
+  WINDOW		*win;
+  int			*keys;
+  t_tabkey		*tabkey;
 }			t_data;
 
 /*
@@ -90,6 +102,13 @@ void	my_init_color();
 ** Game functions
 */
 
+int	turn_tetri(t_arglist *);
+int	drop(t_arglist *);
+int	move_left(t_arglist *);
+int	move_right(t_arglist *);
+int	quit(t_arglist *);
+int	m_pause(t_arglist *);
+
 void	aff_layout(t_data *);
 int	find_new_tetri(t_data *, int);
 void	aff_piece(t_arglist *);
@@ -106,6 +125,8 @@ char	*my_strcat(char *, char *);
 int	my_putstr_err(char *);
 char	**init_tab(int, int);
 int	init_tetriminos(t_arglist *);
+int	*init_keys(void);
+int	init_keytab(t_tabkey *);
 char	*get_next_line(const int);
 char	*set_line_null(char *, int);
 
