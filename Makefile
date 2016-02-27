@@ -5,7 +5,7 @@
 ## Login   <bougon_p@epitech.net>
 ## 
 ## Started on  Tue Feb 23 17:06:22 2016 bougon_p
-## Last update Sat Feb 27 19:20:14 2016 bougon_p
+## Last update Sat Feb 27 21:49:08 2016 bougon_p
 ##
 
 # USEFUL VARIABLES
@@ -45,10 +45,11 @@ SRC		=	$(MAIN)tetris.c \
 			$(TOOLS)setnbr.c \
 			$(TOOLS)my_strcpy.c \
 			$(TOOLS)my_power.c \
-			$(TOOLS)get_next_line.c \
+			$(TOOLS)get_nl.c \
 			$(TOOLS)set_line.c \
 			$(PIECE)new_tetri.c \
 			$(PIECE)print_piece.c \
+			$(PIECE)move.c \
 			$(PIECE)actions.c
 
 

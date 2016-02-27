@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Sat Feb 27 19:19:33 2016 bougon_p
+** Last update Sat Feb 27 22:24:56 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -20,7 +20,7 @@
 /*   return (option); */
 /* } */
 
-int             get_key(t_arglist *arg, int key, int *keys, t_tabkey *tab)
+int             get_key(t_data *data, int key, int *keys, t_tabkey *tab)
 {
   int           i;
 
@@ -31,8 +31,7 @@ int             get_key(t_arglist *arg, int key, int *keys, t_tabkey *tab)
       if (i > 5)
         return (0);
     }
-  tab->tabkey[i](arg);
-  return (0);
+  return (tab->tabkey[i](data, &data->tetri_ig));
 }
 
 int	main_loop(t_data *data, t_options *opt)
@@ -50,9 +49,8 @@ int	main_loop(t_data *data, t_options *opt)
       aff_layout(data);
       aff_piece(&data->tetri_ig);
       key = getch();
-      get_key(&data->tetri_ig, key, data->keys, data->tabkey);
-      if (key == KEY_ESC)
-      	break ;
+      if (get_key(data, key, data->keys, &data->tabkey) == 1)
+	break;
     }
   return (0);
 }
@@ -90,8 +88,9 @@ int	main(int ac, char **av, char **env)
 
   data.win = initscr();
   noecho();
+  keypad(stdscr, TRUE);
   data.keys = init_keys();
-  init_keytab(data.tabkey);
+  init_keytab(&data.tabkey);
   nodelay(data.win, TRUE);
   if (has_colors() == FALSE)
     {

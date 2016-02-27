@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Sat Feb 27 19:19:59 2016 bougon_p
+** Last update Sat Feb 27 22:23:07 2016 bougon_p
 */
 
 #ifndef	TETRIS_H_
@@ -46,11 +46,6 @@ typedef struct		s_options
 ** USEFUL GAME VARS
 */
 
-typedef struct  s_tabkey
-{
-  int           (**tabkey)(t_arglist *);
-}               t_tabkey;
-
 typedef struct		s_tetri
 {
   int			width;
@@ -67,6 +62,13 @@ typedef struct		s_score
   int			high_score;
 }			t_score;
 
+typedef struct s_data t_data;
+
+typedef struct  s_tabkey
+{
+  int           (**tabkey)(t_data *, t_arglist *);
+}               t_tabkey;
+
 typedef struct		s_data
 {
   t_arglist		tetriminos;
@@ -76,8 +78,9 @@ typedef struct		s_data
   t_score		score;
   WINDOW		*win;
   int			*keys;
-  t_tabkey		*tabkey;
+  t_tabkey		tabkey;
 }			t_data;
+
 
 /*
 ** TETRIS letter functions
@@ -102,12 +105,12 @@ void	my_init_color();
 ** Game functions
 */
 
-int	turn_tetri(t_arglist *);
-int	drop(t_arglist *);
-int	move_left(t_arglist *);
-int	move_right(t_arglist *);
-int	quit(t_arglist *);
-int	m_pause(t_arglist *);
+int	turn_tetri(t_data *, t_arglist *);
+int	drop(t_data *, t_arglist *);
+int	move_left(t_data *, t_arglist *);
+int	move_right(t_data *, t_arglist *);
+int	quit(t_data *, t_arglist *);
+int	m_pause(t_data *, t_arglist *);
 
 void	aff_layout(t_data *);
 int	find_new_tetri(t_data *, int);

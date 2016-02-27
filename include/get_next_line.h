@@ -1,32 +1,34 @@
 /*
-** get_next_line.h for get_next_line in /home/clemen_j/Work/CPE/CPE_2015_getnextline
+** get_next_line.h for get_line in /home/bougon_p/rendu/CPE_2016_getnextline
 **
-** Made by Clémenceau Cedric
-** Login   <clemen_j@epitech.net>
+** Made by bougon_p
+** Login   <bougon_p@epitech.net>
 **
-** Started on  Mon Jan  4 11:18:22 2016 Clémenceau Cedric
-** Last update Thu Jan 21 12:49:47 2016 Clémenceau Cedric
+** Started on  Mon Jan  4 19:36:13 2016 bougon_p
+** Last update Wed Feb 24 19:02:15 2016 bougon_p
 */
 
-#ifndef GETNLINE_H_
-# define GETNLINE_H_
+#ifndef GET_NEXT_LINE_H_
+
+# define  GET_NEXT_LINE_H_
 
 #ifndef READ_SIZE
-# define READ_SIZE (100)
+# define READ_SIZE (1)
 #endif /* !READ_SIZE */
 
-# include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
-# include <string.h>
+# include <unistd.h>
 # include <sys/types.h>
+# include <sys/stat.h>
 # include <fcntl.h>
 
-typedef struct	s_info
+typedef struct	s_file
 {
-  int		readed;
-  char		*str;
-  int		j;
-}		t_info;
+  int		count;
+  int		p;
+  int		nb_char;
+  char		*line;
+  char		*buf;
+}		t_file;
 
-#endif /* !GETNLINE_H_ */
+#endif /* !GET_NEXT_LINE_H_ */
