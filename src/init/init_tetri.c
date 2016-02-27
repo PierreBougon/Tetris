@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Feb 25 16:38:30 2016 bougon_p
-** Last update Fri Feb 26 20:19:05 2016 bougon_p
+** Last update Sat Feb 27 14:36:58 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -31,7 +31,7 @@ void		take_nbr(t_tetri *tetri, char *buf, char *save)
   i++;
   while (buf[i] != 0)
     save[p] = buf[i++];
-  tetri->color = my_getnbr(save);
+   tetri->color = my_getnbr(save);
 }
 
 int		fill_tetri_carac(t_tetri *tetri, int fd)

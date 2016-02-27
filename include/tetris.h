@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Sat Feb 27 19:11:48 2016 bougon_p
+** Last update Sat Feb 27 19:19:59 2016 bougon_p
 */
 
 #ifndef	TETRIS_H_
@@ -129,6 +129,7 @@ int	*init_keys(void);
 int	init_keytab(t_tabkey *);
 char	*get_next_line(const int);
 char	*set_line_null(char *, int);
+int	my_strlen(char *);
 
 /*
 ** DEBUG MODE

@@ -1,34 +1,32 @@
 /*
-** get_next_line.h for TETRIS in /home/bougon_p/rendu/PSU_2015_tetris
+** get_next_line.h for get_next_line in /home/clemen_j/Work/CPE/CPE_2015_getnextline
 **
-** Made by bougon_p
-** Login   <bougon_p@epitech.net>
+** Made by Clémenceau Cedric
+** Login   <clemen_j@epitech.net>
 **
-** Started on  Thu Feb 25 15:41:33 2016 bougon_p
-** Last update Thu Feb 25 20:23:41 2016 bougon_p
+** Started on  Mon Jan  4 11:18:22 2016 Clémenceau Cedric
+** Last update Thu Jan 21 12:49:47 2016 Clémenceau Cedric
 */
 
-#ifndef GET_NEXT_LINE_H_
-
-# define  GET_NEXT_LINE_H_
+#ifndef GETNLINE_H_
+# define GETNLINE_H_
 
 #ifndef READ_SIZE
-# define READ_SIZE (1)
+# define READ_SIZE (100)
 #endif /* !READ_SIZE */
 
-/* # include <stdlib.h> */
-/* # include <unistd.h> */
-/* # include <sys/types.h> */
-/* # include <sys/stat.h> */
-/* # include <fcntl.h> */
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <string.h>
+# include <sys/types.h>
+# include <fcntl.h>
 
-typedef struct	s_file
+typedef struct	s_info
 {
-  int		count;
-  int		p;
-  int		nb_char;
-  char		*line;
-  char		*buf;
-}		t_file;
+  int		readed;
+  char		*str;
+  int		j;
+}		t_info;
 
-#endif /* !GET_NEXT_LINE_H_ */
+#endif /* !GETNLINE_H_ */
