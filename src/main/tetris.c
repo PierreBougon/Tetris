@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Sat Feb 27 22:24:56 2016 bougon_p
+** Last update Sat Feb 27 23:40:51 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -51,6 +51,7 @@ int	main_loop(t_data *data, t_options *opt)
       key = getch();
       if (get_key(data, key, data->keys, &data->tabkey) == 1)
 	break;
+      usleep(1);
     }
   return (0);
 }
@@ -86,12 +87,15 @@ int	main(int ac, char **av, char **env)
   /* exit(1); */
 
 
+  data.gamevar.win_width = 10;
+  data.gamevar.win_height = 20;
   data.win = initscr();
   noecho();
   keypad(stdscr, TRUE);
   data.keys = init_keys();
   init_keytab(&data.tabkey);
   nodelay(data.win, TRUE);
+
   if (has_colors() == FALSE)
     {
       endwin();

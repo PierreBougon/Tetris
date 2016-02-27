@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Sat Feb 27 22:23:07 2016 bougon_p
+** Last update Sat Feb 27 23:20:09 2016 bougon_p
 */
 
 #ifndef	TETRIS_H_
@@ -31,7 +31,8 @@
 # define KEY_ESC 27
 # define KEY_SPACE ' '
 
-# define POS_GAME 25
+# define POS_GAME_X 25
+# define POS_GAME_Y 2
 
 /*
 ** VAR PARSED BY PARSER
@@ -69,10 +70,17 @@ typedef struct  s_tabkey
   int           (**tabkey)(t_data *, t_arglist *);
 }               t_tabkey;
 
+typedef	struct		s_gamevar
+{
+  int			win_width;
+  int			win_height;
+}			t_gamevar;
+
 typedef struct		s_data
 {
   t_arglist		tetriminos;
   t_arglist		tetri_ig;
+  t_gamevar		gamevar;
   char			**tab_next;
   char			**tab_game;
   t_score		score;

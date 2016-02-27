@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Fri Feb 26 14:13:02 2016 bougon_p
-** Last update Sat Feb 27 18:15:49 2016 bougon_p
+** Last update Sat Feb 27 23:21:46 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -19,7 +19,7 @@ void		aff_piece(t_arglist *tetri_ig)
   j = -1;
   while (++j < tmp_to_print->height)
     {
-      mvprintw(j + 2 + tmp_to_print->pos_y,
-	       POS_GAME + 1 + tmp_to_print->pos_x, tmp_to_print->item[j]);
+      mvprintw(j + POS_GAME_Y + tmp_to_print->pos_y,
+	       POS_GAME_X + 1 + tmp_to_print->pos_x, tmp_to_print->item[j]);
     }
 }

@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 22:45:02 2016 bougon_p
-** Last update Fri Feb 26 16:35:52 2016 Clémenceau Cedric
+** Last update Sat Feb 27 23:22:33 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -52,10 +52,10 @@ void	print_game(t_data *data)
   int	i;
 
   i = 2;
-  print_ligne_map(data, "------------", 1, POS_GAME);
+  print_ligne_map(data, "------------", 1, POS_GAME_X);
   while (i < 22)
-    print_ligne_map(data, "|          |", i++, POS_GAME);
-  print_ligne_map(data, "------------", 22, POS_GAME);
+    print_ligne_map(data, "|          |", i++, POS_GAME_X);
+  print_ligne_map(data, "------------", 22, POS_GAME_X);
 }
 
 void	print_ligne_next(t_data *data, char *to_print, int pos_x, int pos_y)
@@ -66,10 +66,10 @@ void	print_ligne_next(t_data *data, char *to_print, int pos_x, int pos_y)
 
 void	print_next(t_data *data)
 {
-  print_ligne_next(data, "/Next--\\", 1, POS_GAME + 15);
-  print_ligne_next(data, "|      |", 2, POS_GAME + 15);
-  print_ligne_next(data, "|      |", 3, POS_GAME + 15);
-  print_ligne_next(data, "\\------/", 4, POS_GAME + 15);
+  print_ligne_next(data, "/Next--\\", 1, POS_GAME_X + 15);
+  print_ligne_next(data, "|      |", 2, POS_GAME_X + 15);
+  print_ligne_next(data, "|      |", 3, POS_GAME_X + 15);
+  print_ligne_next(data, "\\------/", 4, POS_GAME_X + 15);
 }
 
 void	aff_layout(t_data *data)
