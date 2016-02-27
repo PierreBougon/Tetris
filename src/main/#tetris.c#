@@ -97,7 +97,7 @@ int	main(int ac, char **av, char **env)
   my_free_tab(data.score.tab_score);
   my_free_tab(data.tab_game);
   my_free_tab(data.tab_next);
-  endwin();
   free_list(&data.tetriminos);
+  endwin();
   return (0);
 }

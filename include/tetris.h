@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Fri Feb 26 20:16:22 2016 bougon_p
+** Last update Sat Feb 27 17:10:38 2016 Clémenceau Cedric
 */
 
 #ifndef	TETRIS_H_
@@ -108,6 +108,7 @@ char	**init_tab(int, int);
 int	init_tetriminos(t_arglist *);
 char	*get_next_line(const int);
 char	*set_line_null(char *, int);
+int	my_strlen(char *);
 
 /*
 ** DEBUG MODE
