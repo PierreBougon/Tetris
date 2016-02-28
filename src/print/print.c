@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 22:45:02 2016 bougon_p
-** Last update Sat Feb 27 23:22:33 2016 bougon_p
+** Last update Sun Feb 28 02:55:34 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -56,6 +56,12 @@ void	print_game(t_data *data)
   while (i < 22)
     print_ligne_map(data, "|          |", i++, POS_GAME_X);
   print_ligne_map(data, "------------", 22, POS_GAME_X);
+
+  /* int	i; */
+
+  /* i = -1; */
+  /* while (++i <= 22) */
+  /*   print_ligne_map(data, data->tab_game[i], i, POS_GAME_X); */
 }
 
 void	print_ligne_next(t_data *data, char *to_print, int pos_x, int pos_y)

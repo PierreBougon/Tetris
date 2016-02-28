@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Sat Feb 27 23:55:36 2016 bougon_p
+** Last update Sun Feb 28 02:53:48 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -45,12 +45,13 @@ int	main_loop(t_data *data, t_options *opt)
   to_move = 0;
   while (1)
     {
-      to_move = need_to_move(data, to_move);
       refresh();
       if ((refind = find_new_tetri(data, refind)) == -2)
 	return (1);
-      aff_layout(data);
       aff_piece(&data->tetri_ig);
+      aff_layout(data);
+      to_move = need_to_move(data, to_move);
+      refind = need_to_stop(data);
       key = getch();
       if (get_key(data, key, data->keys, &data->tabkey) == 1)
 	break;
@@ -112,6 +113,7 @@ int	main(int ac, char **av, char **env)
   srand(time(0));
   data.score.tab_score = init_tab(10, 20);
   data.tab_game = init_tab(22, 12);
+  init_tabgame(data.tab_game);
   data.tab_next = init_tab(4, 8);
 
   /* if ((data.score.tab_score = init_tab(10, 20)) == NULL) */

@@ -5,7 +5,7 @@
 ## Login   <bougon_p@epitech.net>
 ## 
 ## Started on  Tue Feb 23 17:06:22 2016 bougon_p
-## Last update Sat Feb 27 21:49:08 2016 bougon_p
+## Last update Sun Feb 28 00:56:38 2016 bougon_p
 ##
 
 # USEFUL VARIABLES
@@ -50,6 +50,7 @@ SRC		=	$(MAIN)tetris.c \
 			$(PIECE)new_tetri.c \
 			$(PIECE)print_piece.c \
 			$(PIECE)move.c \
+			$(PIECE)stop_piece.c \
 			$(PIECE)actions.c
 
 

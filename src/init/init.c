@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Wed Feb 24 00:50:18 2016 bougon_p
-** Last update Fri Feb 26 20:16:10 2016 bougon_p
+** Last update Sun Feb 28 02:33:15 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -27,4 +27,15 @@ char	**init_tab(int line, int col)
       i++;
     }
   return (tab);
+}
+
+void	init_tabgame(char **tabgame)
+{
+  int	j;
+
+  j = 0;
+  my_strcpy(tabgame[0], "------------\0");
+  while (++j < 21)
+    my_strcpy(tabgame[j], "|          |\0");
+  my_strcpy(tabgame[21], "------------\0");
 }
