@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 22:45:02 2016 bougon_p
-** Last update Sun Feb 28 02:55:34 2016 bougon_p
+** Last update Sun Feb 28 03:05:29 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -43,25 +43,17 @@ void	print_score(t_score *score)
 
 void	print_ligne_map(t_data *data, char *to_print, int pos_x, int pos_y)
 {
-  my_strcpy(data->tab_game[pos_x - 1], to_print);
-  mvprintw(pos_x, pos_y, data->tab_game[pos_x - 1]);
+  my_strcpy(data->tab_game[pos_x], to_print);
+  mvprintw(pos_x, pos_y, data->tab_game[pos_x]);
 }
 
 void	print_game(t_data *data)
 {
   int	i;
 
-  i = 2;
-  print_ligne_map(data, "------------", 1, POS_GAME_X);
-  while (i < 22)
-    print_ligne_map(data, "|          |", i++, POS_GAME_X);
-  print_ligne_map(data, "------------", 22, POS_GAME_X);
-
-  /* int	i; */
-
-  /* i = -1; */
-  /* while (++i <= 22) */
-  /*   print_ligne_map(data, data->tab_game[i], i, POS_GAME_X); */
+  i = -1;
+  while (++i < 22)
+    print_ligne_map(data, data->tab_game[i], i, POS_GAME_X);
 }
 
 void	print_ligne_next(t_data *data, char *to_print, int pos_x, int pos_y)
