@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sun Feb 28 00:52:14 2016 bougon_p
-** Last update Sun Feb 28 02:20:47 2016 bougon_p
+** Last update Sun Feb 28 03:57:42 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -20,7 +20,6 @@ void		push_item(t_data *data)
 
   itemdata = data->tetri_ig.root->data;
   j = itemdata->pos_y - 1;
-  /* endwin(); */
   p = 0;
   while (++j < itemdata->pos_y + itemdata->height)
     {
@@ -28,11 +27,9 @@ void		push_item(t_data *data)
       i = itemdata->pos_x - 1;
       while (++i < itemdata->pos_x + itemdata->width)
 	{
-/* 	  printf("pos_x = %d && pos_y = %d\nwidth = %d && height = %d\n\ */
-/* i = %d && j = %d\nn = %d && p = %d\n\n" */
-/* 	  	 , itemdata->pos_x, itemdata->pos_y, itemdata->width */
-/* 		 , itemdata->height, i, j, n, p); */
-	  data->tab_game[j + 1][i + 1] = itemdata->item[p][n++];
+	  if (itemdata->item[p][n] != ' ')
+	    data->tab_game[j + 1][i + 1] = itemdata->item[p][n];
+	  n++;
 	}
       p++;
     }
