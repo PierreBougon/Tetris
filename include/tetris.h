@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Sun Feb 28 02:30:49 2016 bougon_p
+** Last update Sun Feb 28 19:48:06 2016 bougon_p
 */
 
 #ifndef	TETRIS_H_
@@ -61,6 +61,8 @@ typedef struct		s_score
 {
   char			**tab_score;
   int			high_score;
+  int			init_time;
+  int			act_time;
 }			t_score;
 
 typedef struct s_data t_data;
@@ -121,7 +123,7 @@ int	move_right(t_data *, t_arglist *);
 int	quit(t_data *, t_arglist *);
 int	m_pause(t_data *, t_arglist *);
 float	need_to_move(t_data *, float);
-int	need_to_stop(t_data *);
+int	need_to_stop(t_data *, int);
 
 void	aff_layout(t_data *);
 int	find_new_tetri(t_data *, int);
@@ -135,6 +137,7 @@ char	*my_strcpy(char *, char *);
 char	*my_strncpy(char *, char *, int);
 int	my_pow(int, int);
 char	*setnbr(int);
+char	*timesetnbr(int);
 char	*my_strcat(char *, char *);
 int	my_putstr_err(char *);
 char	**init_tab(int, int);

@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 22:45:02 2016 bougon_p
-** Last update Sun Feb 28 03:05:29 2016 bougon_p
+** Last update Sun Feb 28 19:48:48 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -13,17 +13,23 @@
 void	print_ligne(t_score *score, char *to_print, int pos_x, int pos_y)
 {
   char	*nb;
-  char	time_now[6];
+  char	*time_min;
+  char	*time_sec;
 
   my_strcpy(score->tab_score[pos_x - 10], to_print);
   /* setnbr(data->highscore) */
   nb = setnbr(score->high_score);
-  my_strcpy(time_now, "0:0");
+  time_min = timesetnbr(score->act_time / 60);
+  time_sec = timesetnbr(score->act_time % 60);
+  /* my_strcpy(time_min, ":"); */
   my_strncpy(&score->tab_score[2][13], nb, my_strlen(nb));
   my_strncpy(&score->tab_score[3][17], "0", my_strlen("0"));
   my_strncpy(&score->tab_score[5][17], "0", my_strlen("0"));
   my_strncpy(&score->tab_score[6][17], "1", my_strlen("1"));
-  my_strncpy(&score->tab_score[8][15], time_now, my_strlen(time_now));
+  my_strncpy(&score->tab_score[8][11], time_min, my_strlen(time_min));
+  my_strncpy(&score->tab_score[8][11 + my_strlen(time_min) + 1], ":", 1);
+  my_strncpy(&score->tab_score[8][11 + my_strlen(time_min) + 3]
+	     , time_sec, my_strlen(time_sec));
   mvprintw(pos_x, pos_y, score->tab_score[pos_x - 10]);
 }
 

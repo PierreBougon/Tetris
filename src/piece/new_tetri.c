@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Fri Feb 26 13:44:01 2016 bougon_p
-** Last update Sun Feb 28 02:49:02 2016 bougon_p
+** Last update Sun Feb 28 20:38:08 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -14,16 +14,23 @@ char		**strcopy2d(char **dest, char **src, t_tetri *tetri)
 {
   int		i;
   int		j;
+  int		size;
 
-  dest = init_tab(tetri->height, tetri->width);
+  size = (tetri->height > tetri->width) ? tetri->height : tetri->width;
+  dest = init_tab(size, size);
+  j = -1;
+  while (++j < size)
+    {
+      i = -1;
+      while (++i < size)
+	dest[j][i] = ' ';
+    }
   j = -1;
   while (++j < tetri->height)
     {
       i = -1;
       while (++i < tetri->width)
-	{
-	  dest[j][i] = src[j][i];
-	}
+	dest[j][i] = src[j][i];
     }
   return (dest);
 }
@@ -53,11 +60,11 @@ int	find_new_tetri(t_data *data, int refind)
 
   if (refind == -1)
     {
-      if ((tetri = malloc(sizeof(t_cdlist))) == NULL)
+      if ((tetri = malloc(sizeof(t_tetri))) == NULL)
 	return (-2);
       chose_tetri(data, tetri, &data->tetriminos);
       create_cdlist(&data->tetri_ig, tetri);
-      if ((tetri = malloc(sizeof(t_cdlist))) == NULL)
+      if ((tetri = malloc(sizeof(t_tetri))) == NULL)
       	return (-2);
       chose_tetri(data, tetri, &data->tetriminos);
       add_last_cdl(&data->tetri_ig, tetri);
@@ -67,11 +74,11 @@ int	find_new_tetri(t_data *data, int refind)
     refind = 0;
   else
     {
-      if ((tetri = malloc(sizeof(t_cdlist))) == NULL)
+      if ((tetri = malloc(sizeof(t_tetri))) == NULL)
       	return (-2);
       chose_tetri(data, tetri, &data->tetriminos);
+      data->tetri_ig.root->data = tetri;
       data->tetri_ig.root = data->tetri_ig.root->next;
-      data->tetri_ig.root->next->data = tetri;
       refind = 0;
     }
   return (refind);

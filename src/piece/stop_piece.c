@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sun Feb 28 00:52:14 2016 bougon_p
-** Last update Sun Feb 28 03:57:42 2016 bougon_p
+** Last update Sun Feb 28 19:40:33 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -35,13 +35,13 @@ void		push_item(t_data *data)
     }
 }
 
-int	need_to_stop(t_data *data)
+int	need_to_stop(t_data *data, int refind)
 {
   t_tetri       *itemdata;
 
   itemdata = data->tetri_ig.root->data;
   if (itemdata->pos_y + itemdata->height + POS_GAME_Y
-      == POS_GAME_Y + data->gamevar.win_height)
+      == POS_GAME_Y + data->gamevar.win_height && refind == 0)
     {
       push_item(data);
       return (1);
