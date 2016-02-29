@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Sun Feb 28 19:43:40 2016 bougon_p
+** Last update Mon Feb 29 01:31:21 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -78,7 +78,7 @@ int	main(int ac, char **av, char **env)
 
 
   data.score.init_time = time(NULL);
-  data.score.high_score = 54323;
+  data.score.high_score = 0;
   ac = ac;
   av = av;
   opt = opt;
@@ -116,8 +116,10 @@ int	main(int ac, char **av, char **env)
   srand(time(0));
   data.score.tab_score = init_tab(10, 20);
   data.tab_game = init_tab(22, 12);
-  init_tabgame(data.tab_game);
   data.tab_next = init_tab(4, 8);
+  init_tabgame_base(data.tab_game);
+  init_tabnext(data.tab_next);
+  init_tabscore(data.score.tab_score);
 
   /* if ((data.score.tab_score = init_tab(10, 20)) == NULL) */
   /*   return (my_putstr_err("Malloc error\n")); */

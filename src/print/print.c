@@ -5,23 +5,22 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 22:45:02 2016 bougon_p
-** Last update Sun Feb 28 19:48:48 2016 bougon_p
+** Last update Mon Feb 29 01:30:31 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
 
-void	print_ligne(t_score *score, char *to_print, int pos_x, int pos_y)
+void	print_score(t_score *score)
 {
+  int	i;
   char	*nb;
   char	*time_min;
   char	*time_sec;
 
-  my_strcpy(score->tab_score[pos_x - 10], to_print);
-  /* setnbr(data->highscore) */
+  i = -1;
   nb = setnbr(score->high_score);
   time_min = timesetnbr(score->act_time / 60);
   time_sec = timesetnbr(score->act_time % 60);
-  /* my_strcpy(time_min, ":"); */
   my_strncpy(&score->tab_score[2][13], nb, my_strlen(nb));
   my_strncpy(&score->tab_score[3][17], "0", my_strlen("0"));
   my_strncpy(&score->tab_score[5][17], "0", my_strlen("0"));
@@ -29,28 +28,9 @@ void	print_ligne(t_score *score, char *to_print, int pos_x, int pos_y)
   my_strncpy(&score->tab_score[8][11], time_min, my_strlen(time_min));
   my_strncpy(&score->tab_score[8][11 + my_strlen(time_min) + 1], ":", 1);
   my_strncpy(&score->tab_score[8][11 + my_strlen(time_min) + 3]
-	     , time_sec, my_strlen(time_sec));
-  mvprintw(pos_x, pos_y, score->tab_score[pos_x - 10]);
-}
-
-void	print_score(t_score *score)
-{
-  print_ligne(score, "/------------------\\", 10, 0);
-  print_ligne(score, "|                  |", 11, 0);
-  print_ligne(score, "| High Score       |", 12, 0);
-  print_ligne(score, "| Score            |", 13, 0);
-  print_ligne(score, "|                  |", 14, 0);
-  print_ligne(score, "| Lines            |", 15, 0);
-  print_ligne(score, "| Level            |", 16, 0);
-  print_ligne(score, "|                  |", 17, 0);
-  print_ligne(score, "| Timer:           |", 18, 0);
-  print_ligne(score, "\\------------------/", 19, 0);
-}
-
-void	print_ligne_map(t_data *data, char *to_print, int pos_x, int pos_y)
-{
-  my_strcpy(data->tab_game[pos_x], to_print);
-  mvprintw(pos_x, pos_y, data->tab_game[pos_x]);
+  	     , time_sec, my_strlen(time_sec));
+  while (score->tab_score[++i])
+    mvprintw((i + 10), 0, score->tab_score[i]);
 }
 
 void	print_game(t_data *data)
@@ -59,21 +39,16 @@ void	print_game(t_data *data)
 
   i = -1;
   while (++i < 22)
-    print_ligne_map(data, data->tab_game[i], i, POS_GAME_X);
-}
-
-void	print_ligne_next(t_data *data, char *to_print, int pos_x, int pos_y)
-{
-  my_strcpy(data->tab_next[pos_x - 1], to_print);
-  mvprintw(pos_x, pos_y, data->tab_next[pos_x - 1]);
+    mvprintw(i + 1, POS_GAME_X, data->tab_game[i]);
 }
 
 void	print_next(t_data *data)
 {
-  print_ligne_next(data, "/Next--\\", 1, POS_GAME_X + 15);
-  print_ligne_next(data, "|      |", 2, POS_GAME_X + 15);
-  print_ligne_next(data, "|      |", 3, POS_GAME_X + 15);
-  print_ligne_next(data, "\\------/", 4, POS_GAME_X + 15);
+  int	i;
+
+  i = -1;
+  while (++i < 4)
+    mvprintw(i + 1, POS_GAME_X + 15, data->tab_next[i]);
 }
 
 void	aff_layout(t_data *data)

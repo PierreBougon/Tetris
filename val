@@ -1,0 +1,31 @@
+==23050== Memcheck, a memory error detector
+==23050== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==23050== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==23050== Command: ./tetris
+==23050== Parent PID: 8124
+==23050== 
+==23050== Conditional jump or move depends on uninitialised value(s)
+==23050==    at 0x402B17: my_realloc (get_nl.c:22)
+==23050==    by 0x402DD5: fill_line (get_nl.c:79)
+==23050==    by 0x402F05: get_next_line (get_nl.c:108)
+==23050==    by 0x40178B: fill_tetri_carac (init_tetri.c:48)
+==23050==    by 0x40190F: fill_tetri (init_tetri.c:87)
+==23050==    by 0x401AA2: init_tetriminos (init_tetri.c:132)
+==23050==    by 0x401120: main (tetris.c:86)
+==23050== 
+==23050== 
+==23050== HEAP SUMMARY:
+==23050==     in use at exit: 363,165 bytes in 509 blocks
+==23050==   total heap usage: 648 allocs, 139 frees, 402,066 bytes allocated
+==23050== 
+==23050== LEAK SUMMARY:
+==23050==    definitely lost: 33,320 bytes in 40 blocks
+==23050==    indirectly lost: 505 bytes in 45 blocks
+==23050==      possibly lost: 0 bytes in 0 blocks
+==23050==    still reachable: 329,340 bytes in 424 blocks
+==23050==         suppressed: 0 bytes in 0 blocks
+==23050== Rerun with --leak-check=full to see details of leaked memory
+==23050== 
+==23050== For counts of detected and suppressed errors, rerun with: -v
+==23050== Use --track-origins=yes to see where uninitialised values come from
+==23050== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)

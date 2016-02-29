@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Sun Feb 28 19:48:06 2016 bougon_p
+** Last update Mon Feb 29 01:31:46 2016 Clémenceau Cedric
 */
 
 #ifndef	TETRIS_H_
@@ -128,6 +128,16 @@ int	need_to_stop(t_data *, int);
 void	aff_layout(t_data *);
 int	find_new_tetri(t_data *, int);
 void	aff_piece(t_arglist *);
+
+/*
+** Tab functions
+*/
+
+void	init_tabnext(char **);
+void	init_tabscore(char **);
+void	init_tabgame_base(char **);
+
+
 
 /*
 ** Others fucntions
