@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sun Feb 28 00:52:14 2016 bougon_p
-** Last update Sun Feb 28 19:40:33 2016 bougon_p
+** Last update Mon Feb 29 00:57:43 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -27,7 +27,7 @@ void		push_item(t_data *data)
       i = itemdata->pos_x - 1;
       while (++i < itemdata->pos_x + itemdata->width)
 	{
-	  if (itemdata->item[p][n] != ' ')
+	  if (itemdata->item[p][n] != ' ' && itemdata->item[p][n] != 0)
 	    data->tab_game[j + 1][i + 1] = itemdata->item[p][n];
 	  n++;
 	}

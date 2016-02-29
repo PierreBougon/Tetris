@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Sun Feb 28 19:43:40 2016 bougon_p
+** Last update Mon Feb 29 00:59:36 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -48,7 +48,6 @@ int	main_loop(t_data *data, t_options *opt)
       refresh();
       if ((refind = find_new_tetri(data, refind)) == -2)
 	return (1);
-      data->score.act_time = time(NULL) - data->score.init_time;
       aff_layout(data);
       aff_piece(&data->tetri_ig);
       to_move = need_to_move(data, to_move);

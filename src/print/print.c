@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 22:45:02 2016 bougon_p
-** Last update Sun Feb 28 19:48:48 2016 bougon_p
+** Last update Mon Feb 29 00:58:27 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -78,6 +78,7 @@ void	print_next(t_data *data)
 
 void	aff_layout(t_data *data)
 {
+  data->score.act_time = time(NULL) - data->score.init_time;
   write_tetris();
   print_score(&data->score);
   print_game(data);

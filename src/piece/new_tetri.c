@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Fri Feb 26 13:44:01 2016 bougon_p
-** Last update Sun Feb 28 20:38:08 2016 bougon_p
+** Last update Sun Feb 28 23:44:30 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -23,7 +23,7 @@ char		**strcopy2d(char **dest, char **src, t_tetri *tetri)
     {
       i = -1;
       while (++i < size)
-	dest[j][i] = ' ';
+	dest[j][i] = 0;
     }
   j = -1;
   while (++j < tetri->height)

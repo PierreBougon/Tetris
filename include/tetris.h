@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Sun Feb 28 19:48:06 2016 bougon_p
+** Last update Mon Feb 29 01:04:25 2016 bougon_p
 */
 
 #ifndef	TETRIS_H_
@@ -43,6 +43,13 @@ typedef struct		s_options
   int			x;
 }			t_options;
 
+typedef	struct		s_gamevar
+{
+  int			win_width;
+  int			win_height;
+  int			speed;
+}			t_gamevar;
+
 /*
 ** USEFUL GAME VARS
 */
@@ -71,13 +78,6 @@ typedef struct  s_tabkey
 {
   int           (**tabkey)(t_data *, t_arglist *);
 }               t_tabkey;
-
-typedef	struct		s_gamevar
-{
-  int			win_width;
-  int			win_height;
-  int			speed;
-}			t_gamevar;
 
 typedef struct		s_data
 {
