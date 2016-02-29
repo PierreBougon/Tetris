@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Mon Feb 29 10:44:17 2016 bougon_p
+** Last update Mon Feb 29 13:11:29 2016 Clémenceau Cedric
 */
 
 #ifndef	TETRIS_H_
@@ -88,6 +88,8 @@ typedef struct		s_data
   char			**tab_game;
   t_score		score;
   WINDOW		*win;
+  WINDOW		*sub_win;
+  WINDOW		*sub_next;
   int			*keys;
   t_tabkey		tabkey;
 }			t_data;
@@ -133,10 +135,9 @@ void	aff_piece(t_arglist *);
 ** Tab functions
 */
 
-void	init_tabnext(char **);
+void	init_tabnext(t_data *, int, int, char **);
 void	init_tabscore(char **);
 void	init_tabgame_base(char **);
-
 
 
 /*

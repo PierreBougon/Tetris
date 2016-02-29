@@ -1,3 +1,4 @@
+
 /*
 ** tetris.c for TETRIS in /home/bougon_p/rendu/PSU_2015_tetris/src/main
 **
@@ -5,7 +6,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Mon Feb 29 10:43:55 2016 bougon_p
+** Last update Mon Feb 29 13:18:04 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -49,6 +50,7 @@ int	main_loop(t_data *data, t_options *opt)
       if ((refind = find_new_tetri(data, refind)) == -2)
 	return (1);
       aff_layout(data);
+      init_tabnext(data, 8, 8, data->tetri_ig.root->next->data->item);
       aff_piece(&data->tetri_ig);
       to_move = need_to_move(data, to_move);
       refind = need_to_stop(data, refind);
@@ -114,10 +116,6 @@ int	main(int ac, char **av, char **env)
 
   srand(time(0));
   data.score.tab_score = init_tab(10, 20);
-  data.tab_game = init_tab(22, 12);
-  data.tab_next = init_tab(4, 8);
-  init_tabgame_base(data.tab_game);
-  init_tabnext(data.tab_next);
   init_tabscore(data.score.tab_score);
 
   /* if ((data.score.tab_score = init_tab(10, 20)) == NULL) */
@@ -129,8 +127,6 @@ int	main(int ac, char **av, char **env)
   curs_set(0);
   main_loop(&data, &opt);
   my_free_tab(data.score.tab_score);
-  my_free_tab(data.tab_game);
-  my_free_tab(data.tab_next);
   endwin();
   free_list(&data.tetriminos);
   return (0);
