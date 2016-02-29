@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Mon Feb 29 11:54:19 2016 bougon_p
+** Last update Mon Feb 29 18:03:46 2016 bougon_p
 */
 
 #ifndef	TETRIS_H_
@@ -48,6 +48,8 @@ typedef	struct		s_gamevar
   int			win_width;
   int			win_height;
   int			speed;
+  int			maxwidth;
+  int			maxheight;
 }			t_gamevar;
 
 /*
@@ -88,6 +90,8 @@ typedef struct		s_data
   char			**tab_game;
   t_score		score;
   WINDOW		*win;
+  WINDOW		*sub_win;
+  WINDOW		*sub_next;
   int			*keys;
   t_tabkey		tabkey;
 }			t_data;
@@ -129,16 +133,15 @@ int	collision(t_tetri *, char **);
 
 void	aff_layout(t_data *);
 int	find_new_tetri(t_data *, int);
-void	aff_piece(t_arglist *);
+void	aff_piece(WINDOW *, t_arglist *);
 
 /*
 ** Tab functions
 */
 
-void	init_tabnext(char **);
+void	init_tabnext(t_data *, char **);
 void	init_tabscore(char **);
 void	init_tabgame_base(char **);
-
 
 
 /*
@@ -156,6 +159,7 @@ char	**init_tab(int, int);
 int	init_tetriminos(t_arglist *);
 int	*init_keys(void);
 int	init_keytab(t_tabkey *);
+void	check_max(t_data *);
 char	*get_next_line(const int);
 char	*set_line_null(char *, int);
 int	my_strlen(char *);

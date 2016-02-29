@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 22:45:02 2016 bougon_p
-** Last update Mon Feb 29 10:43:38 2016 bougon_p
+** Last update Mon Feb 29 17:14:03 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -31,24 +31,15 @@ void	print_score(t_score *score)
   	     , time_sec, my_strlen(time_sec));
   while (score->tab_score[++i])
     mvprintw((i + 10), 0, score->tab_score[i]);
+  free(nb);
+  free(time_min);
+  free(time_sec);
 }
 
 void	print_game(t_data *data)
 {
-  int	i;
-
-  i = -1;
-  while (++i < 22)
-    mvprintw(i + 1, POS_GAME_X, data->tab_game[i]);
-}
-
-void	print_next(t_data *data)
-{
-  int	i;
-
-  i = -1;
-  while (++i < 4)
-    mvprintw(i + 1, POS_GAME_X + 15, data->tab_next[i]);
+  werase(data->sub_win);
+  wborder(data->sub_win, '|', '|', '-', '-', '/', '\\', '\\', '/');
 }
 
 void	aff_layout(t_data *data)
@@ -57,6 +48,5 @@ void	aff_layout(t_data *data)
   write_tetris();
   print_score(&data->score);
   print_game(data);
-  print_next(data);
   mvprintw(22, 0, "EpiTetris(c) - 2015");
 }

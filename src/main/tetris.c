@@ -1,3 +1,4 @@
+
 /*
 ** tetris.c for TETRIS in /home/bougon_p/rendu/PSU_2015_tetris/src/main
 **
@@ -5,7 +6,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Mon Feb 29 10:43:55 2016 bougon_p
+** Last update Mon Feb 29 20:05:59 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -46,10 +47,12 @@ int	main_loop(t_data *data, t_options *opt)
   while (1)
     {
       refresh();
+      wrefresh(data->sub_next);
       if ((refind = find_new_tetri(data, refind)) == -2)
 	return (1);
       aff_layout(data);
-      aff_piece(&data->tetri_ig);
+      init_tabnext(data, data->tetri_ig._root->next->data->item);
+      aff_piece(data->sub_win, &data->tetri_ig);
       to_move = need_to_move(data, to_move);
       refind = need_to_stop(data, refind);
       key = getch();
@@ -84,7 +87,7 @@ int	main(int ac, char **av, char **env)
 
   if ((init_tetriminos(&data.tetriminos)) == 1)
     return (my_putstr_err("Corrupted file\n"));
-
+  check_max(&data);
 
   /*
   **  DEBUG MODE
@@ -97,6 +100,12 @@ int	main(int ac, char **av, char **env)
   data.gamevar.win_width = 10;
   data.gamevar.win_height = 20;
   data.win = initscr();
+  clear();
+  data.sub_win = subwin(data.win, 20, 12, 1, POS_GAME_X);
+  data.sub_next = subwin(data.win,
+			 (data.gamevar.maxheight > 6) ? data.gamevar.maxheight + 1 : 6,
+			 (data.gamevar.maxwidth > 10) ? data.gamevar.maxwidth + 1 : 10,
+			 1, POS_GAME_X + 15);
   noecho();
   keypad(stdscr, TRUE);
   data.keys = init_keys();
@@ -114,10 +123,6 @@ int	main(int ac, char **av, char **env)
 
   srand(time(0));
   data.score.tab_score = init_tab(10, 20);
-  data.tab_game = init_tab(22, 12);
-  data.tab_next = init_tab(4, 8);
-  init_tabgame_base(data.tab_game);
-  init_tabnext(data.tab_next);
   init_tabscore(data.score.tab_score);
 
   /* if ((data.score.tab_score = init_tab(10, 20)) == NULL) */
@@ -129,8 +134,6 @@ int	main(int ac, char **av, char **env)
   curs_set(0);
   main_loop(&data, &opt);
   my_free_tab(data.score.tab_score);
-  my_free_tab(data.tab_game);
-  my_free_tab(data.tab_next);
   endwin();
   free_list(&data.tetriminos);
   return (0);

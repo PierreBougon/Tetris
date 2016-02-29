@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Wed Feb 24 00:50:18 2016 bougon_p
-** Last update Mon Feb 29 01:31:13 2016 Clémenceau Cedric
+** Last update Mon Feb 29 17:14:14 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -29,23 +29,21 @@ char	**init_tab(int line, int col)
   return (tab);
 }
 
-void	init_tabgame_base(char **tabgame)
+void	load_tetriminos(char **tetrinext, WINDOW *sub_next)
 {
-  int	j;
+  int	y;
 
-  j = 0;
-  my_strcpy(tabgame[0], "------------");
-  while (++j < 21)
-    my_strcpy(tabgame[j], "|          |");
-  my_strcpy(tabgame[21], "------------");
+  y = -1;
+  while (tetrinext[++y])
+    mvwprintw(sub_next, y + 1, 1, tetrinext[y]);
 }
 
-void	init_tabnext(char **tabgame)
+void	init_tabnext(t_data *data,  char ** tetrinext)
 {
-  my_strcpy(tabgame[0], "/Next--\\");
-  my_strcpy(tabgame[1], "|      |");
-  my_strcpy(tabgame[2], "|      |");
-  my_strcpy(tabgame[3], "\\------/");
+  werase(data->sub_next);
+  wborder(data->sub_next, '|', '|', '-', '-', '/', '\\', '\\', '/');
+  mvwprintw(data->sub_next, 0, 1, "Next");
+  load_tetriminos(tetrinext, data->sub_next);
 }
 
 void	init_tabscore(char **tabscore)
