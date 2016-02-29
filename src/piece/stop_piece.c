@@ -5,10 +5,18 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sun Feb 28 00:52:14 2016 bougon_p
-** Last update Mon Feb 29 00:57:43 2016 bougon_p
+** Last update Mon Feb 29 15:37:06 2016 bougon_p
 */
 
 #include "tetris.h"
+
+int	collision(t_tetri *itemdata, char **tab_game)
+{
+  endwin();
+  printf("posmaxy = %d, posmaxx = %d, \n"
+	 , itemdata->height + , itemdata->width);
+  return (0);
+}
 
 void		push_item(t_data *data)
 {

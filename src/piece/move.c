@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sat Feb 27 21:47:51 2016 bougon_p
-** Last update Mon Feb 29 01:03:48 2016 bougon_p
+** Last update Mon Feb 29 11:46:34 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -17,7 +17,8 @@ float	need_to_move(t_data *data, float to_move)
   itemdata = data->tetri_ig.root->data;
   if ((int)to_move > data->gamevar.speed
       && (itemdata->pos_y + itemdata->height + POS_GAME_Y
-	  < POS_GAME_Y + data->gamevar.win_height))
+	  < POS_GAME_Y + data->gamevar.win_height)
+      && collision(itemdata, data->tab_game) == 0)
     {
       data->tetri_ig.root->data->pos_y += 1;
       return (0.0);
