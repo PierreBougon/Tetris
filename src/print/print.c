@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 22:45:02 2016 bougon_p
-** Last update Mon Feb 29 12:58:19 2016 Clémenceau Cedric
+** Last update Mon Feb 29 17:14:03 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -38,9 +38,8 @@ void	print_score(t_score *score)
 
 void	print_game(t_data *data)
 {
-  data->sub_win = subwin(data->win, 20, 12, 1, POS_GAME_X);
+  werase(data->sub_win);
   wborder(data->sub_win, '|', '|', '-', '-', '/', '\\', '\\', '/');
-  wrefresh(data->sub_win);
 }
 
 void	aff_layout(t_data *data)

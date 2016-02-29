@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Feb 25 16:45:28 2016 bougon_p
-** Last update Fri Feb 26 16:38:43 2016 Clémenceau Cedric
+** Last update Mon Feb 29 19:58:10 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -33,7 +33,7 @@ int		add_first_cdl(t_arglist *arg, void *_data)
   if (arg->root != NULL)
     {
       elem->prev = arg->root;
-      elem->next = arg->root->next;
+      elem->next = arg->_root->next;
       arg->root->next->prev = elem;
       arg->root->next = elem;
     }

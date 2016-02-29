@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Wed Feb 24 00:50:18 2016 bougon_p
-** Last update Mon Feb 29 13:21:44 2016 Clémenceau Cedric
+** Last update Mon Feb 29 20:46:53 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -38,16 +38,14 @@ void	load_tetriminos(char **tetrinext, WINDOW *sub_next)
     mvwprintw(sub_next, y + 1, 1, tetrinext[y]);
 }
 
-void	init_tabnext(t_data *data, int line, int col, char ** tetrinext)
+void	init_tabnext(t_data *data,  t_tetri *tetrinext)
 {
-  if (col < 6)
-    col = 6;
-  if (line < 4)
-    line = 4;
-  data->sub_next = subwin(data->win, line, col, 1, POS_GAME_X + 15);
+  werase(data->sub_next);
   wborder(data->sub_next, '|', '|', '-', '-', '/', '\\', '\\', '/');
   mvwprintw(data->sub_next, 0, 1, "Next");
-  load_tetriminos(tetrinext, data->sub_next);
+  wattrset(data->sub_next, COLOR_PAIR(tetrinext->color));
+  load_tetriminos(tetrinext->item, data->sub_next);
+  wattroff(data->sub_next, COLOR_PAIR(tetrinext->color));
   wrefresh(data->sub_next);
 }
 

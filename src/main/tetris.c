@@ -1,4 +1,3 @@
-
 /*
 ** tetris.c for TETRIS in /home/bougon_p/rendu/PSU_2015_tetris/src/main
 **
@@ -6,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Mon Feb 29 20:11:32 2016 Clémenceau Cedric
+** Last update Mon Feb 29 21:16:33 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -50,8 +49,8 @@ int	main_loop(t_data *data, t_options *opt)
       if ((refind = find_new_tetri(data, refind)) == -2)
 	return (1);
       aff_layout(data);
-      init_tabnext(data, 8, 8, data->tetri_ig.root->next->data->item);
-      aff_piece(&data->tetri_ig);
+      init_tabnext(data, data->tetri_ig._root->next->data);
+      aff_piece(data->sub_win, &data->tetri_ig);
       to_move = need_to_move(data, to_move);
       refind = need_to_stop(data, refind);
       key = getch();
@@ -78,16 +77,17 @@ int	main(int ac, char **av, char **env)
   t_options	opt;
 
 
-  ac = ac;
-  av = av;
   opt = opt;
 
+  if (ac > 1)
+    my_check_option(&data, av);
   if (*env == NULL)
     return (my_putstr_err("No environment detected\n"));
   data.score.init_time = time(NULL);
-  init_data(&data);
   if ((init_tetriminos(&data.tetriminos)) == 1)
     return (my_putstr_err("Corrupted file\n"));
+  check_max(&data);
+  init_data(&data);
 
   noecho();
   keypad(stdscr, TRUE);
@@ -100,12 +100,7 @@ int	main(int ac, char **av, char **env)
       endwin();
       return (my_putstr_err("Your terminal does not support color\n"));
     }
-  /* opt = parse_params(ac, av); */
-
   srand(time(0));
-  /* if ((data.score.tab_score = init_tab(10, 20)) == NULL) */
-  /*   return (my_putstr_err("Malloc error\n")); */
-
 
   start_color();
   my_init_color();

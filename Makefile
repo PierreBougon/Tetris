@@ -5,7 +5,7 @@
 ## Login   <bougon_p@epitech.net>
 ## 
 ## Started on  Tue Feb 23 17:06:22 2016 bougon_p
-## Last update Sun Feb 28 00:56:38 2016 bougon_p
+## Last update Mon Feb 29 20:35:18 2016 Clémenceau Cedric
 ##
 
 # USEFUL VARIABLES
@@ -33,10 +33,12 @@ PIECE		=	src/piece/
 
 SRC		=	$(MAIN)tetris.c \
 			$(MAIN)error.c \
+			$(MAIN)fct_main.c \
 			$(INIT)init.c \
 			$(INIT)init_tetri.c \
 			$(INIT)initlist.c \
 			$(INIT)init_keys.c \
+			$(INIT)check.c \
 			$(PRINT)write_tetris.c \
 			$(PRINT)print.c \
 			$(PRINT)write_tetris2.c \
