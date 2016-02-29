@@ -6,7 +6,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Mon Feb 29 13:18:04 2016 Clémenceau Cedric
+** Last update Mon Feb 29 20:11:32 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -78,27 +78,17 @@ int	main(int ac, char **av, char **env)
   t_options	opt;
 
 
-  data.score.init_time = time(NULL);
-  data.score.high_score = 0;
   ac = ac;
   av = av;
   opt = opt;
 
+  if (*env == NULL)
+    return (my_putstr_err("No environment detected\n"));
+  data.score.init_time = time(NULL);
+  init_data(&data);
   if ((init_tetriminos(&data.tetriminos)) == 1)
     return (my_putstr_err("Corrupted file\n"));
 
-
-  /*
-  **  DEBUG MODE
-  */
-  /* print_tetri(&data.tetriminos); */
-  /* exit(1); */
-
-
-  data.gamevar.speed = 1;
-  data.gamevar.win_width = 10;
-  data.gamevar.win_height = 20;
-  data.win = initscr();
   noecho();
   keypad(stdscr, TRUE);
   data.keys = init_keys();
@@ -110,14 +100,9 @@ int	main(int ac, char **av, char **env)
       endwin();
       return (my_putstr_err("Your terminal does not support color\n"));
     }
-  if (*env == NULL)
-    return (my_putstr_err("No environment detected\n"));
   /* opt = parse_params(ac, av); */
 
   srand(time(0));
-  data.score.tab_score = init_tab(10, 20);
-  init_tabscore(data.score.tab_score);
-
   /* if ((data.score.tab_score = init_tab(10, 20)) == NULL) */
   /*   return (my_putstr_err("Malloc error\n")); */
 

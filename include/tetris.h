@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Mon Feb 29 13:11:29 2016 Clémenceau Cedric
+** Last update Mon Feb 29 20:18:33 2016 Clémenceau Cedric
 */
 
 #ifndef	TETRIS_H_
@@ -94,6 +94,8 @@ typedef struct		s_data
   t_tabkey		tabkey;
 }			t_data;
 
+
+void	init_tab(t_data *);
 
 /*
 ** TETRIS letter functions
