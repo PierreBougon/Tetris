@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Mon Feb 29 21:16:33 2016 Clémenceau Cedric
+** Last update Mon Feb 29 22:34:46 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -56,7 +56,7 @@ int	main_loop(t_data *data, t_options *opt)
       key = getch();
       if (get_key(data, key, data->keys, &data->tabkey) == 1)
 	break;
-      usleep(1);
+      usleep(10);
     }
   return (0);
 }

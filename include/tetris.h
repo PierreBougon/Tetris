@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Mon Feb 29 21:20:21 2016 Clémenceau Cedric
+** Last update Tue Mar  1 18:53:52 2016 bougon_p
 */
 
 #ifndef	TETRIS_H_
@@ -14,6 +14,7 @@
 # include "list.h"
 # include "my.h"
 # include "get_next_line.h"
+
 # include <time.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -25,6 +26,11 @@
 # include <fcntl.h>
 # include <ncurses.h>
 # include <curses.h>
+
+
+/*
+** DEFINES
+*/
 
 # define KEY_ESC 27
 # define KEY_SPACE ' '
@@ -85,7 +91,6 @@ typedef struct		s_data
   t_arglist		tetri_ig;
   t_gamevar		gamevar;
   char			**tab_next;
-  char			**tab_game;
   t_score		score;
   WINDOW		*win;
   WINDOW		*sub_win;
@@ -129,7 +134,7 @@ int	m_pause(t_data *, t_arglist *);
 
 float	need_to_move(t_data *, float);
 int	need_to_stop(t_data *, int);
-int	collision(t_tetri *, char **);
+int	collision(t_tetri *, t_arglist *);
 
 void	aff_layout(t_data *);
 int	find_new_tetri(t_data *, int);
