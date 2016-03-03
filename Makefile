@@ -5,7 +5,7 @@
 ## Login   <bougon_p@epitech.net>
 ## 
 ## Started on  Tue Feb 23 17:06:22 2016 bougon_p
-## Last update Mon Feb 29 20:35:18 2016 Clémenceau Cedric
+## Last update Thu Mar  3 10:52:00 2016 bougon_p
 ##
 
 # USEFUL VARIABLES
@@ -39,10 +39,12 @@ SRC		=	$(MAIN)tetris.c \
 			$(INIT)initlist.c \
 			$(INIT)init_keys.c \
 			$(INIT)check.c \
+			$(INIT)init_tabgame.c \
 			$(PRINT)write_tetris.c \
 			$(PRINT)print.c \
 			$(PRINT)write_tetris2.c \
 			$(PRINT)print_debug.c \
+			$(PRINT)print_tetri.c \
 			$(TOOLS)my_strcat.c \
 			$(TOOLS)setnbr.c \
 			$(TOOLS)my_strcpy.c \

@@ -1,0 +1,64 @@
+==2949== Memcheck, a memory error detector
+==2949== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==2949== Using Valgrind-3.10.1 and LibVEX; rerun with -h for copyright info
+==2949== Command: ./tetris
+==2949== 
+==2949== Conditional jump or move depends on uninitialised value(s)
+==2949==    at 0x403D22: my_realloc (get_nl.c:22)
+==2949==    by 0x403FDD: fill_line (get_nl.c:79)
+==2949==    by 0x40410C: get_next_line (get_nl.c:108)
+==2949==    by 0x4026EA: fill_tetri_carac (init_tetri.c:48)
+==2949==    by 0x4028BB: fill_tetri (init_tetri.c:90)
+==2949==    by 0x402A4F: init_tetriminos (init_tetri.c:135)
+==2949==    by 0x401F37: main (tetris.c:87)
+==2949== 
+==2949== Invalid write of size 1
+==2949==    at 0x403C38: my_strcpy (my_strcpy.c:25)
+==2949==    by 0x40275C: fill_tetri_carac (init_tetri.c:53)
+==2949==    by 0x4028BB: fill_tetri (init_tetri.c:90)
+==2949==    by 0x402A4F: init_tetriminos (init_tetri.c:135)
+==2949==    by 0x401F37: main (tetris.c:87)
+==2949==  Address 0x520648f is 0 bytes after a block of size 15 alloc'd
+==2949==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2949==    by 0x402729: fill_tetri_carac (init_tetri.c:51)
+==2949==    by 0x4028BB: fill_tetri (init_tetri.c:90)
+==2949==    by 0x402A4F: init_tetriminos (init_tetri.c:135)
+==2949==    by 0x401F37: main (tetris.c:87)
+==2949== 
+==2949== Conditional jump or move depends on uninitialised value(s)
+==2949==    at 0x402E53: check_max (check.c:23)
+==2949==    by 0x401F5A: main (tetris.c:89)
+==2949== 
+maxwidth = 5==2949== Use of uninitialised value of size 8
+==2949==    at 0x40448F: aff_piece (print_piece.c:25)
+==2949==    by 0x401DCD: main_loop (tetris.c:53)
+==2949==    by 0x402011: main (tetris.c:109)
+==2949== 
+==2949== Invalid read of size 4
+==2949==    at 0x4044A8: aff_piece (print_piece.c:27)
+==2949==    by 0x401DCD: main_loop (tetris.c:53)
+==2949==    by 0x402011: main (tetris.c:109)
+==2949==  Address 0x735f6362696c5f6f is not stack'd, malloc'd or (recently) free'd
+==2949== 
+==2949== 
+==2949== Process terminating with default action of signal 11 (SIGSEGV)
+==2949==  General Protection Fault
+==2949==    at 0x4044A8: aff_piece (print_piece.c:27)
+==2949==    by 0x401DCD: main_loop (tetris.c:53)
+==2949==    by 0x402011: main (tetris.c:109)
+==2949== 
+==2949== HEAP SUMMARY:
+==2949==     in use at exit: 103,582 bytes in 520 blocks
+==2949==   total heap usage: 614 allocs, 94 frees, 141,299 bytes allocated
+==2949== 
+==2949== LEAK SUMMARY:
+==2949==    definitely lost: 32,990 bytes in 32 blocks
+==2949==    indirectly lost: 0 bytes in 0 blocks
+==2949==      possibly lost: 0 bytes in 0 blocks
+==2949==    still reachable: 70,592 bytes in 488 blocks
+==2949==         suppressed: 0 bytes in 0 blocks
+==2949== Rerun with --leak-check=full to see details of leaked memory
+==2949== 
+==2949== For counts of detected and suppressed errors, rerun with: -v
+==2949== Use --track-origins=yes to see where uninitialised values come from
+==2949== ERROR SUMMARY: 12 errors from 5 contexts (suppressed: 0 from 0)

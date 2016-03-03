@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Feb 25 16:38:30 2016 bougon_p
-** Last update Sat Feb 27 14:36:58 2016 Clémenceau Cedric
+** Last update Wed Mar  2 19:12:53 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -34,7 +34,7 @@ void		take_nbr(t_tetri *tetri, char *buf, char *save)
    tetri->color = my_getnbr(save);
 }
 
-int		fill_tetri_carac(t_tetri *tetri, int fd)
+int		fill_tetri_carac(t_tetri *tetri, int fd, char *name)
 {
   char          *buf;
   char          *save;
@@ -48,6 +48,9 @@ int		fill_tetri_carac(t_tetri *tetri, int fd)
   if ((buf = get_next_line(fd)) == NULL)
     return (1);
   take_nbr(tetri, buf, save);
+  if ((tetri->name = malloc(sizeof(char) * my_strlen(name))) == NULL)
+    return (1);
+  my_strcpy(tetri->name, name);
   return (0);
 }
 
@@ -84,7 +87,7 @@ int		fill_tetri(char *path, t_tetri *tetri)
   full_path = my_strcat(full_path, path);
   if ((fd = open(full_path, O_RDONLY)) == -1)
     return (1);
-  if ((fill_tetri_carac(tetri, fd)) == 1)
+  if ((fill_tetri_carac(tetri, fd, path)) == 1)
     return (1);
   i = -1;
   if ((tetri->item = init_tab(tetri->height, tetri->width)) == NULL)

@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Fri Feb 26 13:44:01 2016 bougon_p
-** Last update Mon Feb 29 19:59:30 2016 bougon_p
+** Last update Thu Mar  3 11:58:31 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -64,7 +64,7 @@ int	find_new_tetri(t_data *data, int refind)
 	return (-2);
       chose_tetri(data, tetri, &data->tetriminos);
       create_cdlist(&data->tetri_ig, tetri);
-      data->tetri_ig._root = data->tetri_ig.root;
+      /* data->tetri_ig._root = data->tetri_ig.root; */
       if ((tetri = malloc(sizeof(t_tetri))) == NULL)
       	return (-2);
       chose_tetri(data, tetri, &data->tetriminos);
@@ -78,8 +78,8 @@ int	find_new_tetri(t_data *data, int refind)
       if ((tetri = malloc(sizeof(t_tetri))) == NULL)
       	return (-2);
       chose_tetri(data, tetri, &data->tetriminos);
-      add_last_cdl(&data->tetri_ig, tetri);
-      data->tetri_ig._root = data->tetri_ig._root->next;
+      data->tetri_ig.root->data = tetri;
+      data->tetri_ig.root = data->tetri_ig.root->next;
       refind = 0;
     }
   return (refind);

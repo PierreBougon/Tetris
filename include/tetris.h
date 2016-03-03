@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Tue Mar  1 18:53:52 2016 bougon_p
+** Last update Thu Mar  3 09:16:24 2016 bougon_p
 */
 
 #ifndef	TETRIS_H_
@@ -62,6 +62,7 @@ typedef	struct		s_gamevar
 
 typedef struct		s_tetri
 {
+  char			*name;
   int			width;
   int			height;
   int			color;
@@ -90,6 +91,7 @@ typedef struct		s_data
   t_arglist		tetriminos;
   t_arglist		tetri_ig;
   t_gamevar		gamevar;
+  int			**tab_game;
   char			**tab_next;
   t_score		score;
   WINDOW		*win;
@@ -164,6 +166,7 @@ char	**init_tab(int, int);
 int	init_tetriminos(t_arglist *);
 int	*init_keys(void);
 int	init_keytab(t_tabkey *);
+int	**init_tab_game(int, int);
 void	check_max(t_data *);
 char	*get_next_line(const int);
 char	*set_line_null(char *, int);

@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Mon Feb 29 22:34:46 2016 bougon_p
+** Last update Thu Mar  3 10:52:40 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -49,8 +49,8 @@ int	main_loop(t_data *data, t_options *opt)
       if ((refind = find_new_tetri(data, refind)) == -2)
 	return (1);
       aff_layout(data);
-      init_tabnext(data, data->tetri_ig._root->next->data);
-      aff_piece(data->sub_win, &data->tetri_ig);
+      init_tabnext(data, data->tetri_ig.root->next->data);
+      aff_tetris(data);
       to_move = need_to_move(data, to_move);
       refind = need_to_stop(data, refind);
       key = getch();

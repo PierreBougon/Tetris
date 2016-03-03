@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Mon Feb 29 20:02:47 2016 Clémenceau Cedric
-** Last update Mon Feb 29 21:59:17 2016 Clémenceau Cedric
+** Last update Thu Mar  3 10:53:50 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -16,6 +16,8 @@ void	init_data(t_data *data)
   data->gamevar.speed = 1;
   data->gamevar.win_width = 10;
   data->gamevar.win_height = 20;
+  data->tab_game = init_tab_game(data->gamevar.win_height,
+		data->gamevar.win_width);
   data->score.tab_score = init_tab(10, 20);
   init_tabscore(data->score.tab_score);
   data->win = initscr();
