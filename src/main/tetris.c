@@ -5,20 +5,10 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Mon Feb 29 21:16:33 2016 Clémenceau Cedric
+** Last update Thu Mar  3 14:25:36 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
-
-/* t_options	parse_params(int ac, char **av) */
-/* { */
-/*   t_options	option; */
-
-/*   ac = ac; */
-/*   av = av; */
-/*   option = option; */
-/*   return (option); */
-/* } */
 
 int             get_key(t_data *data, int key, int *keys, t_tabkey *tab)
 {
@@ -28,19 +18,18 @@ int             get_key(t_data *data, int key, int *keys, t_tabkey *tab)
   while (key != keys[i])
     {
       i++;
-      if (i > 5)
+     if (i > 5)
         return (0);
     }
   return (tab->tabkey[i](data, &data->tetri_ig));
 }
 
-int	main_loop(t_data *data, t_options *opt)
+int	main_loop(t_data *data)
 {
   int	key;
   int	refind;
   float	to_move;
 
-  opt = opt;
   refind = -1;
   to_move = 0;
   while (1)
@@ -49,7 +38,8 @@ int	main_loop(t_data *data, t_options *opt)
       if ((refind = find_new_tetri(data, refind)) == -2)
 	return (1);
       aff_layout(data);
-      init_tabnext(data, data->tetri_ig._root->next->data);
+      if (data->boole == 0)
+	init_tabnext(data, data->tetri_ig._root->next->data);
       aff_piece(data->sub_win, &data->tetri_ig);
       to_move = need_to_move(data, to_move);
       refind = need_to_stop(data, refind);
@@ -66,48 +56,31 @@ void	my_free_tab(char **tab)
   int	i;
 
   i = 0;
-  while (tab[i])
-    free(tab[i++]);
+  while (tab[i] != NULL)
+    {
+      dprintf(2, "tab[%d] = %s\n", i, tab[i]);
+      free(tab[i++]);
+    }
   free(tab);
 }
 
 int	main(int ac, char **av, char **env)
 {
   t_data	data;
-  t_options	opt;
 
-
-  opt = opt;
-
-  if (ac > 1)
-    my_check_option(&data, av);
+  data.boole = 0;
+  if ((config_key(&data)) == 1)
+    return (1);
   if (*env == NULL)
     return (my_putstr_err("No environment detected\n"));
   data.score.init_time = time(NULL);
-  if ((init_tetriminos(&data.tetriminos)) == 1)
-    return (my_putstr_err("Corrupted file\n"));
-  check_max(&data);
-  init_data(&data);
-
-  noecho();
-  keypad(stdscr, TRUE);
-  data.keys = init_keys();
-  init_keytab(&data.tabkey);
-  nodelay(data.win, TRUE);
-
-  if (has_colors() == FALSE)
-    {
-      endwin();
-      return (my_putstr_err("Your terminal does not support color\n"));
-    }
-  srand(time(0));
-
-  start_color();
-  my_init_color();
-  curs_set(0);
-  main_loop(&data, &opt);
+  if ((init_data(&data, av, ac)) == 1)
+    return (1);
+  if ((config(&data)) == 1)
+    return (1);
   my_free_tab(data.score.tab_score);
   endwin();
   free_list(&data.tetriminos);
+  my_free_tab(data.key);
   return (0);
 }

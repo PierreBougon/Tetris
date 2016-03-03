@@ -5,7 +5,7 @@
 ## Login   <bougon_p@epitech.net>
 ## 
 ## Started on  Tue Feb 23 17:06:22 2016 bougon_p
-## Last update Mon Feb 29 20:35:18 2016 Clémenceau Cedric
+## Last update Thu Mar  3 10:56:30 2016 Clémenceau Cedric
 ##
 
 # USEFUL VARIABLES
@@ -31,6 +31,8 @@ PRINT		=	src/print/
 
 PIECE		=	src/piece/
 
+DEBUG		=	src/debug/
+
 SRC		=	$(MAIN)tetris.c \
 			$(MAIN)error.c \
 			$(MAIN)fct_main.c \
@@ -53,7 +55,9 @@ SRC		=	$(MAIN)tetris.c \
 			$(PIECE)print_piece.c \
 			$(PIECE)move.c \
 			$(PIECE)stop_piece.c \
-			$(PIECE)actions.c
+			$(PIECE)actions.c \
+			$(DEBUG)next.c \
+			$(DEBUG)put_str_key.c
 
 
 OBJS    	=	$(SRC:.c=.o)

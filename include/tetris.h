@@ -5,11 +5,13 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Mon Feb 29 21:20:21 2016 Clémenceau Cedric
+** Last update Thu Mar  3 12:59:33 2016 Clémenceau Cedric
 */
 
 #ifndef	TETRIS_H_
 # define TETRIS_H_
+
+# define UNUSED(var) __attribute__((unused))
 
 # include "list.h"
 # include "my.h"
@@ -36,13 +38,9 @@
 ** VAR PARSED BY PARSER
 */
 
-typedef struct		s_options
-{
-  int			x;
-}			t_options;
-
 typedef	struct		s_gamevar
 {
+  int			level;
   int			win_width;
   int			win_height;
   int			speed;
@@ -61,6 +59,7 @@ typedef struct		s_tetri
   int			color;
   int			pos_x;
   int			pos_y;
+  char			*name;
   char			**item;
 }			t_tetri;
 
@@ -84,19 +83,33 @@ typedef struct		s_data
   t_arglist		tetriminos;
   t_arglist		tetri_ig;
   t_gamevar		gamevar;
-  char			**tab_next;
-  char			**tab_game;
   t_score		score;
   WINDOW		*win;
   WINDOW		*sub_win;
   WINDOW		*sub_next;
+  char			**key;
   int			*keys;
   t_tabkey		tabkey;
+  int			boole;
 }			t_data;
 
+/*
+** Debug Mode
+*/
 
-void	init_data(t_data *);
+int	config_key(t_data *);
+void	my_putstr_keys(t_data *);
+void	my_putstr_keys_suite(t_data *);
+void	help(t_data *, char *);
+void    boole_next(t_data *, char *);
+void	aff_next(t_data *);
+void	aff_keys(t_data *);
+void	my_show_list(t_arglist *);
+void	aff_tetriminos(t_data *);
+void	debug_mode(t_data *, char *);
+int	init_data(t_data *, char **, int);
 void	my_check_option(t_data *, char **);
+
 /*
 ** TETRIS letter functions
 */
@@ -148,6 +161,8 @@ void	init_tabgame_base(char **);
 ** Others fucntions
 */
 
+int	main_loop(t_data *);
+int	config(t_data *);
 char	*my_strcpy(char *, char *);
 char	*my_strncpy(char *, char *, int);
 int	my_pow(int, int);
