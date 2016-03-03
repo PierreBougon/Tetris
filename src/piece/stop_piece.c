@@ -5,16 +5,10 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sun Feb 28 00:52:14 2016 bougon_p
-** Last update Thu Mar  3 13:20:58 2016 bougon_p
+** Last update Thu Mar  3 13:54:04 2016 bougon_p
 */
 
 #include "tetris.h"
-
-/* int		collision(t_tetri *itemdata, int **tetri_ig, t_gamevar *gv) */
-/* { */
-
-/*   return (0); */
-/* } */
 
 void	push_item(t_data *data, t_tetri *itemdata)
 {
@@ -40,8 +34,8 @@ int	need_to_stop(t_data *data, int refind)
 
   itemdata = data->tetri_ig.root->data;
   if ((itemdata->pos_y + itemdata->height + 1
-       == data->gamevar.win_height && refind == 0))
-      /* || collision(itemdata, &data->item) == 1) */
+       == data->gamevar.win_height && refind == 0)
+      || collision(itemdata, data->tab_game) == 1)
     {
       push_item(data, itemdata);
       return (1);

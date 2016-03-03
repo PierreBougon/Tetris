@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Thu Mar  3 09:16:24 2016 bougon_p
+** Last update Thu Mar  3 14:33:09 2016 bougon_p
 */
 
 #ifndef	TETRIS_H_
@@ -136,7 +136,10 @@ int	m_pause(t_data *, t_arglist *);
 
 float	need_to_move(t_data *, float);
 int	need_to_stop(t_data *, int);
-int	collision(t_tetri *, t_arglist *);
+int	collision(t_tetri *, int **);
+int	collision_left(t_tetri *, int **);
+int	collision_right(t_tetri *, int **);
+int	collision_drop(t_tetri *, int **);
 
 void	aff_layout(t_data *);
 int	find_new_tetri(t_data *, int);
