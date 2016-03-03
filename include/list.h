@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Feb 25 15:00:09 2016 bougon_p
-** Last update Mon Feb 29 19:54:49 2016 bougon_p
+** Last update Wed Mar  2 18:19:00 2016 Clémenceau Cedric
 */
 
 #ifndef LIST_H_
@@ -25,9 +25,9 @@ typedef struct		s_arglist
   t_cdlist		*_root;
 }			t_arglist;
 
-int	create_cdlist(t_arglist *arg, void *);
-int	add_first_cdl(t_arglist *arg, void *);
-int	add_last_cdl(t_arglist *arg, void *);
-int	free_list(t_arglist *arg);
+int	create_cdlist(t_arglist *, void *);
+int	add_first_cdl(t_arglist *, void *);
+int	add_last_cdl(t_arglist *, void *);
+int	free_list(t_arglist *);
 
 #endif /* !LIST_H_ */

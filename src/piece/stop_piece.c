@@ -5,27 +5,39 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sun Feb 28 00:52:14 2016 bougon_p
-** Last update Mon Feb 29 20:09:59 2016 bougon_p
+** Last update Thu Mar  3 13:54:04 2016 bougon_p
 */
 
 #include "tetris.h"
 
-/* int	collision(t_tetri *itemdata, char **tab_game) */
-/* { */
-/*   endwin(); */
-/*   printf("posmaxy = %d, posmaxx = %d, \n" */
-/* 	 , itemdata->height + , itemdata->width); */
-/*   return (0); */
-/* } */
+void	push_item(t_data *data, t_tetri *itemdata)
+{
+  int	j;
+  int	i;
+
+  j = -1;
+  while (++j < itemdata->height)
+    {
+      i = -1;
+      while (++i < itemdata->width)
+  	{
+	  if (itemdata->item[j][i] == '*')
+	    data->tab_game[j + itemdata->pos_y][i + itemdata->pos_x]
+	      = itemdata->color;
+  	}
+    }
+}
 
 int	need_to_stop(t_data *data, int refind)
 {
   t_tetri       *itemdata;
 
-  itemdata = data->tetri_ig._root->data;
-  if (itemdata->pos_y + itemdata->height + 1
-      == data->gamevar.win_height && refind == 0)
+  itemdata = data->tetri_ig.root->data;
+  if ((itemdata->pos_y + itemdata->height + 1
+       == data->gamevar.win_height && refind == 0)
+      || collision(itemdata, data->tab_game) == 1)
     {
+      push_item(data, itemdata);
       return (1);
     }
   else

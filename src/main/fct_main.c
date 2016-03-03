@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Mon Feb 29 20:02:47 2016 Clémenceau Cedric
-** Last update Thu Mar  3 14:30:26 2016 Clémenceau Cedric
+** Last update Thu Mar  3 14:38:08 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -20,6 +20,8 @@ int	init_data(t_data *data, char **av, int ac)
   data->gamevar.speed = 1;
   data->gamevar.win_width = 10;
   data->gamevar.win_height = 20;
+  data->tab_game = init_tab_game(data->gamevar.win_height,
+		data->gamevar.win_width);
   data->score.tab_score = init_tab(10, 20);
   init_tabscore(data->score.tab_score);
   if (ac > 1 && av[1][0] == '-' && av[1][1] == 'd')

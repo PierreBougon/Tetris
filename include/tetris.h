@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Thu Mar  3 12:59:33 2016 Clémenceau Cedric
+** Last update Thu Mar  3 14:44:49 2016 Clémenceau Cedric
 */
 
 #ifndef	TETRIS_H_
@@ -16,6 +16,7 @@
 # include "list.h"
 # include "my.h"
 # include "get_next_line.h"
+
 # include <time.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -27,6 +28,11 @@
 # include <fcntl.h>
 # include <ncurses.h>
 # include <curses.h>
+
+
+/*
+** DEFINES
+*/
 
 # define KEY_ESC 27
 # define KEY_SPACE ' '
@@ -83,6 +89,7 @@ typedef struct		s_data
   t_arglist		tetriminos;
   t_arglist		tetri_ig;
   t_gamevar		gamevar;
+  int			**tab_game;
   t_score		score;
   WINDOW		*win;
   WINDOW		*sub_win;
@@ -142,7 +149,10 @@ int	m_pause(t_data *, t_arglist *);
 
 float	need_to_move(t_data *, float);
 int	need_to_stop(t_data *, int);
-int	collision(t_tetri *, char **);
+int	collision(t_tetri *, int **);
+int	collision_left(t_tetri *, int **);
+int	collision_right(t_tetri *, int **);
+int	collision_drop(t_tetri *, int **);
 
 void	aff_layout(t_data *);
 int	find_new_tetri(t_data *, int);
@@ -174,6 +184,7 @@ char	**init_tab(int, int);
 int	init_tetriminos(t_arglist *);
 int	*init_keys(void);
 int	init_keytab(t_tabkey *);
+int	**init_tab_game(int, int);
 void	check_max(t_data *);
 char	*get_next_line(const int);
 char	*set_line_null(char *, int);
@@ -181,9 +192,9 @@ int	my_strlen(char *);
 void	init_tabgame(char **);
 
 /*
-** DEBUG MODE
+** Print functions
 */
 
-void	print_tetri(t_arglist *);
+int     aff_tetris(t_data *);
 
 #endif /* !TETRIS_H_ */

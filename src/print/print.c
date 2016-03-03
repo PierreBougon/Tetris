@@ -5,10 +5,30 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 22:45:02 2016 bougon_p
-** Last update Mon Feb 29 17:14:03 2016 bougon_p
+** Last update Wed Mar  2 17:45:49 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
+
+char	*check_highscore(char *nb)
+{
+  char	*tmp;
+  int	i;
+  int	count;
+
+  count = 0;
+  if ((tmp = malloc(6)) == NULL)
+    return (NULL);
+  i = my_strlen(nb) - 1;
+  while (count < (5 - i - 1))
+    tmp[count++] = ' ';
+  i = 0;
+  while (nb[i])
+    tmp[count++] = nb[i++];
+  tmp[count] = 0;
+  free(nb);
+  return (tmp);
+}
 
 void	print_score(t_score *score)
 {
@@ -21,6 +41,7 @@ void	print_score(t_score *score)
   nb = setnbr(score->high_score);
   time_min = timesetnbr(score->act_time / 60);
   time_sec = timesetnbr(score->act_time % 60);
+  nb = check_highscore(nb);
   my_strncpy(&score->tab_score[2][13], nb, my_strlen(nb));
   my_strncpy(&score->tab_score[3][17], "0", my_strlen("0"));
   my_strncpy(&score->tab_score[5][17], "0", my_strlen("0"));

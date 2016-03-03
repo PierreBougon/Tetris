@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Mon Feb 29 16:38:59 2016 bougon_p
-** Last update Mon Feb 29 21:05:00 2016 Clémenceau Cedric
+** Last update Thu Mar  3 13:19:36 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -20,6 +20,7 @@ void		check_max(t_data *data)
   tmp = data->tetriminos.root;
   maxx = 0;
   maxy = 0;
+  i = 0;
   while (i++ < data->tetriminos.length)
     {
       if (maxx < tmp->data->width)
