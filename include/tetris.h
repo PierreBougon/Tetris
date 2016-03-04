@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Fri Mar  4 13:51:35 2016 bougon_p
+** Last update Fri Mar  4 14:36:39 2016 bougon_p
 */
 
 #ifndef	TETRIS_H_
@@ -28,6 +28,7 @@
 # include <fcntl.h>
 # include <ncurses.h>
 # include <curses.h>
+# include <stdbool.h>
 
 
 /*
@@ -75,6 +76,9 @@ typedef struct		s_score
   int			high_score;
   int			init_time;
   int			act_time;
+  int			init_tpause;
+  int			tpause;
+  int			tlastpause;
 }			t_score;
 
 typedef struct s_data t_data;
@@ -98,6 +102,7 @@ typedef struct		s_data
   int			*keys;
   t_tabkey		tabkey;
   int			boole;
+  bool			pause;
 }			t_data;
 
 /*
@@ -157,6 +162,8 @@ int	collision_drop(t_tetri *, int **, int);
 void	aff_layout(t_data *);
 int	find_new_tetri(t_data *, int);
 void	aff_piece(WINDOW *, t_arglist *);
+
+int	time_pause(t_data *);
 
 /*
 ** Tab functions

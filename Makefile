@@ -5,7 +5,7 @@
 ## Login   <bougon_p@epitech.net>
 ## 
 ## Started on  Tue Feb 23 17:06:22 2016 bougon_p
-## Last update Fri Mar  4 13:50:37 2016 bougon_p
+## Last update Fri Mar  4 14:36:53 2016 bougon_p
 ##
 
 # USEFUL VARIABLES
@@ -30,6 +30,8 @@ INIT		=	src/init/
 PRINT		=	src/print/
 
 PIECE		=	src/piece/
+
+ACTION		=	src/actions/
 
 DEBUG		=	src/debug/
 
@@ -60,6 +62,8 @@ SRC		=	$(MAIN)tetris.c \
 			$(PIECE)stop_piece.c \
 			$(PIECE)actions.c \
 			$(PIECE)collision.c \
+			$(ACTION)pause.c \
+			$(ACTION)quit.c \
 			$(DEBUG)next.c \
 			$(DEBUG)put_str_key.c
 

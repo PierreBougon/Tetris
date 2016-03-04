@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Fri Mar  4 13:50:20 2016 bougon_p
+** Last update Fri Mar  4 14:33:08 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -15,6 +15,8 @@ int             get_key(t_data *data, int key, int *keys, t_tabkey *tab)
   int           i;
 
   i = 0;
+  if (data->pause == TRUE && key != keys[5])
+    return (time_pause(data));
   while (key != keys[i])
     {
       i++;
@@ -35,14 +37,17 @@ int	main_loop(t_data *data)
   while (1)
     {
       refresh();
-      if ((refind = find_new_tetri(data, refind)) == -2)
-	return (1);
-      aff_layout(data);
-      if (data->boole == 0)
-	init_tabnext(data, data->tetri_ig.root->next->data);
-      aff_tetris(data);
-      to_move = need_to_move(data, to_move);
-      refind = need_to_stop(data, refind);
+      if (data->pause == FALSE)
+	{
+	  if ((refind = find_new_tetri(data, refind)) == -2)
+	    return (1);
+	  aff_layout(data);
+	  if (data->boole == 0)
+	    init_tabnext(data, data->tetri_ig.root->next->data);
+	  aff_tetris(data);
+	  to_move = need_to_move(data, to_move);
+	  refind = need_to_stop(data, refind);
+	}
       key = getch();
       if (get_key(data, key, data->keys, &data->tabkey) == 1)
 	break;
@@ -61,6 +66,9 @@ int	main(int ac, char **av, char **env)
   if (*env == NULL)
     return (my_putstr_err("No environment detected\n"));
   data.score.init_time = time(NULL);
+  data.score.tpause = 0;
+  data.score.tlastpause = 0;
+  data.pause = FALSE;
   if ((init_data(&data, av, ac)) == 1)
     return (1);
   if ((config(&data)) == 1)
