@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sat Feb 27 21:47:51 2016 bougon_p
-** Last update Thu Mar  3 16:48:31 2016 bougon_p
+** Last update Fri Mar  4 18:31:21 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -39,6 +39,7 @@ int		drop(t_data *data, t_arglist *tetri_ig)
 	  < data->gamevar.win_height
 	  && collision_drop(itemdata, data->tab_game, n - 1) == 0)
 	{
+	  data->score.move_bonus += 10;
 	  tetri_ig->root->data->pos_y += n;
 	  return (0);
 	}

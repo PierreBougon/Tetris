@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 22:45:02 2016 bougon_p
-** Last update Fri Mar  4 14:29:53 2016 bougon_p
+** Last update Fri Mar  4 18:26:52 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -34,6 +34,7 @@ void	print_score(t_score *score)
 {
   int	i;
   char	*nb;
+  char	*mscore;
   char	*time_min;
   char	*time_sec;
 
@@ -43,7 +44,12 @@ void	print_score(t_score *score)
   time_sec = timesetnbr(score->act_time % 60);
   nb = check_highscore(nb);
   my_strncpy(&score->tab_score[2][13], nb, my_strlen(nb));
-  my_strncpy(&score->tab_score[3][17], "0", my_strlen("0"));
+
+  mscore = setnbr(score->score);
+  my_strncpy(&score->tab_score[3][17 - (my_strlen(mscore) - 1)],
+	     mscore, my_strlen(mscore));
+
+
   my_strncpy(&score->tab_score[5][17], "0", my_strlen("0"));
   my_strncpy(&score->tab_score[6][17], "1", my_strlen("1"));
   my_strncpy(&score->tab_score[8][11], time_min, my_strlen(time_min));
@@ -55,6 +61,7 @@ void	print_score(t_score *score)
   free(nb);
   free(time_min);
   free(time_sec);
+  free(mscore);
 }
 
 void	print_game(t_data *data)

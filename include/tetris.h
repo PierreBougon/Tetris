@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Fri Mar  4 17:21:11 2016 bougon_p
+** Last update Fri Mar  4 18:27:31 2016 bougon_p
 */
 
 #ifndef	TETRIS_H_
@@ -74,11 +74,13 @@ typedef struct		s_score
 {
   char			**tab_score;
   int			high_score;
+  int			score;
   int			init_time;
   int			act_time;
   int			init_tpause;
   int			tpause;
   int			tlastpause;
+  int			move_bonus;
 }			t_score;
 
 typedef struct s_data t_data;
