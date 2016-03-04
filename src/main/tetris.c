@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Thu Mar  3 14:48:07 2016 Clémenceau Cedric
+** Last update Fri Mar  4 13:50:20 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -49,19 +49,6 @@ int	main_loop(t_data *data)
       usleep(10);
     }
   return (0);
-}
-
-void	my_free_tab(char **tab)
-{
-  int	i;
-
-  i = 0;
-  while (tab[i] != NULL)
-    {
-      dprintf(2, "tab[%d] = %s\n", i, tab[i]);
-      free(tab[i++]);
-    }
-  free(tab);
 }
 
 int	main(int ac, char **av, char **env)

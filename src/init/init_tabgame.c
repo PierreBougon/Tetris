@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Mar  3 08:42:06 2016 bougon_p
-** Last update Thu Mar  3 14:53:25 2016 Clémenceau Cedric
+** Last update Thu Mar  3 15:05:43 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -15,7 +15,7 @@ void	set_null(int *linetab, int cols)
   int	i;
 
   i = -1;
-  while (++i <= cols)
+  while (++i < cols)
     linetab[i] = 0;
 }
 
@@ -29,10 +29,10 @@ int	**init_tab_game(int lines, int cols)
     return (NULL);
   tab[lines] = NULL;
   while (++j < lines)
-    if ((tab[j] = malloc(sizeof(int) * cols + 1)) == NULL)
+    if ((tab[j] = malloc(sizeof(int) * (cols + 1))) == NULL)
       return (NULL);
   j = -1;
   while (++j < lines)
-    set_null(tab[j], cols);
+    set_null(tab[j], cols + 1);
   return (tab);
 }
