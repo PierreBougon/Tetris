@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Fri Mar  4 14:36:39 2016 bougon_p
+** Last update Fri Mar  4 17:21:11 2016 bougon_p
 */
 
 #ifndef	TETRIS_H_
@@ -158,12 +158,20 @@ int	collision(t_tetri *, int **);
 int	collision_left(t_tetri *, int **);
 int	collision_right(t_tetri *, int **);
 int	collision_drop(t_tetri *, int **, int);
+void	check_full_line(t_data *);
 
 void	aff_layout(t_data *);
 int	find_new_tetri(t_data *, int);
 void	aff_piece(WINDOW *, t_arglist *);
 
 int	time_pause(t_data *);
+
+
+/*
+** Events
+*/
+
+int	get_key(t_data *, int, int *, t_tabkey *);
 
 /*
 ** Tab functions

@@ -5,30 +5,23 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Fri Mar  4 14:33:08 2016 bougon_p
+** Last update Fri Mar  4 16:58:26 2016 bougon_p
 */
 
 #include "tetris.h"
 
-int             get_key(t_data *data, int key, int *keys, t_tabkey *tab)
+int	key_event(t_data *data)
 {
-  int           i;
+  int	key;
 
-  i = 0;
-  if (data->pause == TRUE && key != keys[5])
-    return (time_pause(data));
-  while (key != keys[i])
-    {
-      i++;
-     if (i > 5)
-        return (0);
-    }
-  return (tab->tabkey[i](data, &data->tetri_ig));
+  key = getch();
+  if (get_key(data, key, data->keys, &data->tabkey) == 1)
+    return (1);
+  return (0);
 }
 
 int	main_loop(t_data *data)
 {
-  int	key;
   int	refind;
   float	to_move;
 
@@ -47,9 +40,9 @@ int	main_loop(t_data *data)
 	  aff_tetris(data);
 	  to_move = need_to_move(data, to_move);
 	  refind = need_to_stop(data, refind);
+	  check_full_line(data);
 	}
-      key = getch();
-      if (get_key(data, key, data->keys, &data->tabkey) == 1)
+      if (key_event(data) == 1)
 	break;
       usleep(10);
     }
