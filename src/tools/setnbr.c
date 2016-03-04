@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Fri Jan 22 05:11:57 2016 bougon_p
-** Last update Fri Mar  4 17:07:02 2016 bougon_p
+** Last update Fri Mar  4 23:51:18 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -52,8 +52,9 @@ char	*setnbr(int nbr)
   return (cleanstr(numb));
 }
 
-char	*reset(char *str)
+char	*reset(char *str, char *nbr)
 {
+  free(nbr);
   str[1] = str[0];
   str[0] = '0';
   str[3] = 0;
@@ -84,7 +85,7 @@ char	*timecleanstr(char *nbr)
   while (nbr[p] != 0)
     clean[i++] = nbr[p++];
   if (my_strlen(clean) == 1)
-    return (reset(clean));
+    return (reset(clean, nbr));
   free(nbr);
   return (clean);
 }

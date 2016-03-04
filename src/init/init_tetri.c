@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Feb 25 16:38:30 2016 bougon_p
-** Last update Thu Mar  3 14:39:02 2016 Clémenceau Cedric
+** Last update Fri Mar  4 23:58:40 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -39,9 +39,6 @@ int		fill_tetri_carac(t_tetri *tetri, int fd, char *name)
   char          *buf;
   char          *save;
 
-  if ((buf = malloc(sizeof(char) * 4096)) == NULL)
-    return (1);
-  buf = set_line_null(buf, 4095);
   if ((save = malloc(sizeof(char) * 4096)) == NULL)
     return (1);
   save = set_line_null(save, 4095);
@@ -51,6 +48,8 @@ int		fill_tetri_carac(t_tetri *tetri, int fd, char *name)
   if ((tetri->name = malloc(my_strlen(name) + 1)) == NULL)
     return (1);
   my_strcpy(tetri->name, name);
+  free(buf);
+  free(save);
   return (0);
 }
 

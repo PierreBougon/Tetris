@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Fri Mar  4 20:44:13 2016 Clémenceau Cedric
+** Last update Fri Mar  4 23:09:08 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -55,11 +55,11 @@ int	main(int ac, char **av, char **env)
 
   data.boole = 0;
   data.score.init_time = time(NULL);
-  data.score.init_time = time(NULL);
   data.score.tpause = 0;
   data.score.tlastpause = 0;
   data.pause = FALSE;
   data.score.score = 0;
+  data.score.line = 0;
   if ((config_key(&data)) == 1)
     return (1);
   if (*env == NULL)

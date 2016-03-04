@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 22:45:02 2016 bougon_p
-** Last update Fri Mar  4 18:26:52 2016 bougon_p
+** Last update Fri Mar  4 23:19:04 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -37,20 +37,27 @@ void	print_score(t_score *score)
   char	*mscore;
   char	*time_min;
   char	*time_sec;
+  char	*line;
 
   i = -1;
-  nb = setnbr(score->high_score);
   time_min = timesetnbr(score->act_time / 60);
   time_sec = timesetnbr(score->act_time % 60);
-  nb = check_highscore(nb);
-  my_strncpy(&score->tab_score[2][13], nb, my_strlen(nb));
+  /* nb = check_highscore(nb); */
+
+  score->high_score = (score->score > score->high_score)
+    ? score->score : score->high_score;
+  nb = setnbr(score->high_score);
+  my_strncpy(&score->tab_score[2][17 - (my_strlen(nb) - 1)], nb, my_strlen(nb));
 
   mscore = setnbr(score->score);
   my_strncpy(&score->tab_score[3][17 - (my_strlen(mscore) - 1)],
 	     mscore, my_strlen(mscore));
 
+  line = setnbr(score->line);
+  my_strncpy(&score->tab_score[5][17 - (my_strlen(line) - 1)],
+	     line, my_strlen(line));
 
-  my_strncpy(&score->tab_score[5][17], "0", my_strlen("0"));
+
   my_strncpy(&score->tab_score[6][17], "1", my_strlen("1"));
   my_strncpy(&score->tab_score[8][11], time_min, my_strlen(time_min));
   my_strncpy(&score->tab_score[8][11 + my_strlen(time_min) + 1], ":", 1);
@@ -62,6 +69,7 @@ void	print_score(t_score *score)
   free(time_min);
   free(time_sec);
   free(mscore);
+  free(line);
 }
 
 void	print_game(t_data *data)

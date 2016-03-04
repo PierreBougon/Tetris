@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Fri Feb 26 13:44:01 2016 bougon_p
-** Last update Fri Mar  4 18:32:22 2016 bougon_p
+** Last update Fri Mar  4 23:50:10 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -76,6 +76,8 @@ int	find_new_tetri(t_data *data, int refind)
       	return (-2);
       data->score.move_bonus = 1;
       chose_tetri(data, tetri, &data->tetriminos);
+      my_free_tab(data->tetri_ig.root->data->item);
+      free(data->tetri_ig.root->data);
       data->tetri_ig.root->data = tetri;
       data->tetri_ig.root = data->tetri_ig.root->next;
       refind = 0;

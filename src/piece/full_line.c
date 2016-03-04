@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Fri Mar  4 17:03:11 2016 bougon_p
-** Last update Fri Mar  4 18:28:17 2016 bougon_p
+** Last update Fri Mar  4 23:08:32 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -24,6 +24,7 @@ void	clean_line(t_data *data, int j, int bonus)
 	data->tab_game[j + 1][i] = data->tab_game[j][i];
     }
   data->score.score += 10 * bonus * data->score.move_bonus;
+  data->score.line += 1;
 }
 
 void		check_full_line(t_data *data)
