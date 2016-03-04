@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Fri Jan 22 05:11:57 2016 bougon_p
-** Last update Sun Feb 28 19:47:25 2016 bougon_p
+** Last update Fri Mar  4 17:07:02 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -25,6 +25,7 @@ char	*cleanstr(char *nbr)
     {
       clean[0] = '0';
       clean[1] = 0;
+      free(nbr);
       return (clean);
     }
   i = 0;
@@ -75,6 +76,7 @@ char	*timecleanstr(char *nbr)
       clean[0] = '0';
       clean[1] = '0';
       clean[2] = 0;
+      free(nbr);
       return (clean);
     }
   i = 0;

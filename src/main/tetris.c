@@ -5,28 +5,23 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Fri Mar  4 19:53:02 2016 Clémenceau Cedric
+** Last update Fri Mar  4 20:44:13 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
 
-int	get_key(t_data *data, int key, int *keys, t_tabkey *tab)
+int	key_event(t_data *data)
 {
-  int	i;
+  int	key;
 
-  i = 0;
-  while (key != keys[i])
-    {
-      i++;
-     if (i > 5)
-        return (0);
-    }
-  return (tab->tabkey[i](data, &data->tetri_ig));
+  key = getch();
+  if (get_key(data, key, data->keys, &data->tabkey) == 1)
+    return (1);
+  return (0);
 }
 
 int	main_loop(t_data *data)
 {
-  int	key;
   int	refind;
   float	to_move;
 
@@ -35,31 +30,23 @@ int	main_loop(t_data *data)
   while (1)
     {
       refresh();
-      if ((refind = find_new_tetri(data, refind)) == -2)
-	return (1);
-      aff_layout(data);
-      if (data->boole == 0)
-	init_tabnext(data, data->tetri_ig.root->next->data);
-      aff_tetris(data);
-      to_move = need_to_move(data, to_move);
-      refind = need_to_stop(data, refind);
-      key = getch();
-      protect_me(data);
-      if (get_key(data, key, data->keys, &data->tabkey) == 1)
+      if (data->pause == FALSE)
+	{
+	  if ((refind = find_new_tetri(data, refind)) == -2)
+	    return (1);
+	  aff_layout(data);
+	  if (data->boole == 0)
+	    init_tabnext(data, data->tetri_ig.root->next->data);
+	  aff_tetris(data);
+	  to_move = need_to_move(data, to_move);
+	  refind = need_to_stop(data, refind);
+	  check_full_line(data);
+	}
+      if (key_event(data) == 1)
 	break;
       usleep(10);
     }
   return (0);
-}
-
-void	my_free_tab(char **tab)
-{
-  int	i;
-
-  i = 0;
-  while (tab[i] != NULL)
-    free(tab[i++]);
-  free(tab);
 }
 
 int	main(int ac, char **av, char **env)
@@ -68,7 +55,11 @@ int	main(int ac, char **av, char **env)
 
   data.boole = 0;
   data.score.init_time = time(NULL);
-  keypad(stdscr, TRUE);
+  data.score.init_time = time(NULL);
+  data.score.tpause = 0;
+  data.score.tlastpause = 0;
+  data.pause = FALSE;
+  data.score.score = 0;
   if ((config_key(&data)) == 1)
     return (1);
   if (*env == NULL)

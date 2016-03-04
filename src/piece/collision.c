@@ -5,12 +5,12 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Mar  3 13:53:44 2016 bougon_p
-** Last update Thu Mar  3 14:34:15 2016 bougon_p
+** Last update Thu Mar  3 15:12:31 2016 bougon_p
 */
 
 #include "tetris.h"
 
-int		collision_drop(t_tetri *itemdata, int **tab)
+int		collision_drop(t_tetri *itemdata, int **tab, int p)
 {
   int           i;
   int		n;
@@ -19,7 +19,7 @@ int		collision_drop(t_tetri *itemdata, int **tab)
   while (++i < itemdata->width)
     {
       n = -1;
-      while (++n <= 3)
+      while (++n <= p)
 	{
 	  if (itemdata->item[itemdata->height - 1][i] == '*'
 	      && tab[itemdata->pos_y + itemdata->height + n]

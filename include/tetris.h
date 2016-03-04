@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Fri Mar  4 20:27:52 2016 Clémenceau Cedric
+** Last update Fri Mar  4 20:34:09 2016 Clémenceau Cedric
 */
 
 #ifndef	TETRIS_H_
@@ -30,6 +30,7 @@
 # include <curses.h>
 # include <termios.h>
 # include <sys/ioctl.h>
+# include <stdbool.h>
 
 /*
 ** DEFINES
@@ -74,8 +75,13 @@ typedef struct		s_score
 {
   char			**tab_score;
   int			high_score;
+  int			score;
   int			init_time;
   int			act_time;
+  int			init_tpause;
+  int			tpause;
+  int			tlastpause;
+  int			move_bonus;
 }			t_score;
 typedef struct s_data t_data;
 
@@ -106,6 +112,7 @@ typedef struct		s_data
   int			**tab_game;
   int			*keys;
   int			boole;
+  bool			pause;
 }			t_data;
 
 /*
@@ -162,11 +169,21 @@ int	need_to_stop(t_data *, int);
 int	collision(t_tetri *, int **);
 int	collision_left(t_tetri *, int **);
 int	collision_right(t_tetri *, int **);
-int	collision_drop(t_tetri *, int **);
+int	collision_drop(t_tetri *, int **, int);
+void	check_full_line(t_data *);
 
 void	aff_layout(t_data *);
 int	find_new_tetri(t_data *, int);
 void	aff_piece(WINDOW *, t_arglist *);
+
+int	time_pause(t_data *);
+
+
+/*
+** Events
+*/
+
+int	get_key(t_data *, int, int *, t_tabkey *);
 
 /*
 ** Tab functions
@@ -201,6 +218,7 @@ char	*get_next_line(const int);
 char	*set_line_null(char *, int);
 int	my_strlen(char *);
 void	init_tabgame(char **);
+void	my_free_tab(char **);
 
 /*
 ** Print functions
