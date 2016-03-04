@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Thu Mar  3 14:44:49 2016 Clémenceau Cedric
+** Last update Fri Mar  4 20:27:52 2016 Clémenceau Cedric
 */
 
 #ifndef	TETRIS_H_
@@ -28,7 +28,8 @@
 # include <fcntl.h>
 # include <ncurses.h>
 # include <curses.h>
-
+# include <termios.h>
+# include <sys/ioctl.h>
 
 /*
 ** DEFINES
@@ -76,7 +77,6 @@ typedef struct		s_score
   int			init_time;
   int			act_time;
 }			t_score;
-
 typedef struct s_data t_data;
 
 typedef struct  s_tabkey
@@ -84,19 +84,27 @@ typedef struct  s_tabkey
   int           (**tabkey)(t_data *, t_arglist *);
 }               t_tabkey;
 
+typedef struct		s_opt
+{
+  char			**arg;
+  char			*entered_key;
+}			t_opt;
+
 typedef struct		s_data
 {
-  t_arglist		tetriminos;
-  t_arglist		tetri_ig;
-  t_gamevar		gamevar;
-  int			**tab_game;
-  t_score		score;
+  struct termios	start;
   WINDOW		*win;
   WINDOW		*sub_win;
   WINDOW		*sub_next;
-  char			**key;
-  int			*keys;
+  t_arglist		tetriminos;
+  t_arglist		tetri_ig;
+  t_gamevar		gamevar;
   t_tabkey		tabkey;
+  t_score		score;
+  t_opt			opt;
+  char			**key;
+  int			**tab_game;
+  int			*keys;
   int			boole;
 }			t_data;
 
@@ -104,10 +112,12 @@ typedef struct		s_data
 ** Debug Mode
 */
 
+int	my_infinite_loop();
+int	parsing_arg(char **, t_data *);
 int	config_key(t_data *);
 void	my_putstr_keys(t_data *);
 void	my_putstr_keys_suite(t_data *);
-void	help(t_data *, char *);
+int	help(t_data *, char *);
 void    boole_next(t_data *, char *);
 void	aff_next(t_data *);
 void	aff_keys(t_data *);
@@ -115,7 +125,7 @@ void	my_show_list(t_arglist *);
 void	aff_tetriminos(t_data *);
 void	debug_mode(t_data *, char *);
 int	init_data(t_data *, char **, int);
-void	my_check_option(t_data *, char **);
+int	my_check_option(t_data *, char **);
 
 /*
 ** TETRIS letter functions
@@ -172,6 +182,7 @@ void	init_tabgame_base(char **);
 */
 
 int	main_loop(t_data *);
+char	*my_strdup(char *);
 int	config(t_data *);
 char	*my_strcpy(char *, char *);
 char	*my_strncpy(char *, char *, int);
@@ -195,6 +206,7 @@ void	init_tabgame(char **);
 ** Print functions
 */
 
+void	protect_me(t_data *);
 int     aff_tetris(t_data *);
 
 #endif /* !TETRIS_H_ */

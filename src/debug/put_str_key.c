@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Thu Mar  3 10:54:38 2016 Clémenceau Cedric
-** Last update Thu Mar  3 14:26:41 2016 Clémenceau Cedric
+** Last update Thu Mar  3 19:15:26 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -44,4 +44,29 @@ void	my_putstr_keys(t_data *data)
   my_putstr("-kd --key-drop={K}\tSet default DROP on key K\n");
   my_putstr("-kq --key-quit={K}\tQuit program when press key K\n");
   my_putstr("-kp --key-pause={K}\tPause and restart game when press key K\n");
+}
+
+void	protect_me(t_data *data)
+{
+  int	maxx;
+  int	maxy;
+
+  maxx = getmaxx(data->win);
+  maxy = getmaxy(data->win);
+  if (maxx < data->gamevar.win_width + 50)
+    while ((maxx = getmaxx(data->win)) < (data->gamevar.win_width + 50))
+      {
+	maxy = getmaxy(data->win);
+	mvprintw(maxy / 2, ((maxx / 2) - 7),  "Window too short");
+	refresh();
+	erase();
+      }
+  if (maxy < data->gamevar.win_height + 10)
+    while ((maxy = getmaxy(data->win)) < (data->gamevar.win_height + 10))
+      {
+	maxx = getmaxx(data->win);
+	mvprintw(maxy / 2, ((maxx / 2) - 7),  "Window too short");
+	refresh();
+	erase();
+      }
 }

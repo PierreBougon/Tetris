@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 18:56:41 2016 bougon_p
-** Last update Thu Mar  3 11:31:46 2016 Clémenceau Cedric
+** Last update Fri Mar  4 20:02:46 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -20,7 +20,6 @@ int	my_putstr_err(char *str)
 int	config(t_data *data)
 {
   noecho();
-  keypad(stdscr, TRUE);
   data->keys = init_keys();
   init_keytab(&data->tabkey);
   nodelay(data->win, TRUE);

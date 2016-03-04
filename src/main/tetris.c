@@ -5,14 +5,14 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Thu Mar  3 14:48:07 2016 Clémenceau Cedric
+** Last update Fri Mar  4 19:53:02 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
 
-int             get_key(t_data *data, int key, int *keys, t_tabkey *tab)
+int	get_key(t_data *data, int key, int *keys, t_tabkey *tab)
 {
-  int           i;
+  int	i;
 
   i = 0;
   while (key != keys[i])
@@ -44,6 +44,7 @@ int	main_loop(t_data *data)
       to_move = need_to_move(data, to_move);
       refind = need_to_stop(data, refind);
       key = getch();
+      protect_me(data);
       if (get_key(data, key, data->keys, &data->tabkey) == 1)
 	break;
       usleep(10);
@@ -57,10 +58,7 @@ void	my_free_tab(char **tab)
 
   i = 0;
   while (tab[i] != NULL)
-    {
-      dprintf(2, "tab[%d] = %s\n", i, tab[i]);
-      free(tab[i++]);
-    }
+    free(tab[i++]);
   free(tab);
 }
 
@@ -69,18 +67,19 @@ int	main(int ac, char **av, char **env)
   t_data	data;
 
   data.boole = 0;
+  data.score.init_time = time(NULL);
+  keypad(stdscr, TRUE);
   if ((config_key(&data)) == 1)
     return (1);
   if (*env == NULL)
     return (my_putstr_err("No environment detected\n"));
-  data.score.init_time = time(NULL);
   if ((init_data(&data, av, ac)) == 1)
     return (1);
   if ((config(&data)) == 1)
     return (1);
-  my_free_tab(data.score.tab_score);
-  endwin();
-  free_list(&data.tetriminos);
   my_free_tab(data.key);
+  my_free_tab(data.score.tab_score);
+  free_list(&data.tetriminos);
+  endwin();
   return (0);
 }

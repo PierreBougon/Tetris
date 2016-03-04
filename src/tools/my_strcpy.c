@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Mon Dec  7 21:41:47 2015 Cédric Clemenceau
-** Last update Fri Feb 26 15:29:46 2016 Clémenceau Cedric
+** Last update Fri Mar  4 18:15:14 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -39,4 +39,15 @@ char	*my_strncpy(char *dest, char *src, int octet)
       i++;
     }
   return (dest);
+}
+
+char	*my_strdup(char *s)
+{
+  int	size;
+  char	*str;
+
+  size = my_strlen(s) + 1;
+  if ((str = malloc(size)) == NULL)
+    return (NULL);
+  return (str);
 }
