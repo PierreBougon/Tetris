@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Thu Mar  3 15:11:04 2016 Clémenceau Cedric
-** Last update Fri Mar  4 20:03:29 2016 Clémenceau Cedric
+** Last update Sat Mar  5 14:55:20 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -43,32 +43,46 @@ int	parsing_arg_extanted(t_data *data, char **options, char c, int i)
   return (0);
 }
 
-int	parsing_arg(char **options, t_data *data)
+int	parse_without_key(t_data * data, char **opt, int *i)
+{
+  if ((opt[(*i)][0] == '-' && opt[(*i)][1] == 'd') ||
+      (opt[(*i)][0] == '-' && opt[(*i)][1] == 'w') ||
+      (opt[(*i)][0] == '-' && opt[(*i)][1] == '-' && opt[(*i)][2] == 'h') ||
+      (opt[(*i)][0] == '-' && opt[(*i)][1] == '-' && opt[(*i)][2] == 'd') ||
+      (opt[(*i)][0] == '-' && opt[(*i)][1] == '-' && opt[(*i)][2] == 'w'))
+    my_strcpy(data->opt.arg[(*i)], opt[(*i)]);
+  else if ((opt[*i][0] == '-' && opt[*i][1] == '-' && opt[*i][2] == 'k') ||
+	   (opt[*i][0] == '-' && opt[*i][1] == '-' && opt[*i][2] == 'l') ||
+	   (opt[*i][0] == '-' && opt[*i][1] == '-' && opt[*i][2] == 'm'))
+    {
+      if ((parsing_arg_extanted(data, opt, '=', (*i))) == 1)
+	return (1);
+    }
+  else if ((opt[(*i)][0] == '-' && opt[(*i)][1] == 'l' && opt[(*i) + 1]) ||
+	   (opt[(*i)][0] == '-' && opt[(*i)][1] == 'k' && opt[(*i) + 1]))
+    {
+      if ((parsing_arg_extanted(data, opt, 0, (*i))) == 1)
+	return (1);
+      my_strcpy(data->opt.entered_key, opt[++(*i)]);
+    }
+  else
+    return (my_putstr("Wrong arguments\n"), 1);
+  return (0);
+}
+
+int	parsing_arg(char **opt, t_data *data)
 {
   int	i;
   int	j;
 
   i = 0;
   j = 0;
-  while (options[j++]);
+  while (opt[j++]);
   if ((data->opt.arg = init_tab(j, 14)) == NULL)
     return (1);
-  while (options[++i])
-    {
-      if (options[i][0] == '-' && options[i][1] == '-')
-	if ((parsing_arg_extanted(data, options, '=', i)) == 1)
-	  return (1);
-      if ((options[i][0] == '-' && options[i][1] == 'l') ||
-	  (options[i][0] == '-' && options[i][1] == 'k') ||
-      	  (options[i][0] == '-' && options[i][1] == 'w') ||
-      	  (options[i][0] == '-' && options[i][1] == 'd'))
-      	{
-	  if ((parsing_arg_extanted(data, options, 0, i)) == 1)
-	    return (1);
-	  my_strcpy(data->opt.entered_key, options[++i]);
-	  --i;
-	}
-    }
+  while (opt[++i])
+    if ((parse_without_key(data, opt, &i)) == 1)
+      return (1);
   return (0);
 }
 
