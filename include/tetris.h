@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Fri Mar  4 23:08:10 2016 bougon_p
+** Last update Sat Mar  5 18:03:29 2016 bougon_p
 */
 
 #ifndef	TETRIS_H_
@@ -94,13 +94,13 @@ typedef struct  s_tabkey
 
 typedef struct		s_opt
 {
+  char			**to_check;
   char			**arg;
   char			*entered_key;
 }			t_opt;
 
 typedef struct		s_data
 {
-  struct termios	start;
   WINDOW		*win;
   WINDOW		*sub_win;
   WINDOW		*sub_next;
@@ -121,6 +121,10 @@ typedef struct		s_data
 ** Debug Mode
 */
 
+void	init_base(t_data *);
+int	map_size(t_data *, char *);
+int	without_next(t_data *, char *);
+int	init_data_next(t_data *);
 int	my_infinite_loop();
 int	parsing_arg(char **, t_data *);
 int	config_key(t_data *);
@@ -132,7 +136,7 @@ void	aff_next(t_data *);
 void	aff_keys(t_data *);
 void	my_show_list(t_arglist *);
 void	aff_tetriminos(t_data *);
-void	debug_mode(t_data *, char *);
+int	debug_mode(t_data *, char *);
 int	init_data(t_data *, char **, int);
 int	my_check_option(t_data *, char **);
 

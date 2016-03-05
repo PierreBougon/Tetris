@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Thu Mar  3 10:54:38 2016 Clémenceau Cedric
-** Last update Thu Mar  3 19:15:26 2016 Clémenceau Cedric
+** Last update Sat Mar  5 16:05:12 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -21,14 +21,12 @@ int	config_key(t_data *data)
   my_strcpy(data->key[1], "^[[C");
   my_strcpy(data->key[2], "^[[A");
   my_strcpy(data->key[3], "^[[B");
-  my_strcpy(data->key[4], "27");
+  my_strcpy(data->key[4], "^[");
   my_strcpy(data->key[5], " ");
   while (data->key[i])
     {
       if ((my_strcmp(data->key[i], " ")) == 0)
 	my_strcpy(data->key[i], "(space)");
-      if ((my_strcmp(data->key[i], "27")) == 0)
-	my_strcpy(data->key[i], "(escape)");
       i++;
     }
   return (0);

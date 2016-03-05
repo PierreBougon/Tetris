@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Sat Mar  5 17:50:13 2016 bougon_p
+** Last update Sat Mar  5 18:02:14 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -29,6 +29,7 @@ int	main_loop(t_data *data)
   to_move = 0;
   while (1)
     {
+      protect_me(data);
       refresh();
       if (data->pause == FALSE)
 	{
@@ -53,13 +54,8 @@ int	main(int ac, char **av, char **env)
 {
   t_data	data;
 
-  data.boole = 0;
-  data.score.init_time = time(NULL);
-  data.score.tpause = 0;
-  data.score.tlastpause = 0;
-  data.pause = FALSE;
-  data.score.score = 0;
-  data.score.line = 0;
+  if ((init_data_next(&data)) == 1)
+    return (1);
   if ((config_key(&data)) == 1)
     return (1);
   if (*env == NULL)
