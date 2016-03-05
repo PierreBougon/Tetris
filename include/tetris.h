@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Sat Mar  5 17:06:01 2016 Clémenceau Cedric
+** Last update Sat Mar  5 18:05:15 2016 Clémenceau Cedric
 */
 
 #ifndef	TETRIS_H_
@@ -37,7 +37,7 @@
 */
 
 # define KEY_ESC 27
-# define KEY_SPACE 20
+# define KEY_SPACE ' '
 
 # define POS_GAME_X 25
 # define POS_GAME_Y 2
