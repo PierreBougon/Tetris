@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sat Feb 27 19:05:39 2016 bougon_p
-** Last update Fri Mar  4 14:35:46 2016 bougon_p
+** Last update Sun Mar  6 00:05:04 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -38,8 +38,9 @@ int		turn_tetri(t_data *data, t_arglist *tetri_ig)
   t_tetri	*itemdata;
   char		**new;
 
-  data = data;
   itemdata = tetri_ig->root->data;
+  if (itemdata->pos_x + itemdata->height - 1 > data->gamevar.win_width)
+    return (0);
   new = init_new(itemdata);
   i = -1;
   p = 0;
@@ -48,9 +49,7 @@ int		turn_tetri(t_data *data, t_arglist *tetri_ig)
       n = 0;
       j = itemdata->height;
       while (--j >= 0)
-	{
-	  new[p][n++] = itemdata->item[j][i];
-	}
+	new[p][n++] = itemdata->item[j][i];
       p++;
     }
   my_free_tab(itemdata->item);

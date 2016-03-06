@@ -5,7 +5,7 @@
 ## Login   <bougon_p@epitech.net>
 ## 
 ## Started on  Tue Feb 23 17:06:22 2016 bougon_p
-## Last update Sat Mar  5 22:31:19 2016 Clémenceau Cedric
+## Last update Sun Mar  6 17:11:58 2016 Clémenceau Cedric
 ##
 
 # USEFUL VARIABLES
@@ -66,6 +66,7 @@ SRC		=	$(MAIN)tetris.c \
 			$(PIECE)actions.c \
 			$(PIECE)collision.c \
 			$(PIECE)full_line.c \
+			$(PIECE)end_game.c \
 			$(ACTION)pause.c \
 			$(ACTION)quit.c \
 			$(EVENT)key_event.c \
