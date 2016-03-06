@@ -5,12 +5,12 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Feb 25 16:38:30 2016 bougon_p
-** Last update Sun Mar  6 16:32:31 2016 bougon_p
+** Last update Sun Mar  6 20:53:25 2016 bougon_p
 */
 
 #include "tetris.h"
 
-void		take_nbr(t_tetri *tetri, char *buf, char *save)
+int		take_nbr(t_tetri *tetri, char *buf, char *save)
 {
   int           i;
   int           p;
@@ -18,20 +18,29 @@ void		take_nbr(t_tetri *tetri, char *buf, char *save)
   i = 0;
   p = 0;
   while (buf[i] != 0 && buf[i] != ' ')
-    save[p] = buf[i++];
+    save[p++] = buf[i++];
+  if (check_save(save, tetri) == 1)
+    return (1);
   tetri->width = my_getnbr(save);
   save = set_line_null(save, 4095);
   p = 0;
   i++;
   while (buf[i] != 0 && buf[i] != ' ')
-    save[p] = buf[i++];
+    save[p++] = buf[i++];
+  if (check_save(save, tetri) == 1)
+    return (1);
   tetri->height = my_getnbr(save);
   save = set_line_null(save, 4096);
   p = 0;
   i++;
   while (buf[i] != 0)
     save[p] = buf[i++];
+  if (check_save(save, tetri) == 1)
+    return (1);
    tetri->color = my_getnbr(save);
+   if (tetri->color > 7 || tetri->color < 1)
+     tetri->error = true;
+   return (0);
 }
 
 int		fill_tetri_carac(t_tetri *tetri, int fd, char *name)
@@ -44,7 +53,8 @@ int		fill_tetri_carac(t_tetri *tetri, int fd, char *name)
   save = set_line_null(save, 4095);
   if ((buf = get_next_line(fd)) == NULL)
     return (1);
-  take_nbr(tetri, buf, save);
+  if (take_nbr(tetri, buf, save) == 1)
+    return (1);
   if ((tetri->name = malloc(my_strlen(name) + 1)) == NULL)
     return (1);
   my_strcpy(tetri->name, name);
@@ -95,8 +105,16 @@ int		fill_tetri(char *path, t_tetri *tetri)
   while (++i < tetri->height)
     {
       if ((tetri->item[i] = get_next_line(fd)) == NULL)
-        return (1);
+        tetri->error = true;
+      if (tetri->item[i] == NULL)
+	tetri->error = true;
+      if (tetri->item[i] != NULL)
+	epurendstr(tetri->item[i]);
+      if (tetri->item[i] == NULL || my_strlen(tetri->item[i]) > tetri->width)
+	tetri->error = true;
     }
+  if (i > tetri->height)
+    tetri->error = true;
   close(fd);
   return (0);
 }
@@ -132,6 +150,7 @@ int		init_tetriminos(t_arglist *arg)
 	{
 	  if ((tetri = malloc(sizeof(t_tetri))) == NULL)
 	    return (1);
+	  tetri->error = false;
           if ((fill_tetri(dir->d_name, tetri)) == 1)
 	    return (1);
           if ((create_elem(i, arg, tetri)) == 1)

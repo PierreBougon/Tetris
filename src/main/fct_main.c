@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Mon Feb 29 20:02:47 2016 Clémenceau Cedric
-** Last update Sun Mar  6 15:48:36 2016 Clémenceau Cedric
+** Last update Sun Mar  6 18:26:10 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -27,7 +27,8 @@ int	init_data(t_data *data, char **av, int ac)
   init_tabscore(data->score.tab_score);
   data->win = initscr();
   clear();
-  data->sub_win = subwin(data->win, 20, 12, 1, POS_GAME_X);
+  data->sub_win = subwin(data->win, data->gamevar.win_height,
+			 data->gamevar.win_width + 2, 1, POS_GAME_X);
   if (data->boole == 0)
     data->sub_next = subwin(data->win, (data->gamevar.maxheight >= 4) ?
 			    data->gamevar.maxheight + 2 : 5,

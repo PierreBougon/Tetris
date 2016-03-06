@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Sun Mar  6 17:14:37 2016 bougon_p
+** Last update Sun Mar  6 19:45:32 2016 bougon_p
 */
 
 #ifndef	TETRIS_H_
@@ -235,6 +235,8 @@ void	init_tabgame(char **);
 void	my_free_tab(char **);
 void	set_null(int *, int);
 int	check_name(t_tetri *);
+int	check_save(char *, t_tetri *);
+void	epurendstr(char *);
 
 /*
 ** Print functions
