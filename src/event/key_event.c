@@ -5,12 +5,12 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Fri Mar  4 16:54:29 2016 bougon_p
-** Last update Sun Mar  6 16:03:10 2016 bougon_p
+** Last update Sun Mar  6 20:47:56 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
 
-int		get_key(t_data *data, int key, int *keys, t_tabkey *tab)
+int		get_key(t_data *data, int key, int *keys, t_tabkey *tab_game)
 {
   int           i;
 
@@ -23,5 +23,5 @@ int		get_key(t_data *data, int key, int *keys, t_tabkey *tab)
       if (i > 5)
         return (0);
     }
-  return (tab->tabkey[i](data, &data->tetri_ig));
+  return (tab_game->tabkey[i](data, &data->tetri_ig));
 }

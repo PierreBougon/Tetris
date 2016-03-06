@@ -5,12 +5,12 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Mar  3 10:30:28 2016 bougon_p
-** Last update Thu Mar  3 12:09:18 2016 bougon_p
+** Last update Sun Mar  6 20:46:33 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
 
-void	aff_all_tetris(int **tab, t_gamevar *gv, WINDOW *win)
+void	aff_all_tetris(int **map, t_gamevar *gv, WINDOW *win)
 {
   int	j;
   int	i;
@@ -21,10 +21,10 @@ void	aff_all_tetris(int **tab, t_gamevar *gv, WINDOW *win)
       i = -1;
       while (++i <= gv->win_width)
   	{
-  	  wattrset(win, COLOR_PAIR(tab[j][i]));
-  	  if (tab[j][i] >= 1 && tab[j][i] <= 7)
+  	  wattrset(win, COLOR_PAIR(map[j][i]));
+  	  if (map[j][i] >= 1 && map[j][i] <= 7)
             mvwaddch(win, j, i, '*');
-  	  wattroff(win, COLOR_PAIR(tab[j][i]));
+  	  wattroff(win, COLOR_PAIR(map[j][i]));
   	}
     }
   wrefresh(win);

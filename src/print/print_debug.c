@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Feb 25 21:16:32 2016 bougon_p
-** Last update Fri Feb 26 02:33:29 2016 bougon_p
+** Last update Sun Mar  6 19:12:27 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -15,8 +15,8 @@ void	print(t_tetri *tmp)
   /* int	i; */
   int	j;
 
-  j = 0;
   printf("ITEM HEIGHT = %d\n", tmp->height);
+  j = 0;
   while (j < tmp->height)
     {
       printf("%s\n", tmp->item[j++]);

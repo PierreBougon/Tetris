@@ -1,14 +1,16 @@
 /*
-** my_getnbr.c for getnbr in /home/bougon_p/rendu/PSU_2015_minitalk/lib/my
+** my_getnbr.c for minitalk in /home/clemen_j/Work/PSU/PSU_2015_minitalk
 **
-** Made by bougon_p
-** Login   <bougon_p@epitech.net>
+** Made by Clémenceau Cedric
+** Login   <clemen_j@epitech.net>
 **
-** Started on  Mon Feb  1 22:52:39 2016 bougon_p
-** Last update Mon Feb  1 23:18:35 2016 bougon_p
+** Started on  Mon Feb  1 22:57:04 2016 Clémenceau Cedric
+** Last update Sun Mar  6 20:13:32 2016 Clémenceau Cedric
 */
 
-int	my_getnbr(char *str)
+#include "struct.h"
+
+int	my_getnbr(char *str, int bool2)
 {
   int	nb;
   int	i;
@@ -17,16 +19,22 @@ int	my_getnbr(char *str)
   nb = 0;
   i = 0;
   boole = 0;
+  if (str == NULL)
+    return (free(str, 1);
   if (str[i] == '-')
     {
       nb = -nb;
       i++;
-      boole = i;
+      boole = 1;
     }
-  while (str[i] != 0)
+  if (str[i] < '0' || str[i] > '9')
+    return (1);
+  while (str[i])
     {
       nb = 10 * nb + (str[i] - 48);
       i++;
     }
-  return (boole == 1 ? -nb : nb);
+  if (bool2 == 1)
+    free(str);
+  return (boole == 1 ? 1 : nb);
 }

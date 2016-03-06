@@ -5,28 +5,28 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Wed Feb 24 00:50:18 2016 bougon_p
-** Last update Wed Mar  2 18:33:33 2016 Clémenceau Cedric
+** Last update Sun Mar  6 20:43:04 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
 
 char	**init_tab(int line, int col)
 {
-  char  **tab;
+  char  **tab_to_malloc;
   int   i;
 
   i = 0;
-  if ((tab = malloc(sizeof(char *) * (line + 1))) == NULL)
+  if ((tab_to_malloc = malloc(sizeof(char *) * (line + 1))) == NULL)
     return (NULL);
-  tab[line] = NULL;
+  tab_to_malloc[line] = NULL;
   while (i < line)
     {
-      if ((tab[i] = malloc(sizeof(char) * (col + 1))) == NULL)
+      if ((tab_to_malloc[i] = malloc(sizeof(char) * (col + 1))) == NULL)
         return (NULL);
-      tab[i][col] = 0;
+      tab_to_malloc[i][col] = 0;
       i++;
     }
-  return (tab);
+  return (tab_to_malloc);
 }
 
 void	load_tetriminos(char **tetrinext, WINDOW *sub_next)

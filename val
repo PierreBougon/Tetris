@@ -1,32 +1,72 @@
-==15995== Memcheck, a memory error detector
-==15995== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
-==15995== Using Valgrind-3.10.1 and LibVEX; rerun with -h for copyright info
-==15995== Command: ./tetris
-==15995== Parent PID: 3054
-==15995== 
-==15995== Conditional jump or move depends on uninitialised value(s)
-==15995==    at 0x404AFD: my_realloc (get_nl.c:22)
-==15995==    by 0x404DB8: fill_line (get_nl.c:79)
-==15995==    by 0x404EE7: get_next_line (get_nl.c:108)
-==15995==    by 0x403093: fill_tetri_carac (init_tetri.c:45)
-==15995==    by 0x403291: fill_tetri (init_tetri.c:90)
-==15995==    by 0x403424: init_tetriminos (init_tetri.c:135)
-==15995==    by 0x4023FA: init_data (fct_main.c:15)
-==15995==    by 0x401FE7: main (tetris.c:83)
-==15995== 
-==15995== 
-==15995== HEAP SUMMARY:
-==15995==     in use at exit: 75,916 bytes in 563 blocks
-==15995==   total heap usage: 44,510 allocs, 43,947 frees, 582,379 bytes allocated
-==15995== 
-==15995== LEAK SUMMARY:
-==15995==    definitely lost: 1,091 bytes in 48 blocks
-==15995==    indirectly lost: 1,570 bytes in 84 blocks
-==15995==      possibly lost: 0 bytes in 0 blocks
-==15995==    still reachable: 73,255 bytes in 431 blocks
-==15995==         suppressed: 0 bytes in 0 blocks
-==15995== Rerun with --leak-check=full to see details of leaked memory
-==15995== 
-==15995== For counts of detected and suppressed errors, rerun with: -v
-==15995== Use --track-origins=yes to see where uninitialised values come from
-==15995== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==31453== Memcheck, a memory error detector
+==31453== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==31453== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==31453== Command: ./tetris -d --m -w
+==31453== Parent PID: 23479
+==31453== 
+==31453== Conditional jump or move depends on uninitialised value(s)
+==31453==    at 0x40403B: my_realloc (get_nl.c:22)
+==31453==    by 0x4042F9: fill_line (get_nl.c:79)
+==31453==    by 0x404429: get_next_line (get_nl.c:108)
+==31453==    by 0x4025AE: fill_tetri_carac (init_tetri.c:45)
+==31453==    by 0x4027AC: fill_tetri (init_tetri.c:90)
+==31453==    by 0x40293F: init_tetriminos (init_tetri.c:135)
+==31453==    by 0x4018D0: init_data (fct_main.c:15)
+==31453==    by 0x4014BA: main (tetris.c:83)
+==31453== 
+==31453== Conditional jump or move depends on uninitialised value(s)
+==31453==    at 0x405D33: parsing_key (parsing.c:21)
+==31453==    by 0x405E73: parsing_arg_extanted (parsing.c:38)
+==31453==    by 0x40626E: parse_without_key (parsing.c:58)
+==31453==    by 0x4064B2: parsing_arg (parsing.c:92)
+==31453==    by 0x401B11: my_check_option (fct_main.c:58)
+==31453==    by 0x401930: init_data (fct_main.c:22)
+==31453==    by 0x4014BA: main (tetris.c:83)
+==31453== 
+==31453== Invalid read of size 1
+==31453==    at 0x405D2D: parsing_key (parsing.c:21)
+==31453==    by 0x405E73: parsing_arg_extanted (parsing.c:38)
+==31453==    by 0x40626E: parse_without_key (parsing.c:58)
+==31453==    by 0x4064B2: parsing_arg (parsing.c:92)
+==31453==    by 0x401B11: my_check_option (fct_main.c:58)
+==31453==    by 0x401930: init_data (fct_main.c:22)
+==31453==    by 0x4014BA: main (tetris.c:83)
+==31453==  Address 0x585df23 is 0 bytes after a block of size 51 alloc'd
+==31453==    at 0x4C28C50: malloc (in /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so)
+==31453==    by 0x40212C: init_tab (init.c:24)
+==31453==    by 0x406476: parsing_arg (parsing.c:89)
+==31453==    by 0x401B11: my_check_option (fct_main.c:58)
+==31453==    by 0x401930: init_data (fct_main.c:22)
+==31453==    by 0x4014BA: main (tetris.c:83)
+==31453== 
+==31453== 
+==31453== Process terminating with default action of signal 11 (SIGSEGV)
+==31453==  Access not within mapped region at address 0x5C4A000
+==31453==    at 0x405D2D: parsing_key (parsing.c:21)
+==31453==    by 0x405E73: parsing_arg_extanted (parsing.c:38)
+==31453==    by 0x40626E: parse_without_key (parsing.c:58)
+==31453==    by 0x4064B2: parsing_arg (parsing.c:92)
+==31453==    by 0x401B11: my_check_option (fct_main.c:58)
+==31453==    by 0x401930: init_data (fct_main.c:22)
+==31453==    by 0x4014BA: main (tetris.c:83)
+==31453==  If you believe this happened as a result of a stack
+==31453==  overflow in your program's main thread (unlikely but
+==31453==  possible), you can try to increase the size of the
+==31453==  main thread stack using the --main-stacksize= flag.
+==31453==  The main thread stack size used in this run was 8388608.
+==31453== 
+==31453== HEAP SUMMARY:
+==31453==     in use at exit: 2,058 bytes in 107 blocks
+==31453==   total heap usage: 244 allocs, 137 frees, 64,002 bytes allocated
+==31453== 
+==31453== LEAK SUMMARY:
+==31453==    definitely lost: 237 bytes in 25 blocks
+==31453==    indirectly lost: 0 bytes in 0 blocks
+==31453==      possibly lost: 0 bytes in 0 blocks
+==31453==    still reachable: 1,821 bytes in 82 blocks
+==31453==         suppressed: 0 bytes in 0 blocks
+==31453== Rerun with --leak-check=full to see details of leaked memory
+==31453== 
+==31453== For counts of detected and suppressed errors, rerun with: -v
+==31453== Use --track-origins=yes to see where uninitialised values come from
+==31453== ERROR SUMMARY: 4112651 errors from 3 contexts (suppressed: 0 from 0)
