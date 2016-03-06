@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Sat Mar  5 15:15:23 2016 Clémenceau Cedric
-** Last update Sat Mar  5 16:40:09 2016 Clémenceau Cedric
+** Last update Sun Mar  6 16:02:11 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -40,7 +40,7 @@ int     init_data_next(t_data *data)
   data->score.init_time = time(NULL);
   data->score.tpause = 0;
   data->score.tlastpause = 0;
-  data->pause = FALSE;
+  data->pause = false;
   data->score.score = 0;
   data->score.line = 0;
   if ((data->opt.to_check = init_tab(20, 12)) == NULL)

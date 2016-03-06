@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Sun Mar  6 00:48:37 2016 bougon_p
+** Last update Sun Mar  6 16:01:07 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -31,7 +31,7 @@ int	main_loop(t_data *data)
     {
       protect_me(data);
       refresh();
-      if (data->pause == FALSE)
+      if (data->pause == false)
 	{
 	  if ((refind = find_new_tetri(data, refind)) == -2)
 	    return (1);

@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sat Feb 27 17:52:04 2016 bougon_p
-** Last update Thu Mar  3 10:01:41 2016 Clémenceau Cedric
+** Last update Sun Mar  6 15:52:24 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -20,7 +20,7 @@ int	*init_keys()
   keys[1] = KEY_DOWN;
   keys[2] = KEY_LEFT;
   keys[3] = KEY_RIGHT;
-  keys[4] = KEY_ESC;
+  keys[4] = 'q';
   keys[5] = KEY_SPACE;
   return (keys);
 }

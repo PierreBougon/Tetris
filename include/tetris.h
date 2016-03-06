@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Sun Mar  6 00:40:31 2016 bougon_p
+** Last update Sun Mar  6 16:37:35 2016 bougon_p
 */
 
 #ifndef	TETRIS_H_
@@ -69,6 +69,7 @@ typedef struct		s_tetri
   int			pos_y;
   char			*name;
   char			**item;
+  bool			error;
 }			t_tetri;
 
 typedef struct		s_score
@@ -227,6 +228,7 @@ int	my_strlen(char *);
 void	init_tabgame(char **);
 void	my_free_tab(char **);
 void	set_null(int *, int);
+int	check_name(t_tetri *);
 
 /*
 ** Print functions

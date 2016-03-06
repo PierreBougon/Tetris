@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Fri Feb 26 13:44:01 2016 bougon_p
-** Last update Sun Mar  6 00:17:28 2016 bougon_p
+** Last update Sun Mar  6 16:58:45 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -45,6 +45,10 @@ void		chose_tetri(t_data *data, t_tetri *tetri, t_arglist *tetriminos)
   j = 0;
   tmp = tetriminos->root;
   while (j++ < i)
+    {
+      tmp = tmp->next;
+    }
+  while (tmp->data->error == true)
     tmp = tmp->next;
   tetri->width = tmp->data->width;
   tetri->height = tmp->data->height;

@@ -5,7 +5,7 @@
 ## Login   <bougon_p@epitech.net>
 ## 
 ## Started on  Tue Feb 23 17:06:22 2016 bougon_p
-## Last update Sun Mar  6 00:20:35 2016 bougon_p
+## Last update Sun Mar  6 16:32:43 2016 bougon_p
 ##
 
 # USEFUL VARIABLES
@@ -39,6 +39,7 @@ DEBUG		=	src/debug/
 
 SRC		=	$(MAIN)tetris.c \
 			$(MAIN)error.c \
+			$(MAIN)tetri_error.c \
 			$(MAIN)fct_main.c \
 			$(MAIN)free.c \
 			$(MAIN)fill.c \

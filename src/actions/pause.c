@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Fri Mar  4 14:21:22 2016 bougon_p
-** Last update Fri Mar  4 14:31:22 2016 bougon_p
+** Last update Sun Mar  6 16:01:41 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -21,14 +21,14 @@ int	m_pause(t_data *data, t_arglist *tetri_ig)
 {
 
   tetri_ig = tetri_ig;
-  if (data->pause == FALSE)
+  if (data->pause == false)
     {
-      data->pause = TRUE;
+      data->pause = true;
       data->score.init_tpause = time(NULL);
     }
   else
     {
-      data->pause = FALSE;
+      data->pause = false;
       data->score.tlastpause = data->score.tpause;
     }
   return (0);

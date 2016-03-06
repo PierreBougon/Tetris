@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 18:56:41 2016 bougon_p
-** Last update Sun Mar  6 01:15:32 2016 bougon_p
+** Last update Sun Mar  6 16:04:34 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -14,7 +14,7 @@ int	my_putstr_err(char *str)
 {
   endwin();
   write(2, str, my_strlen(str));
-  return(1);
+  return (1);
 }
 
 int	launch_main(t_data *data, int game)
@@ -30,11 +30,11 @@ int	launch_main(t_data *data, int game)
       free_list(&data->tetri_ig);
       clear();
       mvprintw(getmaxy(data->win) / 2,
-	       ((getmaxx(data->win) / 2) - 7),
+	       ((getmaxx(data->win) / 2) - 11),
 	       "You lose ! Try again !!");
       mvprintw(getmaxy(data->win) / 2 + 1,
-	       ((getmaxx(data->win) / 2) - 7),
-	       "Press a key to restart the game");
+	       ((getmaxx(data->win) / 2) - 16),
+	       "Press any key to restart the game");
       refresh();
       my_infinite_loop();
       clear();
@@ -43,7 +43,7 @@ int	launch_main(t_data *data, int game)
 	my_strncpy(&data->score.tab_score[3][13 + i], " ", 1);
       data->score.score = 0;
     }
-  return(main_loop(data));
+  return (main_loop(data));
 }
 
 int	config(t_data *data)
@@ -52,11 +52,11 @@ int	config(t_data *data)
   int	game;
 
   noecho();
-  keypad(stdscr, TRUE);
+  keypad(stdscr, true);
   data->keys = init_keys();
   init_keytab(&data->tabkey);
-  nodelay(data->win, TRUE);
-  if (has_colors() == FALSE)
+  nodelay(data->win, true);
+  if (has_colors() == false)
     {
       endwin();
       return (my_putstr_err("Your terminal does not support color\n"), 1);
