@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Thu Mar  3 15:11:04 2016 Clémenceau Cedric
-** Last update Sat Mar  5 14:55:20 2016 Clémenceau Cedric
+** Last update Sun Mar  6 17:05:35 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -78,7 +78,7 @@ int	parsing_arg(char **opt, t_data *data)
   i = 0;
   j = 0;
   while (opt[j++]);
-  if ((data->opt.arg = init_tab(j, 14)) == NULL)
+  if ((data->opt.arg = init_tab(j, 15)) == NULL)
     return (1);
   while (opt[++i])
     if ((parse_without_key(data, opt, &i)) == 1)
@@ -93,6 +93,8 @@ int			my_infinite_loop()
   char			c;
 
   if ((ioctl(0, TCGETS, &start)) < 0)
+    return (1);
+  if ((ioctl(0, TCGETS, &end)) < 0)
     return (1);
   end.c_lflag &= ~ECHO;
   end.c_lflag &= ~ICANON;
