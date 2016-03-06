@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Sat Mar  5 15:15:23 2016 Clémenceau Cedric
-** Last update Sun Mar  6 16:02:11 2016 bougon_p
+** Last update Sun Mar  6 17:14:20 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -43,7 +43,7 @@ int     init_data_next(t_data *data)
   data->pause = false;
   data->score.score = 0;
   data->score.line = 0;
-  if ((data->opt.to_check = init_tab(20, 12)) == NULL)
+  if ((data->opt.to_check = init_tab(20, 14)) == NULL)
     return (1);
   fill_to_check(data);
   return (0);

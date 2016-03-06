@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Mon Feb 29 20:02:47 2016 Clémenceau Cedric
-** Last update Sat Mar  5 18:15:04 2016 Clémenceau Cedric
+** Last update Sun Mar  6 15:48:36 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -17,10 +17,12 @@ int	init_data(t_data *data, char **av, int ac)
   check_max(data);
   data->gamevar.win_width = 10;
   data->gamevar.win_height = 20;
+  init_base(data);
   if (ac > 1)
     if ((my_check_option(data, av)) == 1)
       return (1);
-  init_base(data);
+  data->tab_game = init_tab_game(data->gamevar.win_height,
+				 data->gamevar.win_width);
   data->score.tab_score = init_tab(10, 20);
   init_tabscore(data->score.tab_score);
   data->win = initscr();
@@ -31,7 +33,7 @@ int	init_data(t_data *data, char **av, int ac)
 			    data->gamevar.maxheight + 2 : 5,
 			    (data->gamevar.maxwidth >= 7) ?
 			    data->gamevar.maxwidth + 2 : 8,
-			    1, POS_GAME_X + data->gamevar.win_width + 5);
+			    1, POS_GAME_X + 15);
   return (0);
 }
 
@@ -50,45 +52,28 @@ int	help(t_data *data, char *str)
 
 int	my_check_option(t_data *data, char **option)
 {
-  int	i;
-  int	j;
-  int	(*tetris_tab[6])(t_data *, char *);
-
-  i = 1;
-  j = 0;
-  /* if ((check_arg()) == 1) */
-  /*   return (1); */
+  if ((data->tetris_tab = malloc(sizeof(data->tetris_tab) * 6)) == NULL)
+    return (1);
   if ((parsing_arg(option, data)) == 1)
     return (1);
-  tetris_tab[0] = help;
-  tetris_tab[1] = debug_mode;
-  tetris_tab[2] = debug_mode;
-  tetris_tab[3] = map_size;
-  tetris_tab[4] = without_next;
-  tetris_tab[5] = without_next;
-  /* tetris_tab[1] = level; */
+  data->tetris_tab[0] = help;
+  data->tetris_tab[1] = debug_mode;
+  data->tetris_tab[2] = map_size;
+  data->tetris_tab[3] = without_next;
+  data->tetris_tab[4] = without_next;
+  data->tetris_tab[5] = level;
   /* tetris_tab[2] = key_left; */
   /* tetris_tab[3] = key_right; */
   /* tetris_tab[4] = key_turn; */
   /* tetris_tab[5] = key_drop; */
   /* tetris_tab[6] = key_quit; */
   /* tetris_tab[7] = key_pause; */
-  while (data->opt.arg[i])
-    {
-      j = 0;
-      while (data->opt.to_check[j])
-  	if (my_strcmp(data->opt.arg[i], data->opt.to_check[j]) == 0)
-  	  {
-  	    if ((tetris_tab[j](data, data->opt.entered_key)) == 1)
-	      return (1);
-  	    j++;
-  	  }
-  	else
-  	  j++;
-      /* if (j > 5) */
-      /* 	return (my_putstr("No arguments valaible\n"), 1); */
-      i++;
-    }
+  if ((check_arg(option, data, 0)) == 1)
+    return (1);
+  if ((browse_tab(data)) == 1)
+    return (1);
+  if ((check_arg(option, data, 1)) == 1)
+    return (1);
   return (0);
 }
 

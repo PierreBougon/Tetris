@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Sun Mar  6 16:37:35 2016 bougon_p
+** Last update Sun Mar  6 17:14:37 2016 bougon_p
 */
 
 #ifndef	TETRIS_H_
@@ -17,6 +17,9 @@
 # include "my.h"
 # include "get_next_line.h"
 
+# include <ncurses.h>
+# include <curses.h>
+/* # include <term.h> */
 # include <time.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -26,8 +29,6 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-# include <ncurses.h>
-# include <curses.h>
 # include <termios.h>
 # include <sys/ioctl.h>
 # include <stdbool.h>
@@ -36,7 +37,7 @@
 ** DEFINES
 */
 
-# define KEY_ESC 27
+# define KEY_ESC 'q'
 # define KEY_SPACE ' '
 
 # define POS_GAME_X 25
@@ -86,6 +87,7 @@ typedef struct		s_score
   int			line;
 }			t_score;
 
+
 typedef struct s_data t_data;
 
 typedef struct  s_tabkey
@@ -116,30 +118,34 @@ typedef struct		s_data
   int			*keys;
   int			boole;
   bool			pause;
+  int			(**tetris_tab)(t_data *, char *);
 }			t_data;
 
 /*
 ** Debug Mode
 */
 
-void	init_base(t_data *);
+int	check_arg(char **, t_data *, int);
+int     browse_tab(t_data *);
+int	level(t_data *, char *);
 int	map_size(t_data *, char *);
 int	without_next(t_data *, char *);
 int	init_data_next(t_data *);
 int	my_infinite_loop();
 int	parsing_arg(char **, t_data *);
 int	config_key(t_data *);
+int	help(t_data *, char *);
+int	debug_mode(t_data *, char *);
+int	init_data(t_data *, char **, int);
+int	my_check_option(t_data *, char **);
+void	init_base(t_data *);
 void	my_putstr_keys(t_data *);
 void	my_putstr_keys_suite(t_data *);
-int	help(t_data *, char *);
 void    boole_next(t_data *, char *);
 void	aff_next(t_data *);
 void	aff_keys(t_data *);
 void	my_show_list(t_arglist *);
 void	aff_tetriminos(t_data *);
-int	debug_mode(t_data *, char *);
-int	init_data(t_data *, char **, int);
-int	my_check_option(t_data *, char **);
 
 /*
 ** TETRIS letter functions

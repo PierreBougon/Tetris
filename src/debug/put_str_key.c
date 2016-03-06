@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Thu Mar  3 10:54:38 2016 Clémenceau Cedric
-** Last update Sat Mar  5 16:05:12 2016 Clémenceau Cedric
+** Last update Sun Mar  6 00:00:45 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -21,7 +21,7 @@ int	config_key(t_data *data)
   my_strcpy(data->key[1], "^[[C");
   my_strcpy(data->key[2], "^[[A");
   my_strcpy(data->key[3], "^[[B");
-  my_strcpy(data->key[4], "^[");
+  my_strcpy(data->key[4], "q");
   my_strcpy(data->key[5], " ");
   while (data->key[i])
     {
@@ -58,6 +58,7 @@ void	protect_me(t_data *data)
 	mvprintw(maxy / 2, ((maxx / 2) - 7),  "Window too short");
 	refresh();
 	erase();
+	usleep(10);
       }
   if (maxy < data->gamevar.win_height + 10)
     while ((maxy = getmaxy(data->win)) < (data->gamevar.win_height + 10))
@@ -66,5 +67,6 @@ void	protect_me(t_data *data)
 	mvprintw(maxy / 2, ((maxx / 2) - 7),  "Window too short");
 	refresh();
 	erase();
+	usleep(10);
       }
 }
