@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Sat Mar  5 22:07:39 2016 Clémenceau Cedric
-** Last update Sun Mar  6 16:45:12 2016 Clémenceau Cedric
+** Last update Sun Mar  6 20:39:00 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -23,17 +23,14 @@ int	browse_tab(t_data *data)
 	{
 	  if (my_strcmp(data->opt.arg[i], data->opt.to_check[j]) == 0)
 	    {
-	      /* if ((my_strcmp(data->opt.arg[i], "-d")) == 0 || */
-	      /* 	 (my_strcmp(data->opt.arg[i], "--debug")) == 0) */
-	      /* 	j++; */
-	      /* else */
-		if ((data->tetris_tab[j](data, data->opt.entered_key)) == 1)
-		  return (1);
+	      if ((data->tetris_tab[j](data, data->opt.entered_key)) == 1)
+		return (1);
 	      j++;
 	    }
 	  else
 	    j++;
 	}
+
       j = 3;
       i++;
     }

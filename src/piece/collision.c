@@ -5,12 +5,12 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Mar  3 13:53:44 2016 bougon_p
-** Last update Sat Mar  5 23:53:39 2016 bougon_p
+** Last update Sun Mar  6 20:47:25 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
 
-int		collision_drop(t_tetri *itemdata, int **tab, int p)
+int		collision_drop(t_tetri *itemdata, int **tab_game, int p)
 {
   int           i;
   int		n;
@@ -26,9 +26,9 @@ int		collision_drop(t_tetri *itemdata, int **tab, int p)
 	  while (++n <= p)
 	    {
 	      if (itemdata->item[k][i] == '*'
-		  && tab[itemdata->pos_y + k + 1 + n]
+		  && tab_game[itemdata->pos_y + k + 1 + n]
 		  [i + itemdata->pos_x] >= 1
-		  && tab[itemdata->pos_y + k + 1 + n]
+		  && tab_game[itemdata->pos_y + k + 1 + n]
 		  [i + itemdata->pos_x] <= 7)
 		return (1);
 	    }
@@ -37,7 +37,7 @@ int		collision_drop(t_tetri *itemdata, int **tab, int p)
   return (0);
 }
 
-int		collision_right(t_tetri *itemdata, int **tab)
+int		collision_right(t_tetri *itemdata, int **tab_game)
 {
   int           j;
 
@@ -45,14 +45,14 @@ int		collision_right(t_tetri *itemdata, int **tab)
   while (++j < itemdata->height)
     {
       if (itemdata->item[j][itemdata->width - 1] == '*'
-          && tab[j + itemdata->pos_y][itemdata->pos_x + itemdata->width] >= 1
-          && tab[j + itemdata->pos_y][itemdata->pos_x + itemdata->width] <= 7)
+          && tab_game[j + itemdata->pos_y][itemdata->pos_x + itemdata->width] >= 1
+          && tab_game[j + itemdata->pos_y][itemdata->pos_x + itemdata->width] <= 7)
         return (1);
     }
   return (0);
 }
 
-int		collision_left(t_tetri *itemdata, int **tab)
+int		collision_left(t_tetri *itemdata, int **tab_game)
 {
   int           j;
 
@@ -60,14 +60,14 @@ int		collision_left(t_tetri *itemdata, int **tab)
   while (++j < itemdata->height)
     {
       if (itemdata->item[j][0] == '*'
-          && tab[j + itemdata->pos_y][itemdata->pos_x - 1] >= 1
-          && tab[j + itemdata->pos_y][itemdata->pos_x - 1] <= 7)
+          && tab_game[j + itemdata->pos_y][itemdata->pos_x - 1] >= 1
+          && tab_game[j + itemdata->pos_y][itemdata->pos_x - 1] <= 7)
         return (1);
     }
   return (0);
 }
 
-int		collision(t_tetri *itemdata, int **tab)
+int		collision(t_tetri *itemdata, int **tab_game)
 {
   int           i;
   int		n;
@@ -79,9 +79,9 @@ int		collision(t_tetri *itemdata, int **tab)
       while (++i < itemdata->width)
 	{
 	  if (itemdata->item[n][i] == '*'
-	      && tab[itemdata->pos_y + n + 1]
+	      && tab_game[itemdata->pos_y + n + 1]
 	      [i + itemdata->pos_x] >= 1
-	      && tab[itemdata->pos_y + n + 1]
+	      && tab_game[itemdata->pos_y + n + 1]
 	      [i + itemdata->pos_x] <= 7)
 	    return (1);
 	}

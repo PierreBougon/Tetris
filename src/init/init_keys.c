@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sat Feb 27 17:52:04 2016 bougon_p
-** Last update Sun Mar  6 15:52:24 2016 bougon_p
+** Last update Sun Mar  6 20:44:17 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -25,7 +25,7 @@ int	*init_keys()
   return (keys);
 }
 
-int	init_keytab(t_tabkey *tab)
+int	init_keytab(t_tabkey *tab_key)
 {
   int	(**tabkey)(t_data *, t_arglist*);
 
@@ -37,6 +37,6 @@ int	init_keytab(t_tabkey *tab)
   tabkey[3] = &move_right;
   tabkey[4] = &quit;
   tabkey[5] = &m_pause;
-  tab->tabkey = tabkey;
+  tab_key->tabkey = tabkey;
   return (0);
 }

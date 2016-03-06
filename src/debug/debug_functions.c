@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Sat Mar  5 16:21:34 2016 Clémenceau Cedric
-** Last update Sat Mar  5 22:28:35 2016 Clémenceau Cedric
+** Last update Sun Mar  6 20:14:14 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -20,8 +20,10 @@ int	map_size(t_data *data, char *enter)
   while (enter[i] != ',' && enter[i] != '\0')
     i++;
   enter[i++] = '\0';
-  height = my_getnbr(enter);
-  width = my_getnbr(&enter[i]);
+  if ((height = my_getnbr(enter)) == 1)
+    return (1);
+  if ((width = my_getnbr(&enter[i])) == 1)
+    return (1);
   data->gamevar.win_width = width;
   data->gamevar.win_height = height;
   return (0);

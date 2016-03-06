@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Mon Feb 29 20:02:47 2016 Clémenceau Cedric
-** Last update Sun Mar  6 18:26:10 2016 bougon_p
+** Last update Sun Mar  6 20:54:14 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -34,7 +34,7 @@ int	init_data(t_data *data, char **av, int ac)
 			    data->gamevar.maxheight + 2 : 5,
 			    (data->gamevar.maxwidth >= 7) ?
 			    data->gamevar.maxwidth + 2 : 8,
-			    1, POS_GAME_X + 15);
+			    1, POS_GAME_X + data->gamevar.win_width + 5);
   return (0);
 }
 
@@ -53,22 +53,11 @@ int	help(t_data *data, char *str)
 
 int	my_check_option(t_data *data, char **option)
 {
-  if ((data->tetris_tab = malloc(sizeof(data->tetris_tab) * 6)) == NULL)
+  if ((data->tetris_tab = malloc(sizeof(data->tetris_tab) * 7)) == NULL)
     return (1);
   if ((parsing_arg(option, data)) == 1)
     return (1);
-  data->tetris_tab[0] = help;
-  data->tetris_tab[1] = debug_mode;
-  data->tetris_tab[2] = map_size;
-  data->tetris_tab[3] = without_next;
-  data->tetris_tab[4] = without_next;
-  data->tetris_tab[5] = level;
-  /* tetris_tab[2] = key_left; */
-  /* tetris_tab[3] = key_right; */
-  /* tetris_tab[4] = key_turn; */
-  /* tetris_tab[5] = key_drop; */
-  /* tetris_tab[6] = key_quit; */
-  /* tetris_tab[7] = key_pause; */
+  fill_tab(data);
   if ((check_arg(option, data, 0)) == 1)
     return (1);
   if ((browse_tab(data)) == 1)

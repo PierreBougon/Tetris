@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Thu Mar  3 15:11:04 2016 Clémenceau Cedric
-** Last update Sun Mar  6 17:05:35 2016 Clémenceau Cedric
+** Last update Sun Mar  6 19:05:07 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -74,11 +74,19 @@ int	parsing_arg(char **opt, t_data *data)
 {
   int	i;
   int	j;
+  int	tmp;
 
-  i = 0;
   j = 0;
+  tmp = 0;
   while (opt[j++]);
-  if ((data->opt.arg = init_tab(j, 15)) == NULL)
+    {
+      i = 0;
+      while (opt[j][i++]);
+      if (tmp < i)
+    	tmp = i;
+    }
+  i = 0;
+  if ((data->opt.arg = init_tab(j, tmp)) == NULL)
     return (1);
   while (opt[++i])
     if ((parse_without_key(data, opt, &i)) == 1)
