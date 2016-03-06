@@ -1,194 +1,54 @@
-==3822== Memcheck, a memory error detector
-==3822== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
-==3822== Using Valgrind-3.10.1 and LibVEX; rerun with -h for copyright info
-==3822== Command: ./tetris --map-size=10,20
-==3822== Parent PID: 3742
-==3822== 
-==3822== Invalid write of size 1
-==3822==    at 0x4045B9: my_strcpy (my_strcpy.c:22)
-==3822==    by 0x40252D: fill_to_check (fill.c:19)
-==3822==    by 0x4027B0: init_data_next (fill.c:48)
-==3822==    by 0x401E5E: main (tetris.c:57)
-==3822==  Address 0x51fc27d is 0 bytes after a block of size 13 alloc'd
-==3822==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==3822==    by 0x402838: init_tab (init.c:24)
-==3822==    by 0x402782: init_data_next (fill.c:46)
-==3822==    by 0x401E5E: main (tetris.c:57)
-==3822== 
-==3822== Invalid write of size 1
-==3822==    at 0x4045E0: my_strcpy (my_strcpy.c:25)
-==3822==    by 0x40252D: fill_to_check (fill.c:19)
-==3822==    by 0x4027B0: init_data_next (fill.c:48)
-==3822==    by 0x401E5E: main (tetris.c:57)
-==3822==  Address 0x51fc27e is 1 bytes after a block of size 13 alloc'd
-==3822==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==3822==    by 0x402838: init_tab (init.c:24)
-==3822==    by 0x402782: init_data_next (fill.c:46)
-==3822==    by 0x401E5E: main (tetris.c:57)
-==3822== 
-==3822== Conditional jump or move depends on uninitialised value(s)
-==3822==    at 0x40470D: my_realloc (get_nl.c:22)
-==3822==    by 0x4049C8: fill_line (get_nl.c:79)
-==3822==    by 0x404AF7: get_next_line (get_nl.c:108)
-==3822==    by 0x402CAF: fill_tetri_carac (init_tetri.c:45)
-==3822==    by 0x402EA1: fill_tetri (init_tetri.c:89)
-==3822==    by 0x403034: init_tetriminos (init_tetri.c:134)
-==3822==    by 0x402036: init_data (fct_main.c:15)
-==3822==    by 0x401EC5: main (tetris.c:63)
-==3822== 
-==3822== Invalid write of size 1
-==3822==    at 0x4045B9: my_strcpy (my_strcpy.c:22)
-==3822==    by 0x406393: parsing_arg_extanted (parsing.c:37)
-==3822==    by 0x4067B9: parse_without_key (parsing.c:58)
-==3822==    by 0x4069B4: parsing_arg (parsing.c:84)
-==3822==    by 0x402213: my_check_option (fct_main.c:61)
-==3822==    by 0x40208A: init_data (fct_main.c:21)
-==3822==    by 0x401EC5: main (tetris.c:63)
-==3822==  Address 0x520b6ef is 0 bytes after a block of size 15 alloc'd
-==3822==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==3822==    by 0x402838: init_tab (init.c:24)
-==3822==    by 0x406979: parsing_arg (parsing.c:81)
-==3822==    by 0x402213: my_check_option (fct_main.c:61)
-==3822==    by 0x40208A: init_data (fct_main.c:21)
-==3822==    by 0x401EC5: main (tetris.c:63)
-==3822== 
-==3822== Invalid write of size 1
-==3822==    at 0x4045E0: my_strcpy (my_strcpy.c:25)
-==3822==    by 0x406393: parsing_arg_extanted (parsing.c:37)
-==3822==    by 0x4067B9: parse_without_key (parsing.c:58)
-==3822==    by 0x4069B4: parsing_arg (parsing.c:84)
-==3822==    by 0x402213: my_check_option (fct_main.c:61)
-==3822==    by 0x40208A: init_data (fct_main.c:21)
-==3822==    by 0x401EC5: main (tetris.c:63)
-==3822==  Address 0x520b6f0 is 1 bytes after a block of size 15 alloc'd
-==3822==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==3822==    by 0x402838: init_tab (init.c:24)
-==3822==    by 0x406979: parsing_arg (parsing.c:81)
-==3822==    by 0x402213: my_check_option (fct_main.c:61)
-==3822==    by 0x40208A: init_data (fct_main.c:21)
-==3822==    by 0x401EC5: main (tetris.c:63)
-==3822== 
-==3822== Invalid read of size 1
-==3822==    at 0x406E0A: my_strlen (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==3822==    by 0x404657: my_strdup (my_strcpy.c:49)
-==3822==    by 0x4062A8: parsing_key (parsing.c:25)
-==3822==    by 0x4063C1: parsing_arg_extanted (parsing.c:38)
-==3822==    by 0x4067B9: parse_without_key (parsing.c:58)
-==3822==    by 0x4069B4: parsing_arg (parsing.c:84)
-==3822==    by 0x402213: my_check_option (fct_main.c:61)
-==3822==    by 0x40208A: init_data (fct_main.c:21)
-==3822==    by 0x401EC5: main (tetris.c:63)
-==3822==  Address 0x520b6ef is 0 bytes after a block of size 15 alloc'd
-==3822==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==3822==    by 0x402838: init_tab (init.c:24)
-==3822==    by 0x406979: parsing_arg (parsing.c:81)
-==3822==    by 0x402213: my_check_option (fct_main.c:61)
-==3822==    by 0x40208A: init_data (fct_main.c:21)
-==3822==    by 0x401EC5: main (tetris.c:63)
-==3822== 
-==3822== Invalid read of size 1
-==3822==    at 0x40630B: parsing_key (parsing.c:27)
-==3822==    by 0x4063C1: parsing_arg_extanted (parsing.c:38)
-==3822==    by 0x4067B9: parse_without_key (parsing.c:58)
-==3822==    by 0x4069B4: parsing_arg (parsing.c:84)
-==3822==    by 0x402213: my_check_option (fct_main.c:61)
-==3822==    by 0x40208A: init_data (fct_main.c:21)
-==3822==    by 0x401EC5: main (tetris.c:63)
-==3822==  Address 0x520b6ef is 0 bytes after a block of size 15 alloc'd
-==3822==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==3822==    by 0x402838: init_tab (init.c:24)
-==3822==    by 0x406979: parsing_arg (parsing.c:81)
-==3822==    by 0x402213: my_check_option (fct_main.c:61)
-==3822==    by 0x40208A: init_data (fct_main.c:21)
-==3822==    by 0x401EC5: main (tetris.c:63)
-==3822== 
-==3822== Invalid read of size 1
-==3822==    at 0x4062F9: parsing_key (parsing.c:28)
-==3822==    by 0x4063C1: parsing_arg_extanted (parsing.c:38)
-==3822==    by 0x4067B9: parse_without_key (parsing.c:58)
-==3822==    by 0x4069B4: parsing_arg (parsing.c:84)
-==3822==    by 0x402213: my_check_option (fct_main.c:61)
-==3822==    by 0x40208A: init_data (fct_main.c:21)
-==3822==    by 0x401EC5: main (tetris.c:63)
-==3822==  Address 0x520b6ef is 0 bytes after a block of size 15 alloc'd
-==3822==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==3822==    by 0x402838: init_tab (init.c:24)
-==3822==    by 0x406979: parsing_arg (parsing.c:81)
-==3822==    by 0x402213: my_check_option (fct_main.c:61)
-==3822==    by 0x40208A: init_data (fct_main.c:21)
-==3822==    by 0x401EC5: main (tetris.c:63)
-==3822== 
-==3822== Invalid read of size 1
-==3822==    at 0x4E74517: ____strtol_l_internal (strtol_l.c:298)
-==3822==    by 0x4E70F5F: atoi (atoi.c:27)
-==3822==    by 0x406B48: map_size (debug_functions.c:25)
-==3822==    by 0x4022C6: my_check_option (fct_main.c:82)
-==3822==    by 0x40208A: init_data (fct_main.c:21)
-==3822==    by 0x401EC5: main (tetris.c:63)
-==3822==  Address 0x520b786 is 0 bytes after a block of size 6 alloc'd
-==3822==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==3822==    by 0x40466A: my_strdup (my_strcpy.c:50)
-==3822==    by 0x4062A8: parsing_key (parsing.c:25)
-==3822==    by 0x4063C1: parsing_arg_extanted (parsing.c:38)
-==3822==    by 0x4067B9: parse_without_key (parsing.c:58)
-==3822==    by 0x4069B4: parsing_arg (parsing.c:84)
-==3822==    by 0x402213: my_check_option (fct_main.c:61)
-==3822==    by 0x40208A: init_data (fct_main.c:21)
-==3822==    by 0x401EC5: main (tetris.c:63)
-==3822== 
-==3822== Conditional jump or move depends on uninitialised value(s)
-==3822==    at 0x406D96: my_strcmp (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==3822==    by 0x4022A1: my_check_option (fct_main.c:80)
-==3822==    by 0x40208A: init_data (fct_main.c:21)
-==3822==    by 0x401EC5: main (tetris.c:63)
-==3822== 
-==3822== Conditional jump or move depends on uninitialised value(s)
-==3822==    at 0x4022A4: my_check_option (fct_main.c:80)
-==3822==    by 0x40208A: init_data (fct_main.c:21)
-==3822==    by 0x401EC5: main (tetris.c:63)
-==3822== 
-==3822== Invalid read of size 8
-==3822==    at 0x4057DC: collision (collision.c:73)
-==3822==    by 0x40532C: need_to_stop (stop_piece.c:38)
-==3822==    by 0x401DF7: main_loop (tetris.c:43)
-==3822==    by 0x40200C: config (error.c:36)
-==3822==    by 0x401EE0: main (tetris.c:65)
-==3822==  Address 0x520b7f8 is 24 bytes after a block of size 16 in arena "client"
-==3822== 
-==3822== Invalid read of size 4
-==3822==    at 0x4057F4: collision (collision.c:73)
-==3822==    by 0x40532C: need_to_stop (stop_piece.c:38)
-==3822==    by 0x401DF7: main_loop (tetris.c:43)
-==3822==    by 0x40200C: config (error.c:36)
-==3822==    by 0x401EE0: main (tetris.c:65)
-==3822==  Address 0x6c is not stack'd, malloc'd or (recently) free'd
-==3822== 
-==3822== 
-==3822== Process terminating with default action of signal 11 (SIGSEGV)
-==3822==  Access not within mapped region at address 0x6C
-==3822==    at 0x4057F4: collision (collision.c:73)
-==3822==    by 0x40532C: need_to_stop (stop_piece.c:38)
-==3822==    by 0x401DF7: main_loop (tetris.c:43)
-==3822==    by 0x40200C: config (error.c:36)
-==3822==    by 0x401EE0: main (tetris.c:65)
-==3822==  If you believe this happened as a result of a stack
-==3822==  overflow in your program's main thread (unlikely but
-==3822==  possible), you can try to increase the size of the
-==3822==  main thread stack using the --main-stacksize= flag.
-==3822==  The main thread stack size used in this run was 8388608.
-==3822== 
-==3822== HEAP SUMMARY:
-==3822==     in use at exit: 79,776 bytes in 536 blocks
-==3822==   total heap usage: 644 allocs, 108 frees, 133,973 bytes allocated
-==3822== 
-==3822== LEAK SUMMARY:
-==3822==    definitely lost: 156 bytes in 17 blocks
-==3822==    indirectly lost: 0 bytes in 0 blocks
-==3822==      possibly lost: 0 bytes in 0 blocks
-==3822==    still reachable: 79,620 bytes in 519 blocks
-==3822==         suppressed: 0 bytes in 0 blocks
-==3822== Rerun with --leak-check=full to see details of leaked memory
-==3822== 
-==3822== For counts of detected and suppressed errors, rerun with: -v
-==3822== Use --track-origins=yes to see where uninitialised values come from
-==3822== ERROR SUMMARY: 53 errors from 13 contexts (suppressed: 0 from 0)
+==4360== Memcheck, a memory error detector
+==4360== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==4360== Using Valgrind-3.10.1 and LibVEX; rerun with -h for copyright info
+==4360== Command: ./tetris
+==4360== Parent PID: 2286
+==4360== 
+==4360== Invalid write of size 1
+==4360==    at 0x404570: my_strcpy (my_strcpy.c:22)
+==4360==    by 0x4024E4: fill_to_check (fill.c:19)
+==4360==    by 0x402767: init_data_next (fill.c:48)
+==4360==    by 0x401E0E: main (tetris.c:57)
+==4360==  Address 0x51fc27d is 0 bytes after a block of size 13 alloc'd
+==4360==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4360==    by 0x4027EF: init_tab (init.c:24)
+==4360==    by 0x402739: init_data_next (fill.c:46)
+==4360==    by 0x401E0E: main (tetris.c:57)
+==4360== 
+==4360== Invalid write of size 1
+==4360==    at 0x404597: my_strcpy (my_strcpy.c:25)
+==4360==    by 0x4024E4: fill_to_check (fill.c:19)
+==4360==    by 0x402767: init_data_next (fill.c:48)
+==4360==    by 0x401E0E: main (tetris.c:57)
+==4360==  Address 0x51fc27e is 1 bytes after a block of size 13 alloc'd
+==4360==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4360==    by 0x4027EF: init_tab (init.c:24)
+==4360==    by 0x402739: init_data_next (fill.c:46)
+==4360==    by 0x401E0E: main (tetris.c:57)
+==4360== 
+==4360== Conditional jump or move depends on uninitialised value(s)
+==4360==    at 0x4046C4: my_realloc (get_nl.c:22)
+==4360==    by 0x40497F: fill_line (get_nl.c:79)
+==4360==    by 0x404AAE: get_next_line (get_nl.c:108)
+==4360==    by 0x402C66: fill_tetri_carac (init_tetri.c:45)
+==4360==    by 0x402E58: fill_tetri (init_tetri.c:89)
+==4360==    by 0x402FEB: init_tetriminos (init_tetri.c:134)
+==4360==    by 0x401FE6: init_data (fct_main.c:15)
+==4360==    by 0x401E75: main (tetris.c:63)
+==4360== 
+==4360== 
+==4360== HEAP SUMMARY:
+==4360==     in use at exit: 77,919 bytes in 540 blocks
+==4360==   total heap usage: 63,130 allocs, 62,590 frees, 780,774 bytes allocated
+==4360== 
+==4360== LEAK SUMMARY:
+==4360==    definitely lost: 912 bytes in 40 blocks
+==4360==    indirectly lost: 1,436 bytes in 69 blocks
+==4360==      possibly lost: 0 bytes in 0 blocks
+==4360==    still reachable: 75,571 bytes in 431 blocks
+==4360==         suppressed: 0 bytes in 0 blocks
+==4360== Rerun with --leak-check=full to see details of leaked memory
+==4360== 
+==4360== For counts of detected and suppressed errors, rerun with: -v
+==4360== Use --track-origins=yes to see where uninitialised values come from
+==4360== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)

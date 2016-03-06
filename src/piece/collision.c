@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Mar  3 13:53:44 2016 bougon_p
-** Last update Thu Mar  3 15:12:31 2016 bougon_p
+** Last update Sat Mar  5 23:53:39 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -14,19 +14,24 @@ int		collision_drop(t_tetri *itemdata, int **tab, int p)
 {
   int           i;
   int		n;
+  int		k;
 
-  i = -1;
-  while (++i < itemdata->width)
+  k = itemdata->height;
+  while (--k >= 0)
     {
-      n = -1;
-      while (++n <= p)
+      i = -1;
+      while (++i < itemdata->width)
 	{
-	  if (itemdata->item[itemdata->height - 1][i] == '*'
-	      && tab[itemdata->pos_y + itemdata->height + n]
-	      [i + itemdata->pos_x] >= 1
-	      && tab[itemdata->pos_y + itemdata->height + n]
-	      [i + itemdata->pos_x] <= 7)
-	    return (1);
+	  n = -1;
+	  while (++n <= p)
+	    {
+	      if (itemdata->item[k][i] == '*'
+		  && tab[itemdata->pos_y + k + 1 + n]
+		  [i + itemdata->pos_x] >= 1
+		  && tab[itemdata->pos_y + k + 1 + n]
+		  [i + itemdata->pos_x] <= 7)
+		return (1);
+	    }
 	}
     }
   return (0);
@@ -65,14 +70,21 @@ int		collision_left(t_tetri *itemdata, int **tab)
 int		collision(t_tetri *itemdata, int **tab)
 {
   int           i;
+  int		n;
 
-  i = -1;
-  while (++i < itemdata->width)
+  n = itemdata->height;
+  while (--n >= 0)
     {
-      if (itemdata->item[itemdata->height - 1][i] == '*'
-          && tab[itemdata->pos_y + itemdata->height][i + itemdata->pos_x] >= 1
-          && tab[itemdata->pos_y + itemdata->height][i + itemdata->pos_x] <= 7)
-        return (1);
+      i = -1;
+      while (++i < itemdata->width)
+	{
+	  if (itemdata->item[n][i] == '*'
+	      && tab[itemdata->pos_y + n + 1]
+	      [i + itemdata->pos_x] >= 1
+	      && tab[itemdata->pos_y + n + 1]
+	      [i + itemdata->pos_x] <= 7)
+	    return (1);
+	}
     }
   return (0);
 }

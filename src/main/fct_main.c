@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Mon Feb 29 20:02:47 2016 Clémenceau Cedric
-** Last update Sat Mar  5 17:07:25 2016 Clémenceau Cedric
+** Last update Sat Mar  5 18:15:04 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -31,7 +31,7 @@ int	init_data(t_data *data, char **av, int ac)
 			    data->gamevar.maxheight + 2 : 5,
 			    (data->gamevar.maxwidth >= 7) ?
 			    data->gamevar.maxwidth + 2 : 8,
-			    1, POS_GAME_X + 15);
+			    1, POS_GAME_X + data->gamevar.win_width + 5);
   return (0);
 }
 

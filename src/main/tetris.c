@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Sat Mar  5 18:02:14 2016 bougon_p
+** Last update Sun Mar  6 00:48:37 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -26,7 +26,7 @@ int	main_loop(t_data *data)
   float	to_move;
 
   refind = -1;
-  to_move = 0;
+  to_move = 0.0;
   while (1)
     {
       protect_me(data);
@@ -35,6 +35,8 @@ int	main_loop(t_data *data)
 	{
 	  if ((refind = find_new_tetri(data, refind)) == -2)
 	    return (1);
+	  if (refind == -3)
+	    return (-3);
 	  aff_layout(data);
 	  if (data->boole == 0)
 	    init_tabnext(data, data->tetri_ig.root->next->data);

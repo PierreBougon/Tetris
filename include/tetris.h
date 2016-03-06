@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Sat Mar  5 18:03:29 2016 bougon_p
+** Last update Sun Mar  6 00:40:31 2016 bougon_p
 */
 
 #ifndef	TETRIS_H_
@@ -177,6 +177,7 @@ int	collision_left(t_tetri *, int **);
 int	collision_right(t_tetri *, int **);
 int	collision_drop(t_tetri *, int **, int);
 void	check_full_line(t_data *);
+int	check_end_game(t_data *);
 
 void	aff_layout(t_data *);
 int	find_new_tetri(t_data *, int);
@@ -225,6 +226,7 @@ char	*set_line_null(char *, int);
 int	my_strlen(char *);
 void	init_tabgame(char **);
 void	my_free_tab(char **);
+void	set_null(int *, int);
 
 /*
 ** Print functions
