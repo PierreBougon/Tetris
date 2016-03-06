@@ -1,243 +1,32 @@
-==15155== Memcheck, a memory error detector
-==15155== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
-==15155== Using Valgrind-3.10.1 and LibVEX; rerun with -h for copyright info
-==15155== Command: ./tetris -d
-==15155== 
-==15155== Invalid write of size 1
-==15155==    at 0x40482E: my_strcpy (my_strcpy.c:22)
-==15155==    by 0x402796: fill_to_check (fill.c:19)
-==15155==    by 0x402A19: init_data_next (fill.c:48)
-==15155==    by 0x401E1E: main (tetris.c:59)
-==15155==  Address 0x51fc27d is 0 bytes after a block of size 13 alloc'd
-==15155==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==15155==    by 0x402AA1: init_tab (init.c:24)
-==15155==    by 0x4029EB: init_data_next (fill.c:46)
-==15155==    by 0x401E1E: main (tetris.c:59)
-==15155== 
-==15155== Invalid write of size 1
-==15155==    at 0x404855: my_strcpy (my_strcpy.c:25)
-==15155==    by 0x402796: fill_to_check (fill.c:19)
-==15155==    by 0x402A19: init_data_next (fill.c:48)
-==15155==    by 0x401E1E: main (tetris.c:59)
-==15155==  Address 0x51fc27e is 1 bytes after a block of size 13 alloc'd
-==15155==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==15155==    by 0x402AA1: init_tab (init.c:24)
-==15155==    by 0x4029EB: init_data_next (fill.c:46)
-==15155==    by 0x401E1E: main (tetris.c:59)
-==15155== 
-==15155== Conditional jump or move depends on uninitialised value(s)
-==15155==    at 0x404982: my_realloc (get_nl.c:22)
-==15155==    by 0x404C3D: fill_line (get_nl.c:79)
-==15155==    by 0x404D6C: get_next_line (get_nl.c:108)
-==15155==    by 0x402F18: fill_tetri_carac (init_tetri.c:45)
-==15155==    by 0x403116: fill_tetri (init_tetri.c:90)
-==15155==    by 0x4032A9: init_tetriminos (init_tetri.c:135)
-==15155==    by 0x402298: init_data (fct_main.c:15)
-==15155==    by 0x401E85: main (tetris.c:65)
-==15155== 
-==15155== Invalid read of size 1
-==15155==    at 0x402204: get_extens (tetri_error.c:19)
-==15155==    by 0x402243: check_name (tetri_error.c:28)
-==15155==    by 0x402F9F: fill_tetri_carac (init_tetri.c:51)
-==15155==    by 0x403116: fill_tetri (init_tetri.c:90)
-==15155==    by 0x4032A9: init_tetriminos (init_tetri.c:135)
-==15155==    by 0x402298: init_data (fct_main.c:15)
-==15155==    by 0x401E85: main (tetris.c:65)
-==15155==  Address 0x520ab5f is 1 bytes before a block of size 6 alloc'd
-==15155==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==15155==    by 0x402F5D: fill_tetri_carac (init_tetri.c:48)
-==15155==    by 0x403116: fill_tetri (init_tetri.c:90)
-==15155==    by 0x4032A9: init_tetriminos (init_tetri.c:135)
-==15155==    by 0x402298: init_data (fct_main.c:15)
-==15155==    by 0x401E85: main (tetris.c:65)
-==15155== 
-==15155== Invalid read of size 1
-==15155==    at 0x407165: my_strcmp (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x402258: check_name (tetri_error.c:29)
-==15155==    by 0x402F9F: fill_tetri_carac (init_tetri.c:51)
-==15155==    by 0x403116: fill_tetri (init_tetri.c:90)
-==15155==    by 0x4032A9: init_tetriminos (init_tetri.c:135)
-==15155==    by 0x402298: init_data (fct_main.c:15)
-==15155==    by 0x401E85: main (tetris.c:65)
-==15155==  Address 0x520ab5f is 1 bytes before a block of size 6 alloc'd
-==15155==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==15155==    by 0x402F5D: fill_tetri_carac (init_tetri.c:48)
-==15155==    by 0x403116: fill_tetri (init_tetri.c:90)
-==15155==    by 0x4032A9: init_tetriminos (init_tetri.c:135)
-==15155==    by 0x402298: init_data (fct_main.c:15)
-==15155==    by 0x401E85: main (tetris.c:65)
-==15155== 
-==15155== Invalid read of size 1
-==15155==    at 0x40719D: my_strcmp (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x402258: check_name (tetri_error.c:29)
-==15155==    by 0x402F9F: fill_tetri_carac (init_tetri.c:51)
-==15155==    by 0x403116: fill_tetri (init_tetri.c:90)
-==15155==    by 0x4032A9: init_tetriminos (init_tetri.c:135)
-==15155==    by 0x402298: init_data (fct_main.c:15)
-==15155==    by 0x401E85: main (tetris.c:65)
-==15155==  Address 0x520ab5f is 1 bytes before a block of size 6 alloc'd
-==15155==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==15155==    by 0x402F5D: fill_tetri_carac (init_tetri.c:48)
-==15155==    by 0x403116: fill_tetri (init_tetri.c:90)
-==15155==    by 0x4032A9: init_tetriminos (init_tetri.c:135)
-==15155==    by 0x402298: init_data (fct_main.c:15)
-==15155==    by 0x401E85: main (tetris.c:65)
-==15155== 
-==15155== Conditional jump or move depends on uninitialised value(s)
-==15155==    at 0x4070B9: my_put_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x402648: debug_mode (fct_main.c:111)
-==15155==    by 0x40252F: my_check_option (fct_main.c:82)
-==15155==    by 0x4022EC: init_data (fct_main.c:21)
-==15155==    by 0x401E85: main (tetris.c:65)
-==15155== 
-==15155== Conditional jump or move depends on uninitialised value(s)
-==15155==    at 0x4070D5: my_put_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x402648: debug_mode (fct_main.c:111)
-==15155==    by 0x40252F: my_check_option (fct_main.c:82)
-==15155==    by 0x4022EC: init_data (fct_main.c:21)
-==15155==    by 0x401E85: main (tetris.c:65)
-==15155== 
-==15155== Conditional jump or move depends on uninitialised value(s)
-==15155==    at 0x40704F: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x4070F2: my_put_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x402648: debug_mode (fct_main.c:111)
-==15155==    by 0x40252F: my_check_option (fct_main.c:82)
-==15155==    by 0x4022EC: init_data (fct_main.c:21)
-==15155==    by 0x401E85: main (tetris.c:65)
-==15155== 
-==15155== Conditional jump or move depends on uninitialised value(s)
-==15155==    at 0x40704F: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x40706F: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x4070F2: my_put_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x402648: debug_mode (fct_main.c:111)
-==15155==    by 0x40252F: my_check_option (fct_main.c:82)
-==15155==    by 0x4022EC: init_data (fct_main.c:21)
-==15155==    by 0x401E85: main (tetris.c:65)
-==15155== 
-==15155== Conditional jump or move depends on uninitialised value(s)
-==15155==    at 0x40704F: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x40706F: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x40706F: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x4070F2: my_put_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x402648: debug_mode (fct_main.c:111)
-==15155==    by 0x40252F: my_check_option (fct_main.c:82)
-==15155==    by 0x4022EC: init_data (fct_main.c:21)
-==15155==    by 0x401E85: main (tetris.c:65)
-==15155== 
-==15155== Conditional jump or move depends on uninitialised value(s)
-==15155==    at 0x40704F: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x40706F: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x40706F: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x40706F: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x4070F2: my_put_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x402648: debug_mode (fct_main.c:111)
-==15155==    by 0x40252F: my_check_option (fct_main.c:82)
-==15155==    by 0x4022EC: init_data (fct_main.c:21)
-==15155==    by 0x401E85: main (tetris.c:65)
-==15155== 
-==15155== Conditional jump or move depends on uninitialised value(s)
-==15155==    at 0x407074: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x40706F: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x40706F: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x40706F: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x40706F: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x40706F: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x40706F: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x40706F: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x4070F2: my_put_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x402648: debug_mode (fct_main.c:111)
-==15155==    by 0x40252F: my_check_option (fct_main.c:82)
-==15155==    by 0x4022EC: init_data (fct_main.c:21)
-==15155== 
-==15155== Syscall param write(buf) points to uninitialised byte(s)
-==15155==    at 0x4F22870: __write_nocancel (syscall-template.S:81)
-==15155==    by 0x407211: my_putchar (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x4070A7: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x40706F: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x40706F: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x40706F: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x40706F: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x40706F: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x40706F: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x40706F: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x4070F2: my_put_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x402648: debug_mode (fct_main.c:111)
-==15155==  Address 0xffefffadc is on thread 1's stack
-==15155==  in frame #1, created by my_putchar (???)
-==15155== 
-==15155== Conditional jump or move depends on uninitialised value(s)
-==15155==    at 0x407074: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x40706F: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x40706F: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x4070F2: my_put_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x402648: debug_mode (fct_main.c:111)
-==15155==    by 0x40252F: my_check_option (fct_main.c:82)
-==15155==    by 0x4022EC: init_data (fct_main.c:21)
-==15155==    by 0x401E85: main (tetris.c:65)
-==15155== 
-==15155== Conditional jump or move depends on uninitialised value(s)
-==15155==    at 0x407074: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x40706F: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x4070F2: my_put_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x402648: debug_mode (fct_main.c:111)
-==15155==    by 0x40252F: my_check_option (fct_main.c:82)
-==15155==    by 0x4022EC: init_data (fct_main.c:21)
-==15155==    by 0x401E85: main (tetris.c:65)
-==15155== 
-==15155== Conditional jump or move depends on uninitialised value(s)
-==15155==    at 0x407074: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x4070F2: my_put_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x402648: debug_mode (fct_main.c:111)
-==15155==    by 0x40252F: my_check_option (fct_main.c:82)
-==15155==    by 0x4022EC: init_data (fct_main.c:21)
-==15155==    by 0x401E85: main (tetris.c:65)
-==15155== 
-==15155== Syscall param write(buf) points to uninitialised byte(s)
-==15155==    at 0x4F22870: __write_nocancel (syscall-template.S:81)
-==15155==    by 0x407211: my_putchar (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x4070A7: my_calc_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x4070F2: my_put_nbr (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x402648: debug_mode (fct_main.c:111)
-==15155==    by 0x40252F: my_check_option (fct_main.c:82)
-==15155==    by 0x4022EC: init_data (fct_main.c:21)
-==15155==    by 0x401E85: main (tetris.c:65)
-==15155==  Address 0xffefffbbc is on thread 1's stack
-==15155==  in frame #1, created by my_putchar (???)
-==15155== 
-==15155== Syscall param ioctl(TCSET{S,SW,SF}) points to uninitialised byte(s)
-==15155==    at 0x4F28337: ioctl (syscall-template.S:81)
-==15155==    by 0x406E43: my_infinite_loop (parsing.c:100)
-==15155==    by 0x402688: debug_mode (fct_main.c:116)
-==15155==    by 0x40252F: my_check_option (fct_main.c:82)
-==15155==    by 0x4022EC: init_data (fct_main.c:21)
-==15155==    by 0x401E85: main (tetris.c:65)
-==15155==  Address 0xffefffb70 is on thread 1's stack
-==15155==  in frame #1, created by my_infinite_loop (parsing.c:90)
-==15155== 
-==15155== Conditional jump or move depends on uninitialised value(s)
-==15155==    at 0x40716A: my_strcmp (in /home/bougon_p/rendu/PSU_2015_tetris/tetris)
-==15155==    by 0x40250A: my_check_option (fct_main.c:80)
-==15155==    by 0x4022EC: init_data (fct_main.c:21)
-==15155==    by 0x401E85: main (tetris.c:65)
-==15155== 
-==15155== Conditional jump or move depends on uninitialised value(s)
-==15155==    at 0x40250D: my_check_option (fct_main.c:80)
-==15155==    by 0x4022EC: init_data (fct_main.c:21)
-==15155==    by 0x401E85: main (tetris.c:65)
-==15155== 
-==15155== 
-==15155== HEAP SUMMARY:
-==15155==     in use at exit: 76,485 bytes in 547 blocks
-==15155==   total heap usage: 27,634 allocs, 27,087 frees, 413,390 bytes allocated
-==15155== 
-==15155== LEAK SUMMARY:
-==15155==    definitely lost: 987 bytes in 45 blocks
-==15155==    indirectly lost: 1,471 bytes in 71 blocks
-==15155==      possibly lost: 0 bytes in 0 blocks
-==15155==    still reachable: 74,027 bytes in 431 blocks
-==15155==         suppressed: 0 bytes in 0 blocks
-==15155== Rerun with --leak-check=full to see details of leaked memory
-==15155== 
-==15155== For counts of detected and suppressed errors, rerun with: -v
-==15155== Use --track-origins=yes to see where uninitialised values come from
-==15155== ERROR SUMMARY: 73 errors from 21 contexts (suppressed: 0 from 0)
+==15995== Memcheck, a memory error detector
+==15995== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==15995== Using Valgrind-3.10.1 and LibVEX; rerun with -h for copyright info
+==15995== Command: ./tetris
+==15995== Parent PID: 3054
+==15995== 
+==15995== Conditional jump or move depends on uninitialised value(s)
+==15995==    at 0x404AFD: my_realloc (get_nl.c:22)
+==15995==    by 0x404DB8: fill_line (get_nl.c:79)
+==15995==    by 0x404EE7: get_next_line (get_nl.c:108)
+==15995==    by 0x403093: fill_tetri_carac (init_tetri.c:45)
+==15995==    by 0x403291: fill_tetri (init_tetri.c:90)
+==15995==    by 0x403424: init_tetriminos (init_tetri.c:135)
+==15995==    by 0x4023FA: init_data (fct_main.c:15)
+==15995==    by 0x401FE7: main (tetris.c:83)
+==15995== 
+==15995== 
+==15995== HEAP SUMMARY:
+==15995==     in use at exit: 75,916 bytes in 563 blocks
+==15995==   total heap usage: 44,510 allocs, 43,947 frees, 582,379 bytes allocated
+==15995== 
+==15995== LEAK SUMMARY:
+==15995==    definitely lost: 1,091 bytes in 48 blocks
+==15995==    indirectly lost: 1,570 bytes in 84 blocks
+==15995==      possibly lost: 0 bytes in 0 blocks
+==15995==    still reachable: 73,255 bytes in 431 blocks
+==15995==         suppressed: 0 bytes in 0 blocks
+==15995== Rerun with --leak-check=full to see details of leaked memory
+==15995== 
+==15995== For counts of detected and suppressed errors, rerun with: -v
+==15995== Use --track-origins=yes to see where uninitialised values come from
+==15995== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
