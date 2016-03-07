@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Mon Feb 29 20:02:47 2016 Clémenceau Cedric
-** Last update Mon Mar  7 13:53:41 2016 Clémenceau Cedric
+** Last update Mon Mar  7 15:30:02 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -28,6 +28,10 @@ int	init_data(t_data *data, char **av, int ac)
   if ((data->win = initscr()) == NULL)
     return (1);
   clear();
+  if (data->gamevar.win_width + POS_GAME_X + 25 > getmaxx(data->win))
+    return (my_putstr("Window too short\n"), 1);
+  if (data->gamevar.win_height + 10 > getmaxy(data->win))
+    return (my_putstr("Window too short\n"), 1);
   if ((do_sub(data)) == 1)
     return (1);
   return (0);
