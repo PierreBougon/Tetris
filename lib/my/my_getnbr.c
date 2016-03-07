@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Mon Feb  1 22:57:04 2016 Clémenceau Cedric
-** Last update Sun Mar  6 20:13:32 2016 Clémenceau Cedric
+** Last update Mon Mar  7 14:01:37 2016 Clémenceau Cedric
 */
 
 #include "struct.h"
@@ -20,7 +20,7 @@ int	my_getnbr(char *str, int bool2)
   i = 0;
   boole = 0;
   if (str == NULL)
-    return (free(str, 1);
+    return (free(str, -1);
   if (str[i] == '-')
     {
       nb = -nb;
@@ -36,5 +36,5 @@ int	my_getnbr(char *str, int bool2)
     }
   if (bool2 == 1)
     free(str);
-  return (boole == 1 ? 1 : nb);
+  return (boole == -nb ? -1 : nb);
 }

@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Mon Mar  7 02:06:41 2016 Clémenceau Cedric
+** Last update Mon Mar  7 13:42:53 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -63,7 +63,7 @@ int	check_arg(char **opt, t_data *data, int b)
   while (opt[i])
     {
       if ((my_strcmp(data->opt.to_check[0], opt[i]) == 0) && b == 0)
-	if ((data->tetris_tab[0](data, data->opt.entered_key)) == 1)
+	if ((data->tetris_tab[0](data, opt[0])) == 1)
 	  return (1);
       if ((my_strcmp(data->opt.to_check[1], opt[i]) == 0 && b == 1) ||
 	  (my_strcmp(data->opt.to_check[2], opt[i]) == 0 && b == 1))
@@ -76,9 +76,13 @@ int	check_arg(char **opt, t_data *data, int b)
 int	main(int ac, char **av, char **env)
 {
   t_data	data;
+  int		r;
+  int		err;
 
   if (*env == NULL)
     return (my_putstr_err("No environment detected\n"), 1);
+  if ((r = setupterm(NULL, 0, &err)) == ERR)
+    return (1);
   if ((init_data_next(&data)) == 1)
     return (1);
   if ((config_key(&data)) == 1)

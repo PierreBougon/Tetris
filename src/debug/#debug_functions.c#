@@ -20,7 +20,7 @@ int	map_size(t_data *data, char *enter)
   while (enter[i] != ',' && enter[i] != '\0')
     i++;
   enter[i++] = '\0';
-  if ((height = my_getnbr(enter)) == -1)
+  if ((height = my_getnbr(enter)) == -1 && height)
     return (my_putstr("Bad map size\n"), 1);
   if ((width = my_getnbr(&enter[i])) == -1)
     return (my_putstr("Bad map size\n"), -1);
