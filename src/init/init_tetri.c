@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Feb 25 16:38:30 2016 bougon_p
-** Last update Sun Mar  6 20:53:25 2016 bougon_p
+** Last update Mon Mar  7 17:05:13 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -13,33 +13,35 @@
 int		take_nbr(t_tetri *tetri, char *buf, char *save)
 {
   int           i;
-  int           p;
 
   i = 0;
-  p = 0;
-  while (buf[i] != 0 && buf[i] != ' ')
-    save[p++] = buf[i++];
-  if (check_save(save, tetri) == 1)
-    return (1);
-  tetri->width = my_getnbr(save);
-  save = set_line_null(save, 4095);
-  p = 0;
+  i = get_width(tetri, i, buf, save);
+  /* while (buf[i] != 0 && buf[i] != ' ') */
+  /*   save[p++] = buf[i++]; */
+  /* if (check_save(save, tetri) == 1) */
+  /*   return (1); */
+  /* if ((tetri->width = my_getnbr(save)) == -1) */
+  /*   return (1); */
+  /* save = set_line_null(save, 4095); */
   i++;
-  while (buf[i] != 0 && buf[i] != ' ')
-    save[p++] = buf[i++];
-  if (check_save(save, tetri) == 1)
-    return (1);
-  tetri->height = my_getnbr(save);
-  save = set_line_null(save, 4096);
-  p = 0;
+  i = get_height(tetri, i, buf, save);
+  /* while (buf[i] != 0 && buf[i] != ' ') */
+  /*   save[p++] = buf[i++]; */
+  /* if (check_save(save, tetri) == 1) */
+  /*   return (1); */
+  /* if ((tetri->height = my_getnbr(save)) == -1) */
+  /*   return (1); */
+  /* save = set_line_null(save, 4096); */
   i++;
-  while (buf[i] != 0)
-    save[p] = buf[i++];
-  if (check_save(save, tetri) == 1)
-    return (1);
-   tetri->color = my_getnbr(save);
-   if (tetri->color > 7 || tetri->color < 1)
-     tetri->error = true;
+  i = get_color(tetri, i, buf, save);
+  /* while (buf[i] != 0) */
+  /*   save[p] = buf[i++]; */
+  /* if (check_save(save, tetri) == 1) */
+  /*   return (1); */
+  /* if ((tetri->color = my_getnbr(save)) == -1) */
+  /*   return (1); */
+  /* if (tetri->color > 7 || tetri->color < 1) */
+  /*   tetri->error = true; */
    return (0);
 }
 
@@ -64,28 +66,9 @@ int		fill_tetri_carac(t_tetri *tetri, int fd, char *name)
   return (0);
 }
 
-char	*get_path(char *full_path)
-{
-  full_path[0] = '.';
-  full_path[1] = '/';
-  full_path[2] = 't';
-  full_path[3] = 'e';
-  full_path[4] = 't';
-  full_path[5] = 'r';
-  full_path[6] = 'i';
-  full_path[7] = 'm';
-  full_path[8] = 'i';
-  full_path[9] = 'n';
-  full_path[10] = 'o';
-  full_path[11] = 's';
-  full_path[12] = '/';
-  return (full_path);
-}
-
 int		fill_tetri(char *path, t_tetri *tetri)
 {
   int           fd;
-  int           i;
   char		*full_path;
   int		size;
 
@@ -93,28 +76,15 @@ int		fill_tetri(char *path, t_tetri *tetri)
   if ((full_path = malloc(sizeof(char) * size)) == NULL)
     return (1);
   full_path = set_line_null(full_path, size);
-  full_path = get_path(full_path);
+  my_strcpy(full_path, "./tetriminos/");
   full_path = my_strcat(full_path, path);
   if ((fd = open(full_path, O_RDONLY)) == -1)
     return (1);
   if ((fill_tetri_carac(tetri, fd, path)) == 1)
     return (1);
-  i = -1;
   if ((tetri->item = init_tab(tetri->height, tetri->width)) == NULL)
     return (1);
-  while (++i < tetri->height)
-    {
-      if ((tetri->item[i] = get_next_line(fd)) == NULL)
-        tetri->error = true;
-      if (tetri->item[i] == NULL)
-	tetri->error = true;
-      if (tetri->item[i] != NULL)
-	epurendstr(tetri->item[i]);
-      if (tetri->item[i] == NULL || my_strlen(tetri->item[i]) > tetri->width)
-	tetri->error = true;
-    }
-  if (i > tetri->height)
-    tetri->error = true;
+  parse_file(tetri, fd);
   close(fd);
   return (0);
 }

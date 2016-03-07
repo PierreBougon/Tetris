@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Mon Mar  7 02:20:41 2016 Clémenceau Cedric
+** Last update Mon Mar  7 17:04:56 2016 bougon_p
 */
 
 #ifndef	TETRIS_H_
@@ -148,6 +148,11 @@ void	aff_next(t_data *);
 void	aff_keys(t_data *);
 void	my_show_list(t_arglist *);
 void	aff_tetriminos(t_data *);
+
+void	parse_file(t_tetri *, int);
+int	get_color(t_tetri *, int, char *, char *);
+int	get_height(t_tetri *, int, char *, char *);
+int	get_width(t_tetri *, int, char *, char *);
 
 /*
 ** TETRIS letter functions

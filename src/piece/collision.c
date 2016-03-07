@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Mar  3 13:53:44 2016 bougon_p
-** Last update Sun Mar  6 20:47:25 2016 Clémenceau Cedric
+** Last update Mon Mar  7 16:42:38 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -45,8 +45,10 @@ int		collision_right(t_tetri *itemdata, int **tab_game)
   while (++j < itemdata->height)
     {
       if (itemdata->item[j][itemdata->width - 1] == '*'
-          && tab_game[j + itemdata->pos_y][itemdata->pos_x + itemdata->width] >= 1
-          && tab_game[j + itemdata->pos_y][itemdata->pos_x + itemdata->width] <= 7)
+          && tab_game[j + itemdata->pos_y]
+	  [itemdata->pos_x + itemdata->width] >= 1
+          && tab_game[j + itemdata->pos_y]
+	  [itemdata->pos_x + itemdata->width] <= 7)
         return (1);
     }
   return (0);
