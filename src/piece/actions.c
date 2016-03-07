@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sat Feb 27 19:05:39 2016 bougon_p
-** Last update Sun Mar  6 00:05:04 2016 bougon_p
+** Last update Mon Mar  7 14:17:06 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -40,7 +40,6 @@ int		turn_tetri(t_data *data, t_arglist *tetri_ig)
 
   itemdata = tetri_ig->root->data;
   if (itemdata->pos_x + itemdata->height - 1 > data->gamevar.win_width)
-    return (0);
   new = init_new(itemdata);
   i = -1;
   p = 0;
