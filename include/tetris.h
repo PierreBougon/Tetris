@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Sun Mar  6 20:54:28 2016 bougon_p
+** Last update Mon Mar  7 02:20:41 2016 Clémenceau Cedric
 */
 
 #ifndef	TETRIS_H_
@@ -125,6 +125,7 @@ typedef struct		s_data
 ** Debug Mode
 */
 
+int	do_sub(t_data *);
 int	check_arg(char **, t_data *, int);
 int     browse_tab(t_data *);
 int	level(t_data *, char *);
@@ -204,7 +205,7 @@ int	get_key(t_data *, int, int *, t_tabkey *);
 ** Tab functions
 */
 
-void	init_tabnext(t_data *, t_tetri *);
+int	init_tabnext(t_data *, t_tetri *);
 void	init_tabscore(char **);
 void	init_tabgame_base(char **);
 
@@ -243,7 +244,7 @@ void	epurendstr(char *);
 ** Print functions
 */
 
-void	protect_me(t_data *);
+int	protect_me(t_data *);
 int     aff_tetris(t_data *);
 
 #endif /* !TETRIS_H_ */

@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Wed Feb 24 00:50:18 2016 bougon_p
-** Last update Sun Mar  6 20:43:04 2016 Clémenceau Cedric
+** Last update Mon Mar  7 01:55:24 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -29,24 +29,34 @@ char	**init_tab(int line, int col)
   return (tab_to_malloc);
 }
 
-void	load_tetriminos(char **tetrinext, WINDOW *sub_next)
+int	load_tetriminos(char **tetrinext, WINDOW *sub_next)
 {
   int	y;
 
   y = -1;
   while (tetrinext[++y])
-    mvwprintw(sub_next, y + 1, 1, tetrinext[y]);
+    if ((mvwprintw(sub_next, y + 1, 1, tetrinext[y])) == ERR)
+      return (1);
+  return (0);
 }
 
-void	init_tabnext(t_data *data,  t_tetri *tetrinext)
+int	init_tabnext(t_data *data,  t_tetri *tetrinext)
 {
-  werase(data->sub_next);
-  wborder(data->sub_next, '|', '|', '-', '-', '/', '\\', '\\', '/');
-  mvwprintw(data->sub_next, 0, 1, "Next");
-  wattrset(data->sub_next, COLOR_PAIR(tetrinext->color));
-  load_tetriminos(tetrinext->item, data->sub_next);
-  wattroff(data->sub_next, COLOR_PAIR(tetrinext->color));
-  wrefresh(data->sub_next);
+  if ((werase(data->sub_next)) == ERR)
+    return (1);
+  if (wborder(data->sub_next, '|', '|', '-', '-', '/', '\\', '\\', '/') == ERR)
+    return (1);
+  if ((mvwprintw(data->sub_next, 0, 1, "Next")) == ERR)
+    return (1);
+  if ((wattrset(data->sub_next, COLOR_PAIR(tetrinext->color))) == ERR)
+    return (1);
+  if ((load_tetriminos(tetrinext->item, data->sub_next)) == 1)
+    return (1);
+  if ((wattroff(data->sub_next, COLOR_PAIR(tetrinext->color))) == ERR)
+    return (1);
+  if ((wrefresh(data->sub_next)) == ERR)
+    return (1);
+  return (0);
 }
 
 void	init_tabscore(char **tabscore)

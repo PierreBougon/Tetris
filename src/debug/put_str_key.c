@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Thu Mar  3 10:54:38 2016 Clémenceau Cedric
-** Last update Sun Mar  6 00:00:45 2016 Clémenceau Cedric
+** Last update Mon Mar  7 01:42:31 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -44,7 +44,24 @@ void	my_putstr_keys(t_data *data)
   my_putstr("-kp --key-pause={K}\tPause and restart game when press key K\n");
 }
 
-void	protect_me(t_data *data)
+int	get_it(t_data *data, int maxx, int maxy, int bol)
+{
+  if (bol == 0)
+    {
+      if ((maxy = getmaxy(data->win)) == ERR)
+	return (1);
+    }
+  else
+    if ((maxx = getmaxx(data->win)) == ERR)
+      return (1);
+  mvprintw(maxy / 2, ((maxx / 2) - 7),  "Window too short");
+  refresh();
+  erase();
+  usleep(10);
+  return (0);
+}
+
+int	protect_me(t_data *data)
 {
   int	maxx;
   int	maxy;
@@ -53,20 +70,11 @@ void	protect_me(t_data *data)
   maxy = getmaxy(data->win);
   if (maxx < data->gamevar.win_width + 50)
     while ((maxx = getmaxx(data->win)) < (data->gamevar.win_width + 50))
-      {
-	maxy = getmaxy(data->win);
-	mvprintw(maxy / 2, ((maxx / 2) - 7),  "Window too short");
-	refresh();
-	erase();
-	usleep(10);
-      }
+      if ((get_it(data, maxx, maxy, 0)) == 1)
+	return (1);
   if (maxy < data->gamevar.win_height + 10)
     while ((maxy = getmaxy(data->win)) < (data->gamevar.win_height + 10))
-      {
-	maxx = getmaxx(data->win);
-	mvprintw(maxy / 2, ((maxx / 2) - 7),  "Window too short");
-	refresh();
-	erase();
-	usleep(10);
-      }
+      if ((get_it(data, maxx, maxy, 1)) == 1)
+	return (1);
+  return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Sat Mar  5 16:21:34 2016 Clémenceau Cedric
-** Last update Sun Mar  6 20:14:14 2016 Clémenceau Cedric
+** Last update Mon Mar  7 02:09:44 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -45,6 +45,8 @@ int	level(t_data *data, char *str)
 
 void	init_base(t_data *data)
 {
+  data->gamevar.win_width = 10;
+  data->gamevar.win_height = 20;
   data->score.high_score = 0;
   data->gamevar.level = 1;
   data->gamevar.speed = 1;

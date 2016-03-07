@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Mon Feb 29 20:02:47 2016 Clémenceau Cedric
-** Last update Sun Mar  6 20:54:14 2016 bougon_p
+** Last update Mon Mar  7 02:22:33 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -15,26 +15,21 @@ int	init_data(t_data *data, char **av, int ac)
   if ((init_tetriminos(&data->tetriminos)) == 1)
     return (my_putstr_err("Corrupted file\n"), 1);
   check_max(data);
-  data->gamevar.win_width = 10;
-  data->gamevar.win_height = 20;
   init_base(data);
   if (ac > 1)
     if ((my_check_option(data, av)) == 1)
       return (1);
-  data->tab_game = init_tab_game(data->gamevar.win_height,
-				 data->gamevar.win_width);
-  data->score.tab_score = init_tab(10, 20);
+  if ((data->tab_game = init_tab_game(data->gamevar.win_height,
+				      data->gamevar.win_width)) == NULL)
+    return (1);
+  if ((data->score.tab_score = init_tab(10, 20)) == NULL)
+    return (1);
   init_tabscore(data->score.tab_score);
-  data->win = initscr();
+  if ((data->win = initscr()) == NULL)
+    return (1);
   clear();
-  data->sub_win = subwin(data->win, data->gamevar.win_height,
-			 data->gamevar.win_width + 2, 1, POS_GAME_X);
-  if (data->boole == 0)
-    data->sub_next = subwin(data->win, (data->gamevar.maxheight >= 4) ?
-			    data->gamevar.maxheight + 2 : 5,
-			    (data->gamevar.maxwidth >= 7) ?
-			    data->gamevar.maxwidth + 2 : 8,
-			    1, POS_GAME_X + data->gamevar.win_width + 5);
+  if ((do_sub(data)) == 1)
+    return (1);
   return (0);
 }
 
@@ -53,7 +48,7 @@ int	help(t_data *data, char *str)
 
 int	my_check_option(t_data *data, char **option)
 {
-  if ((data->tetris_tab = malloc(sizeof(data->tetris_tab) * 7)) == NULL)
+  if ((data->tetris_tab = malloc(sizeof(data->tetris_tab) * 8)) == NULL)
     return (1);
   if ((parsing_arg(option, data)) == 1)
     return (1);
@@ -88,6 +83,7 @@ int	debug_mode(t_data *data, char *str)
   aff_size(data);
   aff_tetriminos(data);
   my_putstr("Press a key to start Tetris\n");
-  my_infinite_loop();
+  if ((my_infinite_loop()) == 1)
+    return (1);
   return (0);
 }

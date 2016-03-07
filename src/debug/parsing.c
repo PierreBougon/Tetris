@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Thu Mar  3 15:11:04 2016 Clémenceau Cedric
-** Last update Sun Mar  6 19:05:07 2016 Clémenceau Cedric
+** Last update Mon Mar  7 01:15:24 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -18,7 +18,9 @@ int	parsing_key(t_data *data, char *arg_parsed, char c)
 
   i = 0;
   caract = 0;
-  while (arg_parsed[i++] != c);
+  while (arg_parsed[i++] != c)
+    if (arg_parsed[i] == '\0' && c != '\0')
+      return (my_putstr("Wrong arguments\n"), 1);
   j = i;
   if (c != '\0')
     {
