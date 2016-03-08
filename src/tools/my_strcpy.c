@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Mon Dec  7 21:41:47 2015 Cédric Clemenceau
-** Last update Fri Mar  4 18:15:14 2016 Clémenceau Cedric
+** Last update Tue Mar  8 02:17:30 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -50,4 +50,22 @@ char	*my_strdup(char *s)
   if ((str = malloc(size)) == NULL)
     return (NULL);
   return (str);
+}
+
+int	my_putstr_debug(char *str)
+{
+  int	i;
+
+  i = 0;
+  while (str[i])
+    {
+      if (str[i] == 27)
+	write(1, "^E", 2);
+      else if (str[i] == ' ')
+	write(1, "(space)", 7);
+      else
+	write(1, &str[i], 1);
+      i++;
+    }
+  return (0);
 }

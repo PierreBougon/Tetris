@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Wed Mar  2 18:22:53 2016 Clémenceau Cedric
-** Last update Thu Mar  3 12:49:56 2016 Clémenceau Cedric
+** Last update Tue Mar  8 01:17:45 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -20,22 +20,22 @@ void	aff_keys(t_data *data)
 {
   data = data;
   my_putstr("Key Left : ");
-  my_putstr(data->key[0]);
+  my_putstr_debug(data->key[0]);
   write(1, "\n", 1);
   my_putstr("Key Right : ");
-  my_putstr(data->key[1]);
+  my_putstr_debug(data->key[1]);
   write(1, "\n", 1);
   my_putstr("Key Turn : ");
-  my_putstr(data->key[2]);
+  my_putstr_debug(data->key[2]);
   write(1, "\n", 1);
   my_putstr("Key Drop : ");
-  my_putstr(data->key[3]);
+  my_putstr_debug(data->key[3]);
   write(1, "\n", 1);
   my_putstr("Key Quit : ");
-  my_putstr(data->key[4]);
+  my_putstr_debug(data->key[4]);
   write(1, "\n", 1);
   my_putstr("Key Pause : ");
-  my_putstr(data->key[5]);
+  my_putstr_debug(data->key[5]);
   write(1, "\n", 1);
 }
 

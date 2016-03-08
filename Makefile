@@ -5,7 +5,7 @@
 ## Login   <bougon_p@epitech.net>
 ## 
 ## Started on  Tue Feb 23 17:06:22 2016 bougon_p
-## Last update Mon Mar  7 15:13:11 2016 bougon_p
+## Last update Tue Mar  8 02:51:02 2016 bougon_p
 ##
 
 # USEFUL VARIABLES
@@ -76,7 +76,8 @@ SRC		=	$(MAIN)tetris.c \
 			$(DEBUG)put_str_key.c \
 			$(DEBUG)parsing.c \
 			$(DEBUG)debug_functions.c \
-			$(DEBUG)browse_tab.c
+			$(DEBUG)browse_tab.c \
+			$(DEBUG)key_to_do.c
 
 OBJS    	=	$(SRC:.c=.o)
 

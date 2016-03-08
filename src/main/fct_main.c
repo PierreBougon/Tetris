@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Mon Feb 29 20:02:47 2016 Clémenceau Cedric
-** Last update Mon Mar  7 15:30:02 2016 Clémenceau Cedric
+** Last update Tue Mar  8 01:40:33 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -54,7 +54,7 @@ int	help(t_data *data, char *str)
 
 int	my_check_option(t_data *data, char **option)
 {
-  if ((data->tetris_tab = malloc(sizeof(data->tetris_tab) * 8)) == NULL)
+  if ((data->tetris_tab = malloc(sizeof(data->tetris_tab) * 20)) == NULL)
     return (1);
   if ((parsing_arg(option, data)) == 1)
     return (1);
