@@ -5,7 +5,7 @@
 ## Login   <bougon_p@epitech.net>
 ## 
 ## Started on  Tue Feb 23 17:06:22 2016 bougon_p
-## Last update Tue Mar  8 02:51:02 2016 bougon_p
+## Last update Tue Mar  8 08:35:08 2016 bougon_p
 ##
 
 # USEFUL VARIABLES
@@ -41,6 +41,7 @@ SRC		=	$(MAIN)tetris.c \
 			$(MAIN)error.c \
 			$(MAIN)tetri_error.c \
 			$(MAIN)fct_main.c \
+			$(MAIN)game.c \
 			$(MAIN)free.c \
 			$(MAIN)fill.c \
 			$(INIT)init.c \
