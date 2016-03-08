@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Thu Mar  3 10:54:38 2016 Clémenceau Cedric
-** Last update Tue Mar  8 01:25:02 2016 Clémenceau Cedric
+** Last update Tue Mar  8 03:18:59 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -27,12 +27,13 @@ int	config_key(t_data *data)
 void	my_putstr_keys(t_data *data)
 {
   data = data;
-  my_putstr("  -kl --key-left={K}\t Move tetrimino on LEFT with key K\n");
-  my_putstr("  -kr --key-right={K}\t Move tetrimino on RIGHT with key K\n");
-  my_putstr("  -kt --key-turn={K}\t Turn tetrimino with key K\n");
-  my_putstr("  -kd --key-drop={K}\t Set default DROP on key K\n");
-  my_putstr("  -kq --key-quit={K}\t Quit program when press key K\n");
-  my_putstr("  -kp --key-pause={K}\t Pause and restart game when press key K\n");
+  my_putstr("  -kl --key-left={K}     Move tetrimino on LEFT with key K\n");
+  my_putstr("  -kr --key-right={K}    Move tetrimino on RIGHT with key K\n");
+  my_putstr("  -kt --key-turn={K}     Turn tetrimino with key K\n");
+  my_putstr("  -kd --key-drop={K}     Set default DROP on key K\n");
+  my_putstr("  -kq --key-quit={K}     Quit program when press key K\n");
+  my_putstr("  -kp --key-pause={K}    Pause and restart");
+  my_putstr(" game when press key K\n");
 }
 
 int	get_it(t_data *data, int maxx, int maxy, int bol)
