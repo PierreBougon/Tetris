@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Fri Feb 26 13:44:01 2016 bougon_p
-** Last update Sun Mar  6 16:58:45 2016 bougon_p
+** Last update Tue Mar  8 09:05:59 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -58,20 +58,28 @@ void		chose_tetri(t_data *data, t_tetri *tetri, t_arglist *tetriminos)
   tetri->item = strcopy2d(tetri->item, tmp->data->item, tmp->data);
 }
 
+int	new_tetri(t_data *data, t_tetri *tetri)
+{
+  if ((tetri = malloc(sizeof(t_tetri))) == NULL)
+    return (-2);
+  chose_tetri(data, tetri, &data->tetriminos);
+  create_cdlist(&data->tetri_ig, tetri);
+  if ((tetri = malloc(sizeof(t_tetri))) == NULL)
+    return (-2);
+  chose_tetri(data, tetri, &data->tetriminos);
+  add_last_cdl(&data->tetri_ig, tetri);
+  return (0);
+}
+
 int	find_new_tetri(t_data *data, int refind)
 {
   t_tetri	*tetri;
 
+  tetri = NULL;
   if (refind == -1)
     {
-      if ((tetri = malloc(sizeof(t_tetri))) == NULL)
+      if ((new_tetri(data, tetri)) == -2)
 	return (-2);
-      chose_tetri(data, tetri, &data->tetriminos);
-      create_cdlist(&data->tetri_ig, tetri);
-      if ((tetri = malloc(sizeof(t_tetri))) == NULL)
-      	return (-2);
-      chose_tetri(data, tetri, &data->tetriminos);
-      add_last_cdl(&data->tetri_ig, tetri);
       refind = 0;
     }
   else if (refind != 0)
