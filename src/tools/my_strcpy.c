@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Mon Dec  7 21:41:47 2015 Cédric Clemenceau
-** Last update Tue Mar  8 01:21:50 2016 Clémenceau Cedric
+** Last update Tue Mar  8 02:17:30 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -61,7 +61,7 @@ int	my_putstr_debug(char *str)
     {
       if (str[i] == 27)
 	write(1, "^E", 2);
-      else if (str[i] == 20)
+      else if (str[i] == ' ')
 	write(1, "(space)", 7);
       else
 	write(1, &str[i], 1);

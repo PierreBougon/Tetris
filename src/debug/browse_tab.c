@@ -5,10 +5,28 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Sat Mar  5 22:07:39 2016 Clémenceau Cedric
-** Last update Mon Mar  7 00:58:25 2016 Clémenceau Cedric
+** Last update Tue Mar  8 02:39:32 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
+
+int	check_all_option(t_data *data, int *i, int *j)
+{
+  if ((my_strcmp(data->opt.arg[(*i)], "-d")) == 0 ||
+      (my_strcmp(data->opt.arg[(*i)], "--debug")) == 0)
+    return (2);
+  if ((my_strcmp(data->opt.arg[(*i)], data->opt.to_check[(*j)])) == 0)
+    {
+      if ((data->tetris_tab[(*j)](data, data->opt.entered_key)) == 1)
+	return (1);
+      if ((*j) == 8 || (*j) == 10 || (*j) == 12 || (*j) == 14 || (*j) == 16 || (*j) == 18)
+	(*i)++;
+      return (2);
+    }
+  (*j)++;
+  return (0);
+}
+
 
 int	browse_tab(t_data *data)
 {
@@ -20,21 +38,13 @@ int	browse_tab(t_data *data)
     {
       j = 3;
       while (data->opt.to_check[j])
-	{
-	  if ((my_strcmp(data->opt.arg[i], "-d")) == 0 ||
-	      (my_strcmp(data->opt.arg[i], "--debug")) == 0)
-	    break ;
-	  if ((my_strcmp(data->opt.arg[i], data->opt.to_check[j])) == 0)
-	    {
-	      if ((data->tetris_tab[j](data, data->opt.entered_key)) == 1)
-		return (1);
-	      break ;
-	    }
-	  j++;
-	}
+	if ((check_all_option(data, &i, &j)) == 1)
+	  return (1);
+	else if ((check_all_option(data, &i, &j)) == 2)
+	  break ;
       i++;
     }
   if (j == 20)
-    return (my_putstr("Wrong arguments\n"), 1);
+    return (my_putstr("Wrong arguments, test a enlever\n"), 1);
   return (0);
 }
