@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Mon Mar  7 14:54:12 2016 bougon_p
-** Last update Mon Mar  7 17:04:02 2016 bougon_p
+** Last update Mon Mar  7 19:20:55 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -58,12 +58,25 @@ int	get_width(t_tetri *tetri, int i, char *buf, char *save)
 
 void	check_item(t_tetri *tetri, int i)
 {
+  int	x;
+
   if (tetri->item[i] == NULL)
     tetri->error = true;
   if (tetri->item[i] != NULL)
     epurendstr(tetri->item[i]);
   if (tetri->item[i] == NULL || my_strlen(tetri->item[i]) > tetri->width)
     tetri->error = true;
+  else
+    {
+      x = -1;
+      while (tetri->item[i][++x] != 0 && x < tetri->width)
+  	{
+  	  if (tetri->item[i][x] != ' '
+  	      && tetri->item[i][x] != '*'
+  	      && tetri->item[i][x] != '\n')
+  	    tetri->error = true;
+  	}
+    }
 }
 
 void	parse_file(t_tetri *tetri, int fd)

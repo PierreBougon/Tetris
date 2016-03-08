@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Feb 25 16:38:30 2016 bougon_p
-** Last update Mon Mar  7 17:05:13 2016 bougon_p
+** Last update Mon Mar  7 17:29:05 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -16,33 +16,11 @@ int		take_nbr(t_tetri *tetri, char *buf, char *save)
 
   i = 0;
   i = get_width(tetri, i, buf, save);
-  /* while (buf[i] != 0 && buf[i] != ' ') */
-  /*   save[p++] = buf[i++]; */
-  /* if (check_save(save, tetri) == 1) */
-  /*   return (1); */
-  /* if ((tetri->width = my_getnbr(save)) == -1) */
-  /*   return (1); */
-  /* save = set_line_null(save, 4095); */
   i++;
   i = get_height(tetri, i, buf, save);
-  /* while (buf[i] != 0 && buf[i] != ' ') */
-  /*   save[p++] = buf[i++]; */
-  /* if (check_save(save, tetri) == 1) */
-  /*   return (1); */
-  /* if ((tetri->height = my_getnbr(save)) == -1) */
-  /*   return (1); */
-  /* save = set_line_null(save, 4096); */
   i++;
   i = get_color(tetri, i, buf, save);
-  /* while (buf[i] != 0) */
-  /*   save[p] = buf[i++]; */
-  /* if (check_save(save, tetri) == 1) */
-  /*   return (1); */
-  /* if ((tetri->color = my_getnbr(save)) == -1) */
-  /*   return (1); */
-  /* if (tetri->color > 7 || tetri->color < 1) */
-  /*   tetri->error = true; */
-   return (0);
+  return (0);
 }
 
 int		fill_tetri_carac(t_tetri *tetri, int fd, char *name)

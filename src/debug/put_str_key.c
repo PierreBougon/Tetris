@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Thu Mar  3 10:54:38 2016 Clémenceau Cedric
-** Last update Mon Mar  7 14:16:02 2016 bougon_p
+** Last update Mon Mar  7 17:06:22 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -17,14 +17,14 @@ int	config_key(t_data *data)
   i = 0;
   if ((data->key = init_tab(6, 8)) == NULL)
     return (1);
-  /* data->key[0] = tigetstr("kcub1"); */
-  /* data->key[1] = tigetstr("kcud1"); */
-  /* data->key[2] = tigetstr("kcuf1"); */
-  /* data->key[3] = tigetstr("kcuu1"); */
-  my_strcpy(data->key[0], "^[[D");
-  my_strcpy(data->key[1], "^[[C");
-  my_strcpy(data->key[2], "^[[A");
-  my_strcpy(data->key[3], "^[[B");
+  my_strcpy(data->key[0] ,tigetstr("kcub1"));
+  my_strcpy(data->key[1] ,tigetstr("kcuf1"));
+  my_strcpy(data->key[2] ,tigetstr("kcuu1"));
+  my_strcpy(data->key[3] ,tigetstr("kcud1"));
+  /* my_strcpy(data->key[0], "^[[D"); */
+  /* my_strcpy(data->key[1], "^[[C"); */
+  /* my_strcpy(data->key[2], "^[[A"); */
+  /* my_strcpy(data->key[3], "^[[B"); */
   my_strcpy(data->key[4], "q");
   my_strcpy(data->key[5], " ");
   while (data->key[i])

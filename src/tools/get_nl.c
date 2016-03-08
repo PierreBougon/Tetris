@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Jan 12 15:50:10 2016 bougon_p
-** Last update Thu Feb 25 00:22:58 2016 bougon_p
+** Last update Mon Mar  7 20:30:29 2016 bougon_p
 */
 
 #include <stdio.h>
@@ -73,8 +73,7 @@ char	*fill_line(t_file *file, const int fd, char **next_line)
       	{
       	  if (file->buf[i] == '\n')
 	    return (end_ofline(next_line, file, i));
-	  file->line[file->p] = file->buf[i];
-      	  i++, file->p++;
+	  file->line[file->p++] = file->buf[i++];
       	}
       if ((file->line = my_realloc(file->line)) == NULL)
 	return (NULL);
@@ -88,6 +87,7 @@ char	*get_next_line(const int fd)
 {
   t_file	file;
   static char	*next_line;
+  int		i;
 
   file.p = 0;
   if (next_line != NULL)
@@ -96,12 +96,15 @@ char	*get_next_line(const int fd)
       if ((file.line = my_realloc(file.line)) == NULL)
       	return (NULL);
       while (file.line[file.p] != 0 && file.line[file.p] != EOF)
-	file.p++;
+  	file.p++;
     }
   else
     {
       if ((file.line = malloc(sizeof(char) * READ_SIZE + 1)) == NULL)
 	return (NULL);
+      i = -1;
+      while (++i < READ_SIZE + 1)
+	file.line[i] = 0;
     }
   if ((file.buf = malloc(sizeof(char) * READ_SIZE)) == NULL)
     return (NULL);
