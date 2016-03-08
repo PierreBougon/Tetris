@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Mon Feb 29 20:02:47 2016 Clémenceau Cedric
-** Last update Tue Mar  8 03:17:53 2016 Clémenceau Cedric
+** Last update Tue Mar  8 11:46:30 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -47,7 +47,7 @@ int	help(t_data *data, char *str)
   my_putstr("  -l --level={num}       Start Tetris at level num\n");
   my_putstr_keys(data);
   my_putstr("  --map-size={row,col}   Set game size at row, col\n");
-  my_putstr("  -w --without-next      Hide next tetriminos\n");
+  my_putstr("  -w --without-next      Hide next tetrimino\n");
   my_putstr("  -d --debug             Debug mode\n");
   return (1);
 }

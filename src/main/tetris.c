@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Tue Mar  8 10:59:45 2016 Clémenceau Cedric
+** Last update Tue Mar  8 14:46:24 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -22,11 +22,10 @@ int	key_event(t_data *data)
 
 int	main_loop(t_data *data)
 {
-  int	refind;
-  float	to_move;
+  int	ret;
 
-  refind = -1;
-  to_move = 0.0;
+  data->refind = -1;
+  data->to_move = 0.0;
   while (1)
     {
       if ((protect_me(data)) == 1)
@@ -35,18 +34,9 @@ int	main_loop(t_data *data)
 	return (1);
       if (data->pause == false)
 	{
-	  if ((refind = find_new_tetri(data, refind)) == -2)
-	    return (1);
-	  if (refind == -3)
-	    return (-3);
-	  aff_layout(data);
-	  if (data->boole == 0)
-	    if ((init_tabnext(data, data->tetri_ig.root->next->data)) == 1)
-	      return (1);
-	  aff_tetris(data);
-	  to_move = need_to_move(data, to_move);
-	  refind = need_to_stop(data, refind);
-	  check_full_line(data);
+	  ret = game(data);
+	  if (ret != 0)
+	    return (ret);
 	}
       if (key_event(data) == 1)
 	break;
@@ -96,5 +86,6 @@ int	main(int ac, char **av, char **env)
   free_list(&data.tetriminos);
   if ((endwin()) == 1)
     return (1);
+  my_putstr("\E[H\E[2J");
   return (0);
 }

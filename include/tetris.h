@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Tue Mar  8 02:50:44 2016 bougon_p
+** Last update Tue Mar  8 11:07:47 2016 bougon_p
 */
 
 #ifndef	TETRIS_H_
@@ -16,6 +16,7 @@
 # include "list.h"
 # include "my.h"
 # include "get_next_line.h"
+# include "struct.h"
 
 # include <ncurses.h>
 # include <curses.h>
@@ -44,84 +45,11 @@
 # define POS_GAME_Y 2
 
 /*
-** VAR PARSED BY PARSER
-*/
-
-typedef	struct		s_gamevar
-{
-  int			level;
-  int			win_width;
-  int			win_height;
-  int			speed;
-  int			maxwidth;
-  int			maxheight;
-}			t_gamevar;
-
-/*
-** USEFUL GAME VARS
-*/
-
-typedef struct		s_tetri
-{
-  int			width;
-  int			height;
-  int			color;
-  int			pos_x;
-  int			pos_y;
-  char			*name;
-  char			**item;
-  bool			error;
-}			t_tetri;
-
-typedef struct		s_score
-{
-  char			**tab_score;
-  int			high_score;
-  int			score;
-  int			init_time;
-  int			act_time;
-  int			init_tpause;
-  int			tpause;
-  int			tlastpause;
-  int			move_bonus;
-  int			line;
-}			t_score;
-
-
-typedef struct s_data t_data;
-
-typedef struct  s_tabkey
-{
-  int           (**tabkey)(t_data *, t_arglist *);
-}               t_tabkey;
-
-typedef struct		s_opt
-{
-  char			**to_check;
-  char			**arg;
-  char			*entered_key;
-}			t_opt;
-
-typedef struct		s_data
-{
-  WINDOW		*win;
-  WINDOW		*sub_win;
-  WINDOW		*sub_next;
-  t_arglist		tetriminos;
-  t_arglist		tetri_ig;
-  t_gamevar		gamevar;
-  t_tabkey		tabkey;
-  t_score		score;
-  t_opt			opt;
-  char			**key;
-  int			**tab_game;
-  int			*keys;
-  int			boole;
-  bool			pause;
-  int			(**tetris_tab)(t_data *, char *);
-}			t_data;
-
-/*
+**     _____________________
+**    / ____________________\
+** ## |PORTOTYPING FUNCTIONS| ##
+**    +---------------------+
+**
 ** Debug Mode
 */
 
@@ -184,6 +112,7 @@ void	my_init_color();
 ** Game functions
 */
 
+int	game(t_data *);
 int	turn_tetri(t_data *, t_arglist *);
 int	drop(t_data *, t_arglist *);
 int	move_left(t_data *, t_arglist *);

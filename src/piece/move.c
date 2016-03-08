@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sat Feb 27 21:47:51 2016 bougon_p
-** Last update Fri Mar  4 18:31:21 2016 bougon_p
+** Last update Tue Mar  8 08:59:24 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -48,7 +48,7 @@ int		drop(t_data *data, t_arglist *tetri_ig)
   return (0);
 }
 
-int     move_left(t_data *data, t_arglist *tetri_ig)
+int	move_left(t_data *data, t_arglist *tetri_ig)
  {
   t_tetri	*itemdata;
 
@@ -60,7 +60,7 @@ int     move_left(t_data *data, t_arglist *tetri_ig)
   return (0);
 }
 
-int     move_right(t_data *data, t_arglist *tetri_ig)
+int	move_right(t_data *data, t_arglist *tetri_ig)
 {
   t_tetri	*itemdata;
 
