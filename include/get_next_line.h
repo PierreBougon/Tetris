@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Mon Jan  4 19:36:13 2016 bougon_p
-** Last update Mon Mar  7 20:29:15 2016 bougon_p
+** Last update Tue Mar  8 10:54:01 2016 bougon_p
 */
 
 #ifndef GET_NEXT_LINE_H_
@@ -13,7 +13,7 @@
 # define  GET_NEXT_LINE_H_
 
 # ifndef READ_SIZE
-#  define READ_SIZE (10)
+#  define READ_SIZE (1)
 # endif /* !READ_SIZE */
 
 # include <stdlib.h>

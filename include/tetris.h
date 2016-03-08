@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Tue Mar  8 08:44:14 2016 bougon_p
+** Last update Tue Mar  8 11:07:47 2016 bougon_p
 */
 
 #ifndef	TETRIS_H_
@@ -112,7 +112,7 @@ void	my_init_color();
 ** Game functions
 */
 
-int	game(t_data *, int, float);
+int	game(t_data *);
 int	turn_tetri(t_data *, t_arglist *);
 int	drop(t_data *, t_arglist *);
 int	move_left(t_data *, t_arglist *);

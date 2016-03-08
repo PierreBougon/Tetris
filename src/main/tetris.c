@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Tue Mar  8 08:35:19 2016 bougon_p
+** Last update Tue Mar  8 11:06:53 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -23,11 +23,9 @@ int	key_event(t_data *data)
 int	main_loop(t_data *data)
 {
   int	ret;
-  int	refind;
-  float	to_move;
 
-  refind = -1;
-  to_move = 0.0;
+  data->refind = -1;
+  data->to_move = 0.0;
   while (1)
     {
       if ((protect_me(data)) == 1)
@@ -36,7 +34,7 @@ int	main_loop(t_data *data)
 	return (1);
       if (data->pause == false)
 	{
-	  ret = game(data, refind, to_move);
+	  ret = game(data);
 	  if (ret != 0)
 	    return (ret);
 	}
