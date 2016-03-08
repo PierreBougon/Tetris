@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Mon Mar  7 02:20:41 2016 Clémenceau Cedric
+** Last update Tue Mar  8 02:06:11 2016 Clémenceau Cedric
 */
 
 #ifndef	TETRIS_H_
@@ -125,6 +125,16 @@ typedef struct		s_data
 ** Debug Mode
 */
 
+int	keys_for_left(t_data *, char *);
+int	keys_for_turn(t_data *, char *);
+int	keys_for_right(t_data *, char *);
+int	keys_for_drop(t_data *, char *);
+int	keys_for_pause(t_data *, char *);
+int	keys_for_quit(t_data *, char *);
+
+
+
+int	my_putstr_debug(char *);
 int	do_sub(t_data *);
 int	check_arg(char **, t_data *, int);
 int     browse_tab(t_data *);

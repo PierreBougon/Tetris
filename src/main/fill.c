@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Sat Mar  5 15:15:23 2016 Clémenceau Cedric
-** Last update Mon Mar  7 00:17:44 2016 Clémenceau Cedric
+** Last update Tue Mar  8 01:44:29 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -44,18 +44,18 @@ void	fill_tab(t_data *data)
   data->tetris_tab[5] = without_next;
   data->tetris_tab[6] = level;
   data->tetris_tab[7] = level;
-  /* data->tetris_tab[8] = key_left; */
-  /* data->tetris_tab[9] = key_left; */
-  /* data->tetris_tab[10] = key_right; */
-  /* data->tetris_tab[11] = key_right; */
-  /* data->tetris_tab[12] = key_turn; */
-  /* data->tetris_tab[13] = key_turn; */
-  /* data->tetris_tab[14] = key_drop; */
-  /* data->tetris_tab[15] = key_drop; */
-  /* data->tetris_tab[16] = key_quit; */
-  /* data->tetris_tab[17] = key_quit; */
-  /* data->tetris_tab[18] = key_pause; */
-  /* data->tetris_tab[19] = key_pause; */
+  data->tetris_tab[8] = keys_for_left;
+  data->tetris_tab[9] = keys_for_left;
+  data->tetris_tab[10] = keys_for_right;
+  data->tetris_tab[11] = keys_for_right;
+  data->tetris_tab[12] = keys_for_turn;
+  data->tetris_tab[13] = keys_for_turn;
+  data->tetris_tab[14] = keys_for_drop;
+  data->tetris_tab[15] = keys_for_drop;
+  data->tetris_tab[16] = keys_for_quit;
+  data->tetris_tab[17] = keys_for_quit;
+  data->tetris_tab[18] = keys_for_pause;
+  data->tetris_tab[19] = keys_for_pause;
 }
 
 int     init_data_next(t_data *data)

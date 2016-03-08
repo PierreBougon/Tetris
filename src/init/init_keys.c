@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sat Feb 27 17:52:04 2016 bougon_p
-** Last update Sun Mar  6 20:44:17 2016 Clémenceau Cedric
+** Last update Tue Mar  8 02:06:16 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -14,7 +14,7 @@ int	*init_keys()
 {
   int	*keys;
 
-  if ((keys = malloc(sizeof(int) * 6)) == NULL)
+  if ((keys = malloc(sizeof(char *) * 6)) == NULL)
     return (NULL);
   keys[0] = KEY_UP;
   keys[1] = KEY_DOWN;

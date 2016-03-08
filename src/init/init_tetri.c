@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Feb 25 16:38:30 2016 bougon_p
-** Last update Sun Mar  6 20:53:25 2016 bougon_p
+** Last update Tue Mar  8 02:04:41 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -45,8 +45,8 @@ int		take_nbr(t_tetri *tetri, char *buf, char *save)
 
 int		fill_tetri_carac(t_tetri *tetri, int fd, char *name)
 {
-  char          *buf;
-  char          *save;
+  char		*buf;
+  char		*save;
 
   if ((save = malloc(sizeof(char) * 4096)) == NULL)
     return (1);
