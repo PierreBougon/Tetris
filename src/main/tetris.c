@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Mon Mar  7 15:22:16 2016 Clémenceau Cedric
+** Last update Tue Mar  8 10:59:45 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -88,10 +88,7 @@ int	main(int ac, char **av, char **env)
   if ((config_key(&data)) == 1)
     return (1);
   if ((init_data(&data, av, ac)) == 1)
-    {
-      endwin();
-      return (1);
-    }
+    return (endwin(), 1);
   if ((config(&data)) == 1)
     return (1);
   my_free_tab(data.key);

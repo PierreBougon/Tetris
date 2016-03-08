@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 18:56:41 2016 bougon_p
-** Last update Tue Mar  8 02:07:37 2016 Clémenceau Cedric
+** Last update Tue Mar  8 02:49:09 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -40,8 +40,8 @@ int	launch_main(t_data *data, int game)
       my_infinite_loop();
       clear();
       i = -1;
-      while (++i < 6)
-	my_strncpy(&data->score.tab_score[3][11 + i], " ", 1);
+      while (++i < 7)
+	my_strncpy(&data->score.tab_score[3][10 + i], " ", 1);
       data->score.score = 0;
     }
   return (main_loop(data));

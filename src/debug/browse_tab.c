@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Sat Mar  5 22:07:39 2016 Clémenceau Cedric
-** Last update Tue Mar  8 02:39:32 2016 Clémenceau Cedric
+** Last update Tue Mar  8 10:53:44 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -19,8 +19,9 @@ int	check_all_option(t_data *data, int *i, int *j)
     {
       if ((data->tetris_tab[(*j)](data, data->opt.entered_key)) == 1)
 	return (1);
-      if ((*j) == 8 || (*j) == 10 || (*j) == 12 || (*j) == 14 || (*j) == 16 || (*j) == 18)
-	(*i)++;
+      if ((*j) == 8 || (*j) == 10 || (*j) == 12 || (*j) == 14 ||
+	  (*j) == 16 || (*j) == 18)
+      	(*i)++;
       return (2);
     }
   (*j)++;
