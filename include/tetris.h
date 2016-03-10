@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Tue Mar  8 11:07:47 2016 bougon_p
+** Last update Thu Mar 10 19:50:18 2016 bougon_p
 */
 
 #ifndef	TETRIS_H_
@@ -180,6 +180,7 @@ void	set_null(int *, int);
 int	check_name(t_tetri *);
 int	check_save(char *, t_tetri *);
 void	epurendstr(char *);
+int	order_list(t_arglist *);
 
 /*
 ** Print functions

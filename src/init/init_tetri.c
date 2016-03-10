@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Feb 25 16:38:30 2016 bougon_p
-** Last update Wed Mar  9 21:30:43 2016 bougon_p
+** Last update Thu Mar 10 20:51:30 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -107,6 +107,7 @@ int		init_tetriminos(t_arglist *arg)
           i = 1;
         }
     }
+  order_list(arg);
   closedir(dirp);
   return (0);
 }
