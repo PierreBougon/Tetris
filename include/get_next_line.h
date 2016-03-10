@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Mon Jan  4 19:36:13 2016 bougon_p
-** Last update Tue Mar  8 10:54:01 2016 bougon_p
+** Last update Thu Mar 10 12:28:03 2016 bougon_p
 */
 
 #ifndef GET_NEXT_LINE_H_
@@ -13,7 +13,7 @@
 # define  GET_NEXT_LINE_H_
 
 # ifndef READ_SIZE
-#  define READ_SIZE (1)
+#  define READ_SIZE (4096)
 # endif /* !READ_SIZE */
 
 # include <stdlib.h>
@@ -21,6 +21,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <stdio.h>
 
 typedef struct	s_file
 {
@@ -28,7 +29,6 @@ typedef struct	s_file
   int		p;
   int		nb_char;
   char		*line;
-  char		*buf;
 }		t_file;
 
 #endif /* !GET_NEXT_LINE_H_ */

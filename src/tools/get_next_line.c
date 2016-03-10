@@ -1,117 +1,131 @@
 /*
-** get_next_line.c for get_nl in /home/clemen_j/Work/CPE/CPE_2015_getnextline
+** get_next_line.c for GETNEXTLINE in /CPE_2015_getnextline
 **
-** Made by Clémenceau Cedric
-** Login   <clemen_j@epitech.net>
+** Made by bougon_p
+** Login   <bougon_p@epitech.net>
 **
-** Started on  Mon Jan  4 11:17:55 2016 Clémenceau Cedric
-** Last update Sat Feb 27 19:20:48 2016 bougon_p
+** Started on  Tue Mar  8 10:28:08 2016 bougon_p
+** Last update Thu Mar 10 13:48:21 2016 bougon_p
 */
 
 #include "get_next_line.h"
-#include "tetris.h"
 
-char	*my_realloc(char *ptr, int size)
+char	*my_realloc(char *line)
 {
-  char	*dest;
-  int	i;
-  int	restat;
-
-  restat = 0;
-  i = -1;
-  if (ptr == NULL)
-    {
-      if ((ptr = malloc(size + 1)) == NULL)
-	return (NULL);
-      while (restat < size)
-	ptr[restat++] = 0;
-      return (ptr);
-    }
-  while (ptr[++i]);
-  if ((dest = malloc(i + READ_SIZE + 2)) == NULL)
-    return (NULL);
-  i = -1;
-  while (ptr[++i])
-    dest[i] = ptr[i];
-  dest[i + 1] = 0;
-  free(ptr);
-  return (dest);
-}
-
-int	check(char *buff)
-{
-  int	i;
+  char  *new_line;
+  int   size;
+  int   i;
 
   i = 0;
-  if (buff == NULL)
-    return (0);
-  while (buff[i])
+  size = 0;
+  while (line[size] != 0)
+    size++;
+  if ((new_line = malloc(sizeof(char) * (size + READ_SIZE) + 2)) == NULL)
+    return (NULL);
+  while (i < size)
     {
-      if (buff[i] == '\n')
-	return (1);
+      new_line[i] = line[i];
       i++;
+    }
+  while (i < (size + READ_SIZE + 2))
+    new_line[i++] = 0;
+  free(line);
+  return (new_line);
+}
+
+int	refill_line(t_file *file, char *buf, int i)
+{
+  if ( buf[i] == 0)
+    {
+      free(file->line);
+      return (-1);
+    }
+  while (i < READ_SIZE)
+    {
+      if (buf[i] == '\n')
+	return (i % READ_SIZE + 1);
+      file->line[file->p++] = buf[i++];
+    }
+  if ((file->line = my_realloc(file->line)) == NULL)
+    return (-1);
+  return (0);
+}
+
+char	*fill_line(t_file *file, int fd, char *buf, int *i)
+{
+  while (file->nb_char != 0)
+    {
+      if ((file->nb_char = read(fd, buf, READ_SIZE)) == -1
+	  || buf == NULL || (file->nb_char == 0 && file->count == 0)
+	  || buf[0] == 0)
+	{
+	  free(file->line);
+	  return (NULL);
+	}
+      buf[READ_SIZE] = 0;
+      file->count++;
+      *i = -1;
+      while (++*i < file->nb_char)
+	{
+	  if (buf[*i] == '\n')
+	    {
+	      *i = (file->nb_char - *i == 1) ? 0 : *i + 1;
+	      return (file->line);
+	    }
+	  file->line[file->p++] = buf[*i];
+	}
+      if ((file->line = my_realloc(file->line)) == NULL)
+	return (NULL);
+    }
+  return (file->line);
+}
+
+int	init(t_file *file, char *buf, int cond)
+{
+  int	n;
+
+  if (cond == 0)
+    {
+      file->nb_char = 1;
+      file->count = 0;
+      file->p = 0;
+      if ((file->line = malloc(sizeof(char) * READ_SIZE + 1)) == NULL)
+	return (1);
+      n = -1;
+      while (++n < READ_SIZE + 1)
+	file->line[n] = 0;
+    }
+  else if (cond == 1)
+    {
+      n = -1;
+      while (++n < READ_SIZE + 1)
+	buf[n] = 0;
     }
   return (0);
 }
 
-char	*complete_my_buff(char *buff, char *str)
-{
-  int	i;
-  int	j;
-
-  i = 0;
-  j = 0;
-  while (buff[i])
-    i++;
-  while (str[j])
-    {
-      buff[i] = str[j];
-      i++;
-      j++;
-    }
-  buff[i] = 0;
-  return (buff);
-}
-
-char	*check_buff(char *buff)
-{
-  char	*str;
-  int	i;
-
-  i = -1;
-  while (buff[++i]);
-  if ((str = malloc(i + 2)) == NULL)
-    return (NULL);
-  i = -1;
-  while (buff[++i] != '\n' && buff[i])
-    str[i] = buff[i];
-  str[i + 1] = 0;
-  return (str);
-}
-
 char	*get_next_line(const int fd)
 {
-  static char	*buff = NULL;
-  char		str[READ_SIZE + 1];
-  char		*to_write;
-  int		readed;
+  static char	*buf;
+  static int	i;
+  t_file        file;
 
-  readed = 0;
-  str[0] = 0;
-  while (check(buff) == 0)
-    {
-      readed = read(fd, str, READ_SIZE);
-      if (readed < 1)
-	return (buff);
-      str[readed] = 0;
-      if ((buff = my_realloc(buff, readed)) == NULL)
-	return (NULL);
-      buff = complete_my_buff(buff, str);
-    }
-  if ((to_write = check_buff(buff)) == NULL)
+  if ((init(&file, buf, 0)) == 1)
     return (NULL);
-  buff = &buff[my_strlen(to_write) + 1];
-  if (buff[0] == 0)
-    buff = NULL;
-  return (to_write);
+  if (buf == NULL)
+    {
+      if ((buf = malloc(sizeof(char) * READ_SIZE + 1)) == NULL)
+	return (NULL);
+      init(&file, buf, 1);
+    }
+  else if (i <= READ_SIZE && i > 0)
+    {
+      if ((i = refill_line(&file, buf, i)) == -1)
+	return (NULL);
+      if (i > 0)
+	return (file.line);
+      if (i == 0)
+	return (free(buf), buf = NULL, file.line);
+    }
+  return (fill_line(&file, fd, buf, &i));
 }

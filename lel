@@ -1,0 +1,36 @@
+PASSAGE fd = 5 LAST FD = 0
+1 4 2
+PASSAGE fd = 5 LAST FD = 5
+*
+PASSAGE fd = 5 LAST FD = 5
+*
+PASSAGE fd = 5 LAST FD = 5
+*
+PASSAGE fd = 5 LAST FD = 5
+* *
+PASSAGE fd = 5 LAST FD = 5
+*
+PASSAGE fd = 5 LAST FD = 5
+*
+PASSAGE fd = 5 LAST FD = 5
+2 3 4
+PASSAGE fd = 5 LAST FD = 5
+*
+PASSAGE fd = 5 LAST FD = 5
+*
+PASSAGE fd = 5 LAST FD = 5
+**
+PASSAGE fd = 5 LAST FD = 5
+5 3 3
+PASSAGE fd = 5 LAST FD = 5
+*   *
+PASSAGE fd = 5 LAST FD = 5
+*   *
+PASSAGE fd = 5 LAST FD = 5
+*****
+PASSAGE fd = 5 LAST FD = 5
+2 2 1
+PASSAGE fd = 5 LAST FD = 5
+**
+PASSAGE fd = 5 LAST FD = 5
+**
