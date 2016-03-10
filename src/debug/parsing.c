@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Thu Mar  3 15:11:04 2016 Clémenceau Cedric
-** Last update Tue Mar  8 15:29:39 2016 Clémenceau Cedric
+** Last update Thu Mar 10 20:27:22 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -40,8 +40,12 @@ int	parsing_arg_extanted(t_data *data, char **options, char c, int i)
   if ((parsing_key(data, data->opt.arg[i], c)) == 1)
     return (1);
   if (c == '\0')
-    if ((data->opt.entered_key = my_strdup(options[++i])) == NULL)
-      return (1);
+    {
+      if ((data->opt.entered_key = my_strdup(options[++i])) == NULL)
+	return (1);
+    }
+  else
+    my_strcpy(data->opt.key_to_set[i], data->opt.entered_key);
   return (0);
 }
 
@@ -66,6 +70,8 @@ int	parse_without_key(t_data * data, char **opt, int *i)
       if ((parsing_arg_extanted(data, opt, 0, (*i))) == 1)
 	return (1);
       my_strcpy(data->opt.entered_key, opt[++(*i)]);
+      my_strcpy(data->opt.key_to_set[--(*i)], data->opt.entered_key);
+      (*i)++;
     }
   else
     return (my_putstr("Wrong arguments\n"), 1);
@@ -90,9 +96,12 @@ int	parsing_arg(char **opt, t_data *data)
   i = 0;
   if ((data->opt.arg = init_tab(j, tmp)) == NULL)
     return (1);
+  if ((data->opt.key_to_set = init_tab(j, tmp)) == NULL)
+    return (1);
   while (opt[++i])
     if ((parse_without_key(data, opt, &i)) == 1)
       return (1);
+  i = 0;
   return (0);
 }
 

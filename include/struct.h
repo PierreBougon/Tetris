@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Mar  8 08:36:12 2016 bougon_p
-** Last update Tue Mar  8 11:04:45 2016 bougon_p
+** Last update Thu Mar 10 20:13:18 2016 Clémenceau Cedric
 */
 
 #ifndef STRUCT_H_
@@ -71,6 +71,7 @@ typedef struct		s_opt
 {
   char			**to_check;
   char			**arg;
+  char			**key_to_set;
   char			*entered_key;
 }			t_opt;
 
