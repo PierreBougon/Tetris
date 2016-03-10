@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Mar  8 10:28:08 2016 bougon_p
-** Last update Wed Mar  9 21:10:29 2016 bougon_p
+** Last update Thu Mar 10 13:48:21 2016 bougon_p
 */
 
 #include "get_next_line.h"
@@ -35,13 +35,15 @@ char	*my_realloc(char *line)
 
 int	refill_line(t_file *file, char *buf, int i)
 {
+  if ( buf[i] == 0)
+    {
+      free(file->line);
+      return (-1);
+    }
   while (i < READ_SIZE)
     {
       if (buf[i] == '\n')
-	{
-	  buf = &buf[i + 1];
-	  return (i % READ_SIZE + 1);
-	}
+	return (i % READ_SIZE + 1);
       file->line[file->p++] = buf[i++];
     }
   if ((file->line = my_realloc(file->line)) == NULL)
@@ -51,13 +53,15 @@ int	refill_line(t_file *file, char *buf, int i)
 
 char	*fill_line(t_file *file, int fd, char *buf, int *i)
 {
-  file->nb_char = 1;
-  file->count = 0;
   while (file->nb_char != 0)
     {
       if ((file->nb_char = read(fd, buf, READ_SIZE)) == -1
-	  || buf == NULL || (file->nb_char == 0 && file->count == 0))
-	return (NULL);
+	  || buf == NULL || (file->nb_char == 0 && file->count == 0)
+	  || buf[0] == 0)
+	{
+	  free(file->line);
+	  return (NULL);
+	}
       buf[READ_SIZE] = 0;
       file->count++;
       *i = -1;
@@ -82,6 +86,8 @@ int	init(t_file *file, char *buf, int cond)
 
   if (cond == 0)
     {
+      file->nb_char = 1;
+      file->count = 0;
       file->p = 0;
       if ((file->line = malloc(sizeof(char) * READ_SIZE + 1)) == NULL)
 	return (1);
@@ -112,15 +118,14 @@ char	*get_next_line(const int fd)
 	return (NULL);
       init(&file, buf, 1);
     }
-  else
+  else if (i <= READ_SIZE && i > 0)
     {
-      if (i <= READ_SIZE && i > 0)
-	{
-	  if ((i = refill_line(&file, buf, i)) == -1)
-	    return (NULL);
-	  if (i > 0)
-	    return (file.line);
-	}
+      if ((i = refill_line(&file, buf, i)) == -1)
+	return (NULL);
+      if (i > 0)
+	return (file.line);
+      if (i == 0)
+	return (free(buf), buf = NULL, file.line);
     }
   return (fill_line(&file, fd, buf, &i));
 }

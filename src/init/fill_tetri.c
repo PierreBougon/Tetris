@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Mon Mar  7 14:54:12 2016 bougon_p
-** Last update Mon Mar  7 19:20:55 2016 bougon_p
+** Last update Wed Mar  9 21:28:04 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -88,6 +88,7 @@ void	parse_file(t_tetri *tetri, int fd)
     {
       if ((tetri->item[i] = get_next_line(fd)) == NULL)
         tetri->error = true;
+      dprintf(2, "%s\n", tetri->item[i]);
       check_item(tetri, i);
     }
   if (i > tetri->height)
