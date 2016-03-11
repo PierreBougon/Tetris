@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Fri Mar 11 12:31:20 2016 Clémenceau Cedric
+** Last update Fri Mar 11 13:03:51 2016 Clémenceau Cedric
 */
 
 #ifndef	TETRIS_H_
@@ -157,6 +157,7 @@ void	init_tabgame_base(char **);
 ** Others fucntions
 */
 
+void	free_all(t_data *);
 int	main_loop(t_data *);
 char	*my_strdup(char *);
 int	config(t_data *);
