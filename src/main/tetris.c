@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Tue Mar  8 14:46:24 2016 Clémenceau Cedric
+** Last update Fri Mar 11 12:54:49 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -83,6 +83,10 @@ int	main(int ac, char **av, char **env)
     return (1);
   my_free_tab(data.key);
   my_free_tab(data.score.tab_score);
+  my_free_tab(data.opt.key_to_set);
+  my_free_tab(data.opt.to_check);
+  my_free_tab(data.opt.arg);
+  free(data.tetris_tab);
   free_list(&data.tetriminos);
   if ((endwin()) == 1)
     return (1);
