@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Fri Mar 11 13:02:48 2016 Clémenceau Cedric
+** Last update Fri Mar 11 15:09:41 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -71,19 +71,17 @@ int	main(int ac, char **av, char **env)
 
   if (*env == NULL)
     return (my_putstr_err("No environment detected\n"), 1);
-  if ((r = setupterm(NULL, 0, &err)) == ERR)
+  if ((r = setupterm(NULL, 0, &err)) == ERR ||
+      init_data_next(&data) == 1 ||
+      config_key(&data) == 1)
     return (1);
-  if ((init_data_next(&data)) == 1)
-    return (1);
-  if ((config_key(&data)) == 1)
-    return (1);
-  if ((init_data(&data, av, ac)) == 1)
+  if ((init_data(&data, av, ac)) == 1 ||
+      (config(&data)) == 1)
     return (endwin(), 1);
-  if ((config(&data)) == 1)
-    return (1);
-  free_all(&data);
+  free_all(&data, ac);
   if ((endwin()) == 1)
     return (1);
+  free_list(&data.tetriminos);
   my_putstr("\E[H\E[2J");
   return (0);
 }
