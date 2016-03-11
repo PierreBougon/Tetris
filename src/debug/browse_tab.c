@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Sat Mar  5 22:07:39 2016 Clémenceau Cedric
-** Last update Tue Mar  8 15:28:15 2016 Clémenceau Cedric
+** Last update Thu Mar 10 20:31:18 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -17,7 +17,7 @@ int	check_all_option(t_data *data, int *i, int *j)
     return (2);
   if ((my_strcmp(data->opt.arg[(*i)], data->opt.to_check[(*j)])) == 0)
     {
-      if ((data->tetris_tab[(*j)](data, data->opt.entered_key)) == 1)
+      if ((data->tetris_tab[(*j)](data, data->opt.key_to_set[*i])) == 1)
 	return (1);
       if ((*j) == 8 || (*j) == 10 || (*j) == 12 || (*j) == 14 ||
 	  (*j) == 16 || (*j) == 18)

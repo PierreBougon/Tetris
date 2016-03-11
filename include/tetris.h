@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Thu Mar 10 19:50:18 2016 bougon_p
+** Last update Thu Mar 10 22:08:48 2016 Clémenceau Cedric
 */
 
 #ifndef	TETRIS_H_
@@ -47,7 +47,7 @@
 /*
 **     _____________________
 **    / ____________________\
-** ## |PORTOTYPING FUNCTIONS| ##
+** ## |PROTOTYPING FUNCTIONS| ##
 **    +---------------------+
 **
 ** Debug Mode
