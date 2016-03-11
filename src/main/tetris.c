@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Tue Mar  8 14:46:24 2016 Clémenceau Cedric
+** Last update Thu Mar 10 21:41:56 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -31,7 +31,7 @@ int	main_loop(t_data *data)
       if ((protect_me(data)) == 1)
 	return (1);
       if ((refresh()) == 1)
-	return (1);
+      	return (1);
       if (data->pause == false)
 	{
 	  ret = game(data);
@@ -40,7 +40,7 @@ int	main_loop(t_data *data)
 	}
       if (key_event(data) == 1)
 	break;
-      usleep(10);
+      usleep(100);
     }
   return (0);
 }

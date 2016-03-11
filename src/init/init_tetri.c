@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Feb 25 16:38:30 2016 bougon_p
-** Last update Thu Mar 10 20:51:30 2016 bougon_p
+** Last update Thu Mar 10 21:30:17 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -33,7 +33,6 @@ int		fill_tetri_carac(t_tetri *tetri, int fd, char *name)
   save = set_line_null(save, 4095);
   if ((buf = get_next_line(fd)) == NULL)
     return (1);
-  dprintf(2, "%s\n", buf);
   if (take_nbr(tetri, buf, save) == 1)
     return (1);
   if ((tetri->name = malloc(my_strlen(name) + 1)) == NULL)
