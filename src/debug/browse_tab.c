@@ -5,10 +5,31 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Sat Mar  5 22:07:39 2016 Clémenceau Cedric
-** Last update Thu Mar 10 20:31:18 2016 Clémenceau Cedric
+** Last update Fri Mar 11 12:31:32 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
+
+void	aff_tetrimi(t_cdlist *list, int *i)
+{
+  my_putstr(list->data->item[(*i)++]);
+  write(1, "\n", 1);
+}
+
+
+int	check_tetrimino(t_cdlist *list)
+{
+  my_putstr("Tetriminos : Name ");
+  my_putstr(list->data->name);
+  my_putstr(" : Size ");
+  my_put_nbr(list->data->width);
+  write(1, "*", 1);
+  my_put_nbr(list->data->height);
+  my_putstr(" : Color ");
+  my_put_nbr(list->data->color);
+  write(1, " :\n", 3);
+  return (0);
+}
 
 int	check_all_option(t_data *data, int *i, int *j)
 {

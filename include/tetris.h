@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Thu Mar 10 22:08:48 2016 Clémenceau Cedric
+** Last update Fri Mar 11 12:31:20 2016 Clémenceau Cedric
 */
 
 #ifndef	TETRIS_H_
@@ -53,6 +53,7 @@
 ** Debug Mode
 */
 
+int	check_tetrimino(t_cdlist *);
 int	keys_for_left(t_data *, char *);
 int	keys_for_turn(t_data *, char *);
 int	keys_for_right(t_data *, char *);
@@ -74,6 +75,7 @@ int	help(t_data *, char *);
 int	debug_mode(t_data *, char *);
 int	init_data(t_data *, char **, int);
 int	my_check_option(t_data *, char **);
+void	aff_tetrimi(t_cdlist *, int *);
 void	fill_tab(t_data *);
 void	init_base(t_data *);
 void	my_putstr_keys(t_data *);
