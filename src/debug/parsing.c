@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Thu Mar  3 15:11:04 2016 Clémenceau Cedric
-** Last update Thu Mar 10 20:27:22 2016 Clémenceau Cedric
+** Last update Fri Mar 11 14:40:05 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -101,7 +101,6 @@ int	parsing_arg(char **opt, t_data *data)
   while (opt[++i])
     if ((parse_without_key(data, opt, &i)) == 1)
       return (1);
-  i = 0;
   return (0);
 }
 

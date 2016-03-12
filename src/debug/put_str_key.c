@@ -5,10 +5,16 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Thu Mar  3 10:54:38 2016 Clémenceau Cedric
-** Last update Tue Mar  8 04:30:22 2016 Clémenceau Cedric
+** Last update Thu Mar 10 23:51:17 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
+
+int	keys_for_left(t_data *data, char *entered)
+{
+  my_strcpy(data->key[0], entered);
+  return (0);
+}
 
 int	config_key(t_data *data)
 {

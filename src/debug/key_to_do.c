@@ -5,16 +5,10 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Tue Mar  8 01:28:53 2016 Clémenceau Cedric
-** Last update Thu Mar 10 20:28:11 2016 Clémenceau Cedric
+** Last update Thu Mar 10 23:51:28 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
-
-int	keys_for_left(t_data *data, char *entered)
-{
-  my_strcpy(data->key[0], entered);
-  return (0);
-}
 
 int	keys_for_right(t_data *data, char *entered)
 {

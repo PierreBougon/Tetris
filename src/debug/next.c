@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Wed Mar  2 18:22:53 2016 Clémenceau Cedric
-** Last update Tue Mar  8 01:17:45 2016 Clémenceau Cedric
+** Last update Fri Mar 11 12:32:44 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -50,19 +50,17 @@ void		my_show_list(t_arglist *list)
   while (n++ < list->length)
     {
       i = 0;
-      my_putstr("Tetriminos : Name ");
-      my_putstr(tmp->data->name);
-      my_putstr(" : Size ");
-      my_put_nbr(tmp->data->width);
-      write(1, "*", 1);
-      my_put_nbr(tmp->data->height);
-      my_putstr(" : Color ");
-      my_put_nbr(tmp->data->color);
-      write(1, " :\n", 3);
-      while (tmp->data->item[i])
+      if ((tmp->data->error == false))
 	{
-	  my_putstr(tmp->data->item[i++]);
-	  my_putstr("\n");
+	  check_tetrimino(tmp); //fonction dans browse_tab.c
+	  while (tmp->data->item[i])
+	    aff_tetrimi(tmp, &i); //fonction dans browse_tab.c
+	}
+      else
+      	{
+	  my_putstr("Tetriminos : Name ");
+	  my_putstr(tmp->data->name);
+	  my_putstr(" : Error\n");
 	}
       tmp = tmp->next;
     }

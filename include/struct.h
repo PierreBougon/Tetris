@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Mar  8 08:36:12 2016 bougon_p
-** Last update Thu Mar 10 20:13:18 2016 Clémenceau Cedric
+** Last update Fri Mar 11 12:54:57 2016 Clémenceau Cedric
 */
 
 #ifndef STRUCT_H_

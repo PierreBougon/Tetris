@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Mon Mar  7 14:54:12 2016 bougon_p
-** Last update Fri Mar 11 11:48:29 2016 bougon_p
+** Last update Fri Mar 11 20:52:39 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -21,6 +21,7 @@ int	get_color(t_tetri *tetri, int i, char *buf, char *save)
     return (1);
   if ((tetri->color = my_getnbr(save)) == -1)
     return (1);
+  tetri->color %= 7;
   if (tetri->color > 7 || tetri->color < 1)
     tetri->error = true;
   return (i);
