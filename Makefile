@@ -5,7 +5,7 @@
 ## Login   <bougon_p@epitech.net>
 ## 
 ## Started on  Tue Feb 23 17:06:22 2016 bougon_p
-## Last update Thu Mar 10 21:29:18 2016 bougon_p
+## Last update Sat Mar 12 15:25:52 2016 bougon_p
 ##
 
 # USEFUL VARIABLES
@@ -36,6 +36,13 @@ ACTION		=	src/actions/
 EVENT		=	src/event/
 
 DEBUG		=	src/debug/
+
+SRCLIB		=	lib/my/my_getnbr.c \
+			lib/my/my_putchar.c \
+			lib/my/my_put_nbr.c \
+			lib/my/my_putstr.c \
+			lib/my/my_strcmp.c \
+			lib/my/my_strlen.c
 
 SRC		=	$(MAIN)tetris.c \
 			$(MAIN)error.c \
@@ -82,10 +89,13 @@ SRC		=	$(MAIN)tetris.c \
 
 OBJS    	=	$(SRC:.c=.o)
 
+OBJSLIB		=	$(SRCLIB:.c=.o)
 
 # LIBRARY VARIABLES
 
-LIBPATH =	lib/
+LIBPATH =	lib
+
+LIBP	=	./lib/my/
 
 LIB	=	-lncurses
 
@@ -98,7 +108,7 @@ NAME	=	tetris
 
 IFLAG	=	-Iinclude/
 
-CFLAGS  =	-W -Wall -Wextra -g $(IFLAG)
+CFLAGS  =	-W -Wall -Wextra $(IFLAG)
 
 CC      =	gcc $(CFLAGS)
 
@@ -106,7 +116,9 @@ CC      =	gcc $(CFLAGS)
 
 # PROJECT RULES
 
-$(NAME)		: 	$(OBJS)
+$(NAME)		: 	$(OBJSLIB) $(OBJS)
+			@ar rc ./lib/libmy.a $(OBJSLIB)
+			@ranlib ./lib/libmy.a
 			@$(ECHO) "$(GREEN)\n> Compiling project\t >>>>>>>>>>>>>>> \t DONE\n$(WHITE)"
 			@$(CC) -o $(NAME) $(OBJS) $(LDFLAGS)
 
@@ -114,10 +126,12 @@ all		:	$(NAME)
 
 clean		:
 			@$(RM) $(OBJS)
+			@$(RM) $(OBJSLIB)
 			@$(ECHO) "$(GREEN)\n> Cleaning repository\t >>>>>>>>>>>>>>> \t DONE\n$(WHITE)"
 
 fclean		: 	clean
 			@$(RM) $(NAME)
+			@$(RM) $(LIBPATH)/libmy.a
 			@$(ECHO) "$(GREEN)\n> Cleaning exec\t\t >>>>>>>>>>>>>>> \t DONE\n$(WHITE)"
 
 re		:	fclean all

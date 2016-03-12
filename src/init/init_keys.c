@@ -5,25 +5,10 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sat Feb 27 17:52:04 2016 bougon_p
-** Last update Tue Mar  8 02:06:16 2016 Clémenceau Cedric
+** Last update Sat Mar 12 15:51:52 2016 bougon_p
 */
 
 #include "tetris.h"
-
-int	*init_keys()
-{
-  int	*keys;
-
-  if ((keys = malloc(sizeof(char *) * 6)) == NULL)
-    return (NULL);
-  keys[0] = KEY_UP;
-  keys[1] = KEY_DOWN;
-  keys[2] = KEY_LEFT;
-  keys[3] = KEY_RIGHT;
-  keys[4] = 'q';
-  keys[5] = KEY_SPACE;
-  return (keys);
-}
 
 int	init_keytab(t_tabkey *tab_key)
 {

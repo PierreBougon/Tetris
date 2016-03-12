@@ -5,17 +5,15 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Fri Mar 11 20:49:36 2016 bougon_p
+** Last update Sat Mar 12 16:26:33 2016 bougon_p
 */
 
 #include "tetris.h"
 
 int	key_event(t_data *data)
 {
-  int	key;
-
-  key = getch();
-  if (get_key(data, key, data->key, &data->tabkey) == 1)
+  my_get_key(data->key_to_set_game);
+  if (get_key(data, data->key_to_set_game, data->key, &data->tabkey) == 1)
     return (1);
   return (0);
 }
