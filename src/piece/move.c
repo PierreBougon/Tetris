@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sat Feb 27 21:47:51 2016 bougon_p
-** Last update Tue Mar  8 08:59:24 2016 bougon_p
+** Last update Sat Mar 12 22:22:36 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -15,7 +15,7 @@ float	need_to_move(t_data *data, float to_move)
   t_tetri	*itemdata;
 
   itemdata = data->tetri_ig.root->data;
-  if ((int)to_move > data->gamevar.speed
+  if (to_move > data->gamevar.speed
       && (itemdata->pos_y + itemdata->height < data->gamevar.win_height)
       && collision(itemdata, data->tab_game) == 0)
     {
@@ -35,7 +35,7 @@ int		drop(t_data *data, t_arglist *tetri_ig)
   n = 4;
   while (n > 0)
     {
-      if (itemdata->pos_y + itemdata->height + n
+      if (itemdata->pos_y + itemdata->height + n + 1
 	  < data->gamevar.win_height
 	  && collision_drop(itemdata, data->tab_game, n - 1) == 0)
 	{

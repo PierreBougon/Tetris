@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Mon Feb 29 20:02:47 2016 Clémenceau Cedric
-** Last update Sat Mar 12 16:22:25 2016 Clémenceau Cedric
+** Last update Sat Mar 12 21:37:35 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -34,6 +34,7 @@ int	init_data(t_data *data, char **av, int ac)
     return (my_putstr("Window too short\n"), 1);
   if ((do_sub(data)) == 1)
     return (1);
+  data->gamevar.speed -= data->gamevar.level / 12.0;
   return (0);
 }
 

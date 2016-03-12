@@ -5,12 +5,12 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 22:45:02 2016 bougon_p
-** Last update Thu Mar 10 21:37:52 2016 bougon_p
+** Last update Sat Mar 12 20:50:10 2016 bougon_p
 */
 
 #include "tetris.h"
 
-void	print_score(t_score *score)
+void	print_score(t_score *score, int level)
 {
   int	i;
   char	*nb;
@@ -18,6 +18,7 @@ void	print_score(t_score *score)
   char	*time_min;
   char	*time_sec;
   char	*line;
+  char	*lvl;
 
   i = -1;
   time_min = timesetnbr(score->act_time / 60);
@@ -37,13 +38,19 @@ void	print_score(t_score *score)
 	     line, my_strlen(line));
 
 
-  my_strncpy(&score->tab_score[6][17], "1", my_strlen("1"));
+
+  lvl = setnbr(level);
+  my_strncpy(&score->tab_score[6][17 - (my_strlen(lvl) - 1)],
+	     lvl, my_strlen(lvl));
+
+
   my_strncpy(&score->tab_score[8][11], time_min, my_strlen(time_min));
   my_strncpy(&score->tab_score[8][11 + my_strlen(time_min) + 1], ":", 1);
   my_strncpy(&score->tab_score[8][11 + my_strlen(time_min) + 3]
   	     , time_sec, my_strlen(time_sec));
   while (score->tab_score[++i])
     mvprintw((i + 10), 0, score->tab_score[i]);
+  free(lvl);
   free(nb);
   free(time_min);
   free(time_sec);
@@ -62,7 +69,7 @@ void	aff_layout(t_data *data)
   data->score.act_time =
     time(NULL) - data->score.init_time - data->score.tpause;
   write_tetris();
-  print_score(&data->score);
+  print_score(&data->score, data->gamevar.level);
   print_game(data);
   mvprintw(22, 0, "EpiTetris(c) - 2015");
 }

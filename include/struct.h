@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Mar  8 08:36:12 2016 bougon_p
-** Last update Sat Mar 12 16:19:59 2016 Clémenceau Cedric
+** Last update Sat Mar 12 20:50:57 2016 bougon_p
 */
 
 #ifndef STRUCT_H_
@@ -24,7 +24,7 @@ typedef struct		s_gamevar
   int			level;
   int			win_width;
   int			win_height;
-  int			speed;
+  float			speed;
   int			maxwidth;
   int			maxheight;
 }			t_gamevar;
