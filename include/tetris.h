@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Sat Mar 12 16:21:03 2016 bougon_p
+** Last update Sat Mar 12 16:33:28 2016 bougon_p
 */
 
 #ifndef	TETRIS_H_
@@ -142,7 +142,9 @@ int	time_pause(t_data *);
 ** Events
 */
 
-int	get_key(t_data *, int, int *, t_tabkey *);
+int	get_key(t_data *, char *, char **, t_tabkey *);
+char	*my_get_key(char *);
+int	fonction(t_data *);
 
 /*
 ** Tab functions

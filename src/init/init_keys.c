@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sat Feb 27 17:52:04 2016 bougon_p
-** Last update Sat Mar 12 15:51:52 2016 bougon_p
+** Last update Sat Mar 12 17:03:31 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -16,10 +16,10 @@ int	init_keytab(t_tabkey *tab_key)
 
   if ((tabkey = malloc(sizeof(t_tabkey) * 6)) == NULL)
     return (1);
-  tabkey[0] = &turn_tetri;
-  tabkey[1] = &drop;
-  tabkey[2] = &move_left;
-  tabkey[3] = &move_right;
+  tabkey[0] = &move_left;
+  tabkey[1] = &move_right;
+  tabkey[2] = &turn_tetri;
+  tabkey[3] = &drop;
   tabkey[4] = &quit;
   tabkey[5] = &m_pause;
   tab_key->tabkey = tabkey;

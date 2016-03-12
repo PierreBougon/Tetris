@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Mar  8 08:31:42 2016 bougon_p
-** Last update Sat Mar 12 16:22:17 2016 Clémenceau Cedric
+** Last update Sat Mar 12 16:34:53 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -36,9 +36,9 @@ int	fonction(t_data *data)
   j = 0;
   size_max = 1;
   i = 0;
-  while (data->arg[i])
+  while (data->opt.arg[i])
     {
-      while (data->arg[i][j])
+      while (data->opt.arg[i][j])
 	{
 	  if (j > size_max)
 	    size_max = j;
@@ -48,5 +48,5 @@ int	fonction(t_data *data)
     }
   if ((data->key_to_set_game = malloc(size_max)) == NULL)
     return (1);
-  return (0)
-    }
+  return (0);
+}

@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 18:56:41 2016 bougon_p
-** Last update Tue Mar  8 02:49:09 2016 bougon_p
+** Last update Sat Mar 12 16:32:46 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -54,7 +54,6 @@ int	config(t_data *data)
 
   noecho();
   keypad(stdscr, true);
-  data->keys = init_keys();
   init_keytab(&data->tabkey);
   nodelay(data->win, true);
   if (has_colors() == false)
