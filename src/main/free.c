@@ -5,14 +5,13 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Fri Mar  4 13:50:01 2016 bougon_p
-** Last update Fri Mar 11 14:53:18 2016 Clémenceau Cedric
+** Last update Sat Mar 12 15:17:39 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
 
 void	free_all(t_data *data, int ac)
 {
-  dprintf(2, "ac =%d\n", ac);
   if (ac > 1)
     {
       my_free_tab(data->opt.key_to_set);

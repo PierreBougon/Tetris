@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Mar  8 08:36:12 2016 bougon_p
-** Last update Fri Mar 11 12:54:57 2016 Clémenceau Cedric
+** Last update Sat Mar 12 16:19:59 2016 Clémenceau Cedric
 */
 
 #ifndef STRUCT_H_
@@ -86,9 +86,9 @@ typedef struct		s_data
   t_tabkey		tabkey;
   t_score		score;
   t_opt			opt;
+  char			*key_to_set_game;
   char			**key;
   int			**tab_game;
-  int			*keys;
   int			boole;
   bool			pause;
   int			refind;

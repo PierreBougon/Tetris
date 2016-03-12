@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Thu Mar  3 15:11:04 2016 Clémenceau Cedric
-** Last update Fri Mar 11 14:40:05 2016 Clémenceau Cedric
+** Last update Sat Mar 12 15:44:42 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -69,6 +69,7 @@ int	parse_without_key(t_data * data, char **opt, int *i)
     {
       if ((parsing_arg_extanted(data, opt, 0, (*i))) == 1)
 	return (1);
+      printf("coucoufdp\n");
       my_strcpy(data->opt.entered_key, opt[++(*i)]);
       my_strcpy(data->opt.key_to_set[--(*i)], data->opt.entered_key);
       (*i)++;
