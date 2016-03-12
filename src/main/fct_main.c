@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Mon Feb 29 20:02:47 2016 Clémenceau Cedric
-** Last update Fri Mar 11 14:39:13 2016 Clémenceau Cedric
+** Last update Sat Mar 12 16:22:25 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -65,6 +65,7 @@ int	my_check_option(t_data *data, char **option)
     return (1);
   if ((check_arg(option, data, 1)) == 1)
     return (1);
+  fonction(data);
   return (0);
 }
 

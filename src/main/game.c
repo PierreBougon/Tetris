@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Mar  8 08:31:42 2016 bougon_p
-** Last update Tue Mar  8 11:08:33 2016 bougon_p
+** Last update Sat Mar 12 16:22:17 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -26,3 +26,27 @@ int	game(t_data *data)
   check_full_line(data);
   return (0);
 }
+
+int	fonction(t_data *data)
+{
+  int	i;
+  int	size_max;
+  int	j;
+
+  j = 0;
+  size_max = 1;
+  i = 0;
+  while (data->arg[i])
+    {
+      while (data->arg[i][j])
+	{
+	  if (j > size_max)
+	    size_max = j;
+	  j++;
+	}
+      i++;
+    }
+  if ((data->key_to_set_game = malloc(size_max)) == NULL)
+    return (1);
+  return (0)
+    }
