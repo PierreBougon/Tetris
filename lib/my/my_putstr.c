@@ -5,8 +5,11 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Feb 18 16:44:34 2016 bougon_p
-** Last update Tue Mar  8 01:20:11 2016 Clémenceau Cedric
+** Last update Sat Mar 12 15:10:09 2016 Clémenceau Cedric
 */
+
+#include "my.h"
+#include <unistd.h>
 
 int	my_putstr(char *str)
 {

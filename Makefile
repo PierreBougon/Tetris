@@ -5,7 +5,7 @@
 ## Login   <bougon_p@epitech.net>
 ## 
 ## Started on  Tue Feb 23 17:06:22 2016 bougon_p
-## Last update Thu Mar 10 19:49:45 2016 bougon_p
+## Last update Sat Mar 12 15:06:58 2016 Clémenceau Cedric
 ##
 
 # USEFUL VARIABLES
@@ -36,6 +36,13 @@ ACTION		=	src/actions/
 EVENT		=	src/event/
 
 DEBUG		=	src/debug/
+
+SRCLIB		=	lib/my/my_getnbr.c \
+			lib/my/my_putchar.c \
+			lib/my/my_put_nbr.c \
+			lib/my/my_putstr.c \
+			lib/my/my_strcmp.c \
+			lib/my/my_strlen.c
 
 SRC		=	$(MAIN)tetris.c \
 			$(MAIN)error.c \
@@ -83,10 +90,13 @@ SRC		=	$(MAIN)tetris.c \
 
 OBJS    	=	$(SRC:.c=.o)
 
+OBJSLIB		=	$(SRCLIB:.c=.o)
 
 # LIBRARY VARIABLES
 
-LIBPATH =	lib/
+LIBPATH =	lib
+
+lIBP	=	./lib/my/
 
 LIB	=	-lncurses
 
@@ -107,7 +117,9 @@ CC      =	gcc $(CFLAGS)
 
 # PROJECT RULES
 
-$(NAME)		: 	$(OBJS)
+$(NAME)		: 	$(OBJS) $(OBJSLIB)
+			@ar rc ./lib/libmy.a $(OBJSLIB)
+			@ranlib ./lib/libmy.a
 			@$(ECHO) "$(GREEN)\n> Compiling project\t >>>>>>>>>>>>>>> \t DONE\n$(WHITE)"
 			@$(CC) -o $(NAME) $(OBJS) $(LDFLAGS)
 
