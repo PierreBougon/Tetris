@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Fri Mar  4 13:50:01 2016 bougon_p
-** Last update Sat Mar 12 15:17:39 2016 Clémenceau Cedric
+** Last update Sun Mar 13 04:18:07 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -21,6 +21,7 @@ void	free_all(t_data *data, int ac)
     }
   my_free_tab(data->key);
   my_free_tab(data->score.tab_score);
+  free(data->key_to_set_game);
 }
 
 void	my_free_tab(char **tab_to_free)

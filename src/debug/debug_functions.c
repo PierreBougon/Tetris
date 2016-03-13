@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Sat Mar  5 16:21:34 2016 Clémenceau Cedric
-** Last update Sat Mar 12 21:36:09 2016 bougon_p
+** Last update Sun Mar 13 03:52:26 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -24,7 +24,8 @@ int	map_size(t_data *data, char *enter)
     return (-1);
   if ((width = my_getnbr(&enter[i])) == -1)
     return (-1);
-  if (width <= data->gamevar.maxwidth + 1 && height <= data->gamevar.maxheight + 1)
+  if (width <= data->gamevar.maxwidth + 1 &&
+      height <= data->gamevar.maxheight + 1)
     return (-1);
   data->gamevar.win_width = width;
   data->gamevar.win_height = height;

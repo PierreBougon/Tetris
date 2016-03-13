@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Sat Mar  5 22:07:39 2016 Clémenceau Cedric
-** Last update Fri Mar 11 12:31:32 2016 Clémenceau Cedric
+** Last update Sat Mar 12 21:47:12 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -40,7 +40,7 @@ int	check_all_option(t_data *data, int *i, int *j)
     {
       if ((data->tetris_tab[(*j)](data, data->opt.key_to_set[*i])) == 1)
 	return (1);
-      if ((*j) == 8 || (*j) == 10 || (*j) == 12 || (*j) == 14 ||
+      if ((*j) == 7 || (*j) == 8 || (*j) == 10 || (*j) == 12 || (*j) == 14 ||
 	  (*j) == 16 || (*j) == 18)
 	(*i)++;
       return (2);
@@ -64,6 +64,6 @@ int	browse_tab(t_data *data)
       i++;
     }
   if (j == 20)
-    return (my_putstr("Wrong arguments\n"), 1);
+    return (my_putstr("Wrong argumennts\n"), 1);
   return (0);
 }
