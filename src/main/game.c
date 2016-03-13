@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Mar  8 08:31:42 2016 bougon_p
-** Last update Sun Mar 13 04:22:00 2016 Clémenceau Cedric
+** Last update Sun Mar 13 04:46:40 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -34,7 +34,7 @@ int	fonction(t_data *data, int to_malloc)
 
   j = 0;
   i = 0;
-  if (to_malloc != 0)
+  if (to_malloc > 0)
     while (data->opt.arg[i])
       {
 	while (data->opt.arg[i][j])
