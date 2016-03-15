@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Fri Mar  4 16:54:29 2016 bougon_p
-** Last update Sat Mar 12 22:20:17 2016 bougon_p
+** Last update Mon Mar 14 15:18:29 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -19,6 +19,8 @@ int		get_key(t_data *data, char *key, char **keys, t_tabkey *tab_game)
     return (time_pause(data));
   while (my_strcmp(key, keys[i]) != 0)
     {
+      if (key[0] != 0)
+	dprintf(2, "key entered = %s && keys[i] = %s\n", key, keys[i]);
       i++;
       if (i > 5)
         return (0);

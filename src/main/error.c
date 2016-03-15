@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 18:56:41 2016 bougon_p
-** Last update Sat Mar 12 21:21:06 2016 bougon_p
+** Last update Tue Mar 15 10:19:49 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -70,6 +70,7 @@ int	config(t_data *data)
   my_init_color();
   curs_set(0);
   game = 0;
+  my_putstr(tigetstr("smkx"));
   while ((ret = launch_main(data, game++)) == -3);
   if (ret == 1)
     return (1);

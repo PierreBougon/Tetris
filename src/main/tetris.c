@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Sun Mar 13 05:01:20 2016 Clémenceau Cedric
+** Last update Tue Mar 15 10:21:34 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -83,6 +83,6 @@ int	main(int ac, char **av, char **env)
   if ((endwin()) == 1)
     return (1);
   free_list(&data.tetriminos);
-  my_putstr("\E[H\E[2J");
+  my_putstr(tigetstr("clear"));
   return (0);
 }
