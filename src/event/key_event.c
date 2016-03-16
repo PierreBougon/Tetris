@@ -5,14 +5,14 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Fri Mar  4 16:54:29 2016 bougon_p
-** Last update Wed Mar 16 14:51:01 2016 Clémenceau Cedric
+** Last update Wed Mar 16 17:54:00 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
 
-int		get_key(t_data *data, char *key, char **keys, t_tabkey *tab_game)
+int	get_key(t_data *data, char *key, char **keys, t_tabkey *tab_game)
 {
-  int           i;
+  int	i;
 
   i = 0;
   if (data->pause == true && my_strcmp(key, keys[5]) != 0)
@@ -34,7 +34,7 @@ char			*my_get_key(char *str)
   int			size;
 
   size = 0;
-  while (buf[size])
+  while (size < 11)
     buf[size++] = 0;
   if ((ioctl(0, TCGETS, &start)) < 0)
     return (NULL);
@@ -50,6 +50,7 @@ char			*my_get_key(char *str)
   buf[size] = 0;
   if ((ioctl(0, TCSETS, &start)) < 0)
     return (NULL);
-  my_strcpy(str, buf);
+  dprintf(2, "%s\n", buf);
+  my_strcpy(str, &buf[0]);
   return (str);
 }

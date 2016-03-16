@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:12:05 2016 bougon_p
-** Last update Wed Mar 16 14:50:18 2016 Clémenceau Cedric
+** Last update Wed Mar 16 18:18:48 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -76,6 +76,7 @@ int	main(int ac, char **av, char **env)
   if (ac == 1)
     if ((fonction(&data, 0)) == 1)
       return (1);
+  data.opt.entered_key = NULL;
   if ((init_data(&data, av, ac)) == 1 ||
       (config(&data)) == 1)
     return (endwin(), 1);

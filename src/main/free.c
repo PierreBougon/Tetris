@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Fri Mar  4 13:50:01 2016 bougon_p
-** Last update Sun Mar 13 05:22:50 2016 Clémenceau Cedric
+** Last update Wed Mar 16 18:17:25 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -24,7 +24,8 @@ void	free_all(t_data *data, int ac)
 {
   if (ac > 1)
     {
-      free(data->opt.entered_key);
+      if (data->opt.entered_key != NULL)
+	free(data->opt.entered_key);
       my_free_tab(data->opt.key_to_set);
       my_free_tab(data->opt.to_check);
       my_free_tab(data->opt.arg);
