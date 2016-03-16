@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Fri Mar  4 16:54:29 2016 bougon_p
-** Last update Sat Mar 12 22:20:17 2016 bougon_p
+** Last update Mon Mar 14 14:58:43 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -30,15 +30,12 @@ char			*my_get_key(char *str)
 {
   struct termios	end;
   struct termios	start;
-  char			buf[6];
+  char			buf[11];
   int			size;
 
-  buf[0] = 0;
-  buf[1] = 0;
-  buf[2] = 0;
-  buf[3] = 0;
-  buf[4] = 0;
-  buf[5] = 0;
+  size = 0;
+  while (buf[size])
+    buf[size++] = 0;
   if ((ioctl(0, TCGETS, &start)) < 0)
     return (NULL);
   if ((ioctl(0, TCGETS, &end)) < 0)
@@ -49,7 +46,7 @@ char			*my_get_key(char *str)
   end.c_cc[VMIN] = 0;
   if ((ioctl(0, TCSETS, &end)) < 0)
     return (NULL);
-  size = read(0, buf, 5);
+  size = read(0, buf, 10);
   buf[size] = 0;
   if ((ioctl(0, TCSETS, &start)) < 0)
     return (NULL);
