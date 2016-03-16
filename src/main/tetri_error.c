@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sun Mar  6 16:24:23 2016 bougon_p
-** Last update Sun Mar  6 20:36:39 2016 bougon_p
+** Last update Wed Mar 16 18:30:36 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -47,16 +47,14 @@ char	*get_extens(char *name)
   return (extens);
 }
 
-int	check_name(t_tetri *tetri)
+int	check_name(char *name)
 {
   char	*extens;
 
-  extens = get_extens(tetri->name);
+  extens = get_extens(name);
   if (my_strcmp(extens, ".tetrimino") != 0)
     {
-      tetri->error = true;
+      return (1);
     }
-  else
-    tetri->error = false;
   return (0);
 }

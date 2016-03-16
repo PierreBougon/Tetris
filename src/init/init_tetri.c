@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Feb 25 16:38:30 2016 bougon_p
-** Last update Fri Mar 11 11:48:17 2016 bougon_p
+** Last update Wed Mar 16 18:32:28 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -19,7 +19,8 @@ int		take_nbr(t_tetri *tetri, char *buf, char *save)
   i++;
   i = get_height(tetri, i, buf, save);
   i++;
-  i = get_color(tetri, i, buf, save);
+  if ((i = get_color(tetri, i, buf, save)) == -1)
+    tetri->color = true;
   return (0);
 }
 
@@ -31,14 +32,14 @@ int		fill_tetri_carac(t_tetri *tetri, int fd, char *name)
   if ((save = malloc(sizeof(char) * 4096)) == NULL)
     return (1);
   save = set_line_null(save, 4095);
+  if ((tetri->name = malloc(my_strlen(name) + 1)) == NULL)
+    return (1);
+  my_strcpy(tetri->name, name);
+  change_extens(tetri->name);
   if ((buf = get_next_line(fd)) == NULL)
     return (1);
   if (take_nbr(tetri, buf, save) == 1)
     return (1);
-  if ((tetri->name = malloc(my_strlen(name) + 1)) == NULL)
-    return (1);
-  my_strcpy(tetri->name, name);
-  check_name(tetri);
   free(buf);
   free(save);
   return (0);
@@ -94,7 +95,8 @@ int		init_tetriminos(t_arglist *arg)
     return (1);
   while ((dir = readdir(dirp)) != NULL)
     {
-      if (dir->d_name[0] != '.' && my_strcmp(dir->d_name, "..") != 0)
+      if (dir->d_name[0] != '.' && my_strcmp(dir->d_name, "..") != 0
+	  && check_name(dir->d_name) == 0)
 	{
 	  if ((tetri = malloc(sizeof(t_tetri))) == NULL)
 	    return (1);

@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Wed Mar  2 18:22:53 2016 Clémenceau Cedric
-** Last update Fri Mar 11 12:32:44 2016 Clémenceau Cedric
+** Last update Wed Mar 16 18:33:25 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -46,8 +46,8 @@ void		my_show_list(t_arglist *list)
   int		n;
 
   tmp = list->root;
-  n = 0;
-  while (n++ < list->length)
+  n = -1;
+  while (++n < list->length)
     {
       i = 0;
       if ((tmp->data->error == false))
