@@ -5,10 +5,16 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sun Mar  6 16:24:23 2016 bougon_p
-** Last update Wed Mar 16 18:30:36 2016 bougon_p
+** Last update Thu Mar 17 17:16:56 2016 bougon_p
 */
 
 #include "tetris.h"
+
+void	exit_no_tetri()
+{
+  my_putstr_err("There is no tetrimino on tetriminos/ file !\n");
+  exit(1);
+}
 
 void	epurendstr(char *str)
 {

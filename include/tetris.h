@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Wed Mar 16 18:31:16 2016 bougon_p
+** Last update Thu Mar 17 17:17:16 2016 bougon_p
 */
 
 #ifndef	TETRIS_H_
@@ -193,5 +193,6 @@ int	order_list(t_arglist *);
 
 int	protect_me(t_data *);
 int     aff_tetris(t_data *);
+void	exit_no_tetri();
 
 #endif /* !TETRIS_H_ */

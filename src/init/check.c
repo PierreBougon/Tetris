@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Mon Feb 29 16:38:59 2016 bougon_p
-** Last update Wed Mar 16 18:26:59 2016 bougon_p
+** Last update Thu Mar 17 16:59:20 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -15,7 +15,7 @@ void	change_extens(char *name)
   int	i;
 
   i = my_strlen(name);
-  while (name[--i] != 0 && name[i] != '.' );
+  while (name[--i] > 0 && name[i] != '.' );
   name[i] = 0;
 }
 

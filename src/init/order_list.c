@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Mar 10 19:35:55 2016 bougon_p
-** Last update Thu Mar 10 21:18:33 2016 bougon_p
+** Last update Thu Mar 17 16:54:06 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -15,16 +15,21 @@ void		swap(t_cdlist *elem1, t_cdlist *elem2, t_arglist *arg)
   t_cdlist	*tmp;
   t_cdlist	*tmp2;
 
-  tmp = elem1->prev;
-  tmp2 = elem2->next;
-  elem2->next = elem1;
-  elem2->prev = tmp;
-  elem1->next = tmp2;
-  elem1->prev = elem2;
-  tmp->next = elem2;
-  tmp2->prev = elem1;
-  if (elem1 == arg->root)
-    arg->root = elem2;
+  if (arg->length == 2)
+    arg->root = arg->root->next;
+  else
+    {
+      tmp = elem1->prev;
+      tmp2 = elem2->next;
+      elem2->next = elem1;
+      elem2->prev = tmp;
+      elem1->next = tmp2;
+      elem1->prev = elem2;
+      tmp->next = elem2;
+      tmp2->prev = elem1;
+      if (elem1 == arg->root)
+	arg->root = elem2;
+    }
 }
 
 int		order_list(t_arglist *arg)
