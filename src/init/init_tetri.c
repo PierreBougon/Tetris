@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Feb 25 16:38:30 2016 bougon_p
-** Last update Fri Mar 18 13:46:52 2016 bougon_p
+** Last update Fri Mar 18 19:18:49 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -95,7 +95,7 @@ int		init_tetriminos(t_arglist *arg)
     return (1);
   while ((dir = readdir(dirp)) != NULL)
     {
-      if (dir->d_name[0] != '.' && my_strcmp(dir->d_name, "..") != 0
+      if (my_strcmp(dir->d_name, ".") != 0 && my_strcmp(dir->d_name, "..") != 0
 	  && check_name(dir->d_name) == 0)
 	{
 	  if ((tetri = malloc(sizeof(t_tetri))) == NULL)
