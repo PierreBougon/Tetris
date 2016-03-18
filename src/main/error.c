@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 18:56:41 2016 bougon_p
-** Last update Tue Mar 15 10:19:49 2016 bougon_p
+** Last update Fri Mar 18 14:25:17 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -18,6 +18,21 @@ int	my_putstr_err(char *str)
   return (1);
 }
 
+void	set_msg(t_data *data)
+{
+  free_list(&data->tetri_ig);
+  clear();
+  mvprintw(getmaxy(data->win) / 2,
+	   ((getmaxx(data->win) / 2) - 11),
+	   "You lose ! Try again !!");
+  mvprintw(getmaxy(data->win) / 2 + 1,
+	   ((getmaxx(data->win) / 2) - 16),
+	   "Press any key to restart the game");
+  refresh();
+  my_infinite_loop();
+  clear();
+}
+
 int	launch_main(t_data *data, int game)
 {
   int	j;
@@ -28,17 +43,7 @@ int	launch_main(t_data *data, int game)
     set_null(data->tab_game[j], data->gamevar.win_width + 1);
   if (game != 0)
     {
-      free_list(&data->tetri_ig);
-      clear();
-      mvprintw(getmaxy(data->win) / 2,
-	       ((getmaxx(data->win) / 2) - 11),
-	       "You lose ! Try again !!");
-      mvprintw(getmaxy(data->win) / 2 + 1,
-	       ((getmaxx(data->win) / 2) - 16),
-	       "Press any key to restart the game");
-      refresh();
-      my_infinite_loop();
-      clear();
+      set_msg(data);
       i = -1;
       while (++i < 7)
 	my_strncpy(&data->score.tab_score[3][10 + i], " ", 1);

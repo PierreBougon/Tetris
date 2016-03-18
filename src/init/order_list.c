@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Mar 10 19:35:55 2016 bougon_p
-** Last update Thu Mar 17 16:54:06 2016 bougon_p
+** Last update Fri Mar 18 14:19:08 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -32,6 +32,13 @@ void		swap(t_cdlist *elem1, t_cdlist *elem2, t_arglist *arg)
     }
 }
 
+void	next(int *i, t_cdlist *tmp, int *cmp)
+{
+  *i += 1;
+  tmp = tmp->next;
+  *cmp = my_strcmp(tmp->data->name, tmp->next->data->name);
+}
+
 int		order_list(t_arglist *arg)
 {
   t_cdlist	*tmp;
@@ -44,11 +51,7 @@ int		order_list(t_arglist *arg)
     {
       cmp = my_strcmp(tmp->data->name, tmp->next->data->name);
       while (cmp == 0 && i + 1 < arg->length)
-	{
-	  i++;
-	  tmp = tmp->next;
-	  cmp = my_strcmp(tmp->data->name, tmp->next->data->name);
-	}
+	next(&i, tmp, &cmp);
       if (cmp > 0)
 	{
 	  swap(tmp, tmp->next, arg);

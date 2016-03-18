@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Fri Mar  4 13:50:01 2016 bougon_p
-** Last update Wed Mar 16 18:17:25 2016 Clémenceau Cedric
+** Last update Fri Mar 18 13:45:19 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -15,7 +15,7 @@ void	my_free_tab_int(int **tab_to_free)
   int   i;
 
   i = 0;
-  while (i < 20) // le 20 a modifié par le data->gamevar_win_height ?
+  while (i < 20)
     free(tab_to_free[i++]);
   free(tab_to_free);
 }

@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Sat Mar  5 22:07:39 2016 Clémenceau Cedric
-** Last update Sat Mar 12 21:47:12 2016 Clémenceau Cedric
+** Last update Fri Mar 18 15:38:28 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -15,7 +15,6 @@ void	aff_tetrimi(t_cdlist *list, int *i)
   my_putstr(list->data->item[(*i)++]);
   write(1, "\n", 1);
 }
-
 
 int	check_tetrimino(t_cdlist *list)
 {

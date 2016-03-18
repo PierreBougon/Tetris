@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Feb 25 16:38:30 2016 bougon_p
-** Last update Thu Mar 17 17:18:27 2016 bougon_p
+** Last update Fri Mar 18 13:46:52 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -90,9 +90,8 @@ int		init_tetriminos(t_arglist *arg)
   t_tetri       *tetri;
   int           i;
 
-  i = 0;
   arg->length = 0;
-  if ((dirp = opendir("./tetriminos")) == NULL)
+  if ((i = 0) || (dirp = opendir("./tetriminos")) == NULL)
     return (1);
   while ((dir = readdir(dirp)) != NULL)
     {

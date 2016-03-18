@@ -5,57 +5,55 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 22:45:02 2016 bougon_p
-** Last update Sat Mar 12 20:50:10 2016 bougon_p
+** Last update Fri Mar 18 14:30:19 2016 bougon_p
 */
 
 #include "tetris.h"
+
+void	set_score_in_tab(t_score *score, int level)
+{
+  char	*mscore;
+  char	*line;
+  char	*lvl;
+
+  mscore = setnbr(score->score);
+  my_strncpy(&score->tab_score[3][17 - (my_strlen(mscore) - 1)],
+	     mscore, my_strlen(mscore));
+  line = setnbr(score->line);
+  my_strncpy(&score->tab_score[5][17 - (my_strlen(line) - 1)],
+	     line, my_strlen(line));
+  lvl = setnbr(level);
+  my_strncpy(&score->tab_score[6][17 - (my_strlen(lvl) - 1)],
+	     lvl, my_strlen(lvl));
+  free(mscore);
+  free(line);
+  free(lvl);
+}
 
 void	print_score(t_score *score, int level)
 {
   int	i;
   char	*nb;
-  char	*mscore;
   char	*time_min;
   char	*time_sec;
-  char	*line;
-  char	*lvl;
 
   i = -1;
+  set_score_in_tab(score, level);
   time_min = timesetnbr(score->act_time / 60);
   time_sec = timesetnbr(score->act_time % 60);
-
   score->high_score = (score->score > score->high_score)
     ? score->score : score->high_score;
   nb = setnbr(score->high_score);
   my_strncpy(&score->tab_score[2][17 - (my_strlen(nb) - 1)], nb, my_strlen(nb));
-
-  mscore = setnbr(score->score);
-  my_strncpy(&score->tab_score[3][17 - (my_strlen(mscore) - 1)],
-	     mscore, my_strlen(mscore));
-
-  line = setnbr(score->line);
-  my_strncpy(&score->tab_score[5][17 - (my_strlen(line) - 1)],
-	     line, my_strlen(line));
-
-
-
-  lvl = setnbr(level);
-  my_strncpy(&score->tab_score[6][17 - (my_strlen(lvl) - 1)],
-	     lvl, my_strlen(lvl));
-
-
   my_strncpy(&score->tab_score[8][11], time_min, my_strlen(time_min));
   my_strncpy(&score->tab_score[8][11 + my_strlen(time_min) + 1], ":", 1);
   my_strncpy(&score->tab_score[8][11 + my_strlen(time_min) + 3]
   	     , time_sec, my_strlen(time_sec));
   while (score->tab_score[++i])
     mvprintw((i + 10), 0, score->tab_score[i]);
-  free(lvl);
   free(nb);
   free(time_min);
   free(time_sec);
-  free(mscore);
-  free(line);
 }
 
 void	print_game(t_data *data)
