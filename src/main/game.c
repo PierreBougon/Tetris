@@ -1,11 +1,11 @@
 /*
-1;2802;0c** game.c for GAME in /home/bougon_p/rendu/PSU_2015_tetris
+** game.c for GAME in /home/bougon_p/rendu/PSU_2015_tetris
 **
 ** Made by bougon_p
 ** Login   <bougon_p@epitech.net>
 **
-** Started on  Tue Mar  8 08:31:42 2016 bougon_p
-** Last update Wed Mar 16 18:10:53 2016 Clémenceau Cedric
+** Started on  Fri Mar 18 13:32:33 2016 bougon_p
+** Last update Fri Mar 18 13:44:32 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -32,18 +32,16 @@ int	fonction(t_data *data, int to_malloc)
   int	i;
   int	j;
 
-  j = 0;
-  i = 1;
+  j = -1;
+  i = 0;
   if (to_malloc > 0)
-    while (data->opt.arg[i + 1])
+    while (data->opt.arg[++i + 1])
       {
-	while (data->opt.arg[i][j])
+	while (data->opt.arg[i][++j])
 	  {
 	    if (j > to_malloc)
 	      to_malloc = j;
-	    j++;
 	  }
-	i++;
       }
   if (to_malloc <= 6)
     {
@@ -51,7 +49,8 @@ int	fonction(t_data *data, int to_malloc)
 	return (1);
     }
   else
-    if ((data->key_to_set_game = malloc(sizeof(char) * (to_malloc + 1))) == NULL)
+    if ((data->key_to_set_game =
+	 malloc(sizeof(char) * (to_malloc + 1))) == NULL)
       return (1);
   return (0);
 }

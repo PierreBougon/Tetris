@@ -5,18 +5,13 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Sat Mar 19 15:55:55 2016 Clémenceau Cedric
+** Last update Sat Mar 19 16:48:50 2016 Clémenceau Cedric
 */
 
 #ifndef	TETRIS_H_
 # define TETRIS_H_
 
-# define UNUSED(var) __attribute__((unused))
-
-# include "list.h"
-# include "my.h"
-# include "get_next_line.h"
-# include "struct.h"
+# define UNUSED __attribute__((__unused__))
 
 # include <ncurses.h>
 # include <curses.h>
@@ -33,6 +28,11 @@
 # include <termios.h>
 # include <sys/ioctl.h>
 # include <stdbool.h>
+
+# include "list.h"
+# include "my.h"
+# include "get_next_line.h"
+# include "struct.h"
 
 /*
 ** DEFINES
@@ -194,5 +194,6 @@ int	order_list(t_arglist *);
 
 int	protect_me(t_data *);
 int     aff_tetris(t_data *);
+void	exit_no_tetri();
 
 #endif /* !TETRIS_H_ */

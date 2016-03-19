@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Thu Mar  3 10:54:38 2016 Clémenceau Cedric
-** Last update Sat Mar 19 16:20:38 2016 Clémenceau Cedric
+** Last update Sat Mar 19 16:47:49 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -21,15 +21,14 @@ int	config_key(t_data *data)
 {
   if ((data->key = init_tab(6, 8)) == NULL)
     return (1);
-  my_strcpy(data->key[0] ,tigetstr("kcub1"));
-  my_strcpy(data->key[1] ,tigetstr("kcuf1"));
-  my_strcpy(data->key[2] ,tigetstr("kcuu1"));
-  my_strcpy(data->key[3] ,tigetstr("kcud1"));
+  my_strcpy(data->key[0], tigetstr("kcub1"));
+  my_strcpy(data->key[1], tigetstr("kcuf1"));
+  my_strcpy(data->key[2], tigetstr("kcuu1"));
+  my_strcpy(data->key[3], tigetstr("kcud1"));
   my_strcpy(data->key[4], "q");
   my_strcpy(data->key[5], " ");
   return (0);
 }
-
 
 void	my_putstr_keys(t_data *data)
 {

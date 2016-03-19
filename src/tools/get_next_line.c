@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Mar  8 10:28:08 2016 bougon_p
-** Last update Thu Mar 10 13:48:21 2016 bougon_p
+** Last update Fri Mar 18 15:39:52 2016 bougon_p
 */
 
 #include "get_next_line.h"
@@ -35,7 +35,7 @@ char	*my_realloc(char *line)
 
 int	refill_line(t_file *file, char *buf, int i)
 {
-  if ( buf[i] == 0)
+  if (buf[i] == 0)
     {
       free(file->line);
       return (-1);

@@ -5,7 +5,7 @@
 ## Login   <bougon_p@epitech.net>
 ## 
 ## Started on  Tue Feb 23 17:06:22 2016 bougon_p
-## Last update Mon Mar 14 18:17:10 2016 bougon_p
+## Last update Fri Mar 18 20:19:42 2016 bougon_p
 ##
 
 # USEFUL VARIABLES
@@ -110,7 +110,7 @@ IFLAG	=	-Iinclude/
 
 CFLAGS  =	-W -Wall $(IFLAG)
 
-CC      =	gcc $(CFLAGS) -g
+CC      =	gcc $(CFLAGS)
 
 
 

@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Sat Mar  5 15:15:23 2016 Clémenceau Cedric
-** Last update Tue Mar  8 01:44:29 2016 Clémenceau Cedric
+** Last update Fri Mar 18 13:32:16 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -58,7 +58,7 @@ void	fill_tab(t_data *data)
   data->tetris_tab[19] = keys_for_pause;
 }
 
-int     init_data_next(t_data *data)
+int	init_data_next(t_data *data)
 {
   data->boole = 0;
   data->score.init_time = time(NULL);

@@ -5,7 +5,7 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Wed Mar  2 18:22:53 2016 Clémenceau Cedric
-** Last update Wed Mar 16 18:33:25 2016 bougon_p
+** Last update Fri Mar 18 13:31:34 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -52,9 +52,9 @@ void		my_show_list(t_arglist *list)
       i = 0;
       if ((tmp->data->error == false))
 	{
-	  check_tetrimino(tmp); //fonction dans browse_tab.c
+	  check_tetrimino(tmp);
 	  while (tmp->data->item[i])
-	    aff_tetrimi(tmp, &i); //fonction dans browse_tab.c
+	    aff_tetrimi(tmp, &i);
 	}
       else
       	{
