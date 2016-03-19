@@ -5,17 +5,17 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Fri Mar  4 13:50:01 2016 bougon_p
-** Last update Wed Mar 16 18:17:25 2016 Clémenceau Cedric
+** Last update Sat Mar 19 16:33:33 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
 
-void	my_free_tab_int(int **tab_to_free)
+void	my_free_tab_int(int **tab_to_free, t_data *data)
 {
   int   i;
 
   i = 0;
-  while (i < 20) // le 20 a modifié par le data->gamevar_win_height ?
+  while (i < data->gamevar.maxheight)
     free(tab_to_free[i++]);
   free(tab_to_free);
 }
@@ -33,7 +33,7 @@ void	free_all(t_data *data, int ac)
     }
   my_free_tab(data->key);
   my_free_tab(data->score.tab_score);
-  my_free_tab_int(data->tab_game);
+  my_free_tab_int(data->tab_game, data);
   free(data->key_to_set_game);
 }
 
@@ -41,8 +41,8 @@ void	my_free_tab(char **tab_to_free)
 {
   int   i;
 
-  i = 0;
-  while (tab_to_free[i] != NULL)
-    free(tab_to_free[i++]);
+  i = -1;
+  while (tab_to_free[++i] != NULL)
+    free(tab_to_free[i]);
   free(tab_to_free);
 }

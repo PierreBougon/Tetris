@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Feb 23 17:18:18 2016 bougon_p
-** Last update Wed Mar 16 18:31:16 2016 bougon_p
+** Last update Sat Mar 19 15:55:55 2016 Clémenceau Cedric
 */
 
 #ifndef	TETRIS_H_
@@ -75,6 +75,9 @@ int	help(t_data *, char *);
 int	debug_mode(t_data *, char *);
 int	init_data(t_data *, char **, int);
 int	my_check_option(t_data *, char **);
+int	get_color(t_tetri *, int, char *, char *);
+int	get_height(t_tetri *, int, char *, char *);
+int	get_width(t_tetri *, int, char *, char *);
 void	aff_tetrimi(t_cdlist *, int *);
 void	fill_tab(t_data *);
 void	init_base(t_data *);
@@ -86,9 +89,6 @@ void	aff_keys(t_data *);
 void	my_show_list(t_arglist *);
 void	aff_tetriminos(t_data *);
 void	parse_file(t_tetri *, int);
-int	get_color(t_tetri *, int, char *, char *);
-int	get_height(t_tetri *, int, char *, char *);
-int	get_width(t_tetri *, int, char *, char *);
 
 /*
 ** TETRIS letter functions
@@ -143,6 +143,7 @@ int	time_pause(t_data *);
 
 int	get_key(t_data *, char *, char **, t_tabkey *);
 char	*my_get_key(char *);
+char	*check_echap(char *);
 int	fonction(t_data *, int);
 
 /*

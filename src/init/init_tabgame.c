@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Mar  3 08:42:06 2016 bougon_p
-** Last update Sat Mar 12 22:19:59 2016 bougon_p
+** Last update Sat Mar 19 16:28:36 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
@@ -25,7 +25,7 @@ int	**init_tab_game(int my_lines, int my_cols)
   int	**tab_to_malloc;
 
   j = -1;
-  if ((tab_to_malloc = malloc(sizeof(int *) * (my_lines + 2))) == NULL)
+  if ((tab_to_malloc = malloc(sizeof(int *) * (my_lines + 1))) == NULL)
     return (NULL);
   tab_to_malloc[my_lines] = NULL;
   while (++j < my_lines + 1)

@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Mar  8 08:36:12 2016 bougon_p
-** Last update Sun Mar 13 05:19:15 2016 Clémenceau Cedric
+** Last update Sat Mar 19 16:35:09 2016 Clémenceau Cedric
 */
 
 #ifndef STRUCT_H_
@@ -88,11 +88,11 @@ typedef struct		s_data
   t_opt			opt;
   char			*key_to_set_game;
   char			**key;
+  bool			pause;
+  float			to_move;
   int			**tab_game;
   int			boole;
-  bool			pause;
   int			refind;
-  float			to_move;
   int			(**tetris_tab)(t_data *, char *);
 }			t_data;
 

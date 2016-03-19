@@ -5,10 +5,35 @@
 ** Login   <clemen_j@epitech.net>
 **
 ** Started on  Sat Mar  5 22:07:39 2016 Clémenceau Cedric
-** Last update Sat Mar 12 21:47:12 2016 Clémenceau Cedric
+** Last update Sat Mar 19 16:21:03 2016 Clémenceau Cedric
 */
 
 #include "tetris.h"
+
+char	*check_echap(char *to_check)
+{
+  int	i;
+  int	j;
+  char	*to_send;
+
+  i = -1;
+  j = 0;
+  if ((to_send = malloc(sizeof(char) * (my_strlen(to_check) + 1))) == NULL)
+    return (NULL);
+  while (to_check[++i])
+    if ((to_check[i] == '\\' && to_check[i + 1] == 'e') ||
+	(to_check[i] == '\\' && to_check[i + 1] == 'E') ||
+	(to_check[i] == '^' && to_check[i + 1] == 'E')  ||
+	(to_check[i] == '^' && to_check[i + 1] == 'e'))
+      {
+	to_send[j++] = 27;
+	i = i + 2;
+	while (to_check[i])
+	  to_send[j++] = to_check[i++];
+      }
+  to_send[j] = 0;
+  return ((to_send[0] == 0) ? free(to_send), to_check : to_send);
+}
 
 void	aff_tetrimi(t_cdlist *list, int *i)
 {
