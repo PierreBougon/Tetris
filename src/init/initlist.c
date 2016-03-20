@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu Feb 25 16:45:28 2016 bougon_p
-** Last update Thu Mar  3 08:47:29 2016 bougon_p
+** Last update Sun Mar 20 19:58:47 2016 bougon_p
 */
 
 #include "tetris.h"
@@ -72,6 +72,8 @@ int		free_list(t_arglist *arg)
     {
       tmp = tmp2;
       tmp2 = tmp->next;
+      free(tmp->data->name);
+      my_free_tab(tmp->data->item);
       free(tmp->data);
       free(tmp);
       i++;
